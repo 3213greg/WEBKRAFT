@@ -807,6 +807,8 @@
     /* RESPONSIVE */
     @media (max-width: 900px) {
       .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .cennik-panel.active { grid-template-columns: 1fr; max-width: 480px; }
+      .portfolio-panel.active { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 700px) {
@@ -824,6 +826,10 @@
       .hamburger { display: flex; }
       .form-row { grid-template-columns: 1fr; }
       .hero-stats { gap: 1.5rem; }
+      .cennik-tabs { width: 100%; justify-content: center; }
+      .cennik-tab { flex: 1; text-align: center; }
+      .cennik-card { padding: 1.5rem; }
+      .cennik-price { font-size: 1.5rem; }
     }
   </style>
 </head>
