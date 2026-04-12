@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bella Cucina – Restauracja Włoska</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #f5f0e8;
+      --dark: #1a1208;
+      --gold: #c9a84c;
+      --red: #8b1a1a;
+      --text: #3a2e1e;
+      --muted: #7a6a52;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Georgia', serif; background: var(--cream); color: var(--text); }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,18,8,0.97);
+      padding: 0 6%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo { font-size: 1.6rem; font-weight: 700; color: var(--gold); letter-spacing: 1px; font-style: italic; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(245,240,232,0.75); font-size: 0.88rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; font-family: 'Segoe UI', sans-serif; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-btn { background: var(--gold); color: var(--dark); padding: 0.5rem 1.4rem; border-radius: 4px; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-family: 'Segoe UI', sans-serif; transition: opacity 0.2s; }
+    .nav-btn:hover { opacity: 0.85; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 100px 6% 60px;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 65%);
+    }
+    .hero-divider { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 1.5rem; }
+    .hero-sub { font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; font-family: 'Segoe UI', sans-serif; }
+    #hero h1 { font-size: clamp(3rem, 7vw, 5.5rem); color: var(--cream); line-height: 1.05; margin-bottom: 1.5rem; font-style: italic; }
+    #hero h1 span { color: var(--gold); }
+    #hero p { color: rgba(245,240,232,0.6); font-size: 1.05rem; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.8; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-gold { background: var(--gold); color: var(--dark); padding: 0.85rem 2.2rem; border-radius: 4px; font-weight: 700; font-size: 0.88rem; letter-spacing: 1.5px; text-transform: uppercase; font-family: 'Segoe UI', sans-serif; transition: opacity 0.2s; }
+    .btn-gold:hover { opacity: 0.85; }
+    .btn-outline { border: 1px solid rgba(201,168,76,0.5); color: var(--gold); padding: 0.85rem 2.2rem; border-radius: 4px; font-size: 0.88rem; letter-spacing: 1.5px; text-transform: uppercase; font-family: 'Segoe UI', sans-serif; transition: all 0.2s; }
+    .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+    /* ABOUT */
+    #about { padding: 90px 6%; background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .about-img {
+      aspect-ratio: 4/3; border-radius: 4px;
+      background: linear-gradient(135deg, #2d1f0a, #4a3015);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; position: relative; overflow: hidden;
+    }
+    .about-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(201,168,76,0.1), transparent); }
+    .section-tag { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; font-family: 'Segoe UI', sans-serif; }
+    .about-text h2 { font-size: 2.2rem; margin-bottom: 1rem; line-height: 1.2; font-style: italic; }
+    .about-text p { color: var(--muted); line-height: 1.9; margin-bottom: 1rem; font-size: 0.95rem; }
+    .gold-line { width: 40px; height: 2px; background: var(--gold); margin: 1.5rem 0; }
+
+    /* MENU */
+    #menu { padding: 90px 6%; background: var(--dark); }
+    #menu .section-tag { color: var(--gold); }
+    #menu h2 { font-size: 2.4rem; color: var(--cream); text-align: center; margin-bottom: 0.5rem; font-style: italic; }
+    #menu .sub { text-align: center; color: rgba(245,240,232,0.45); font-size: 0.9rem; margin-bottom: 3.5rem; font-family: 'Segoe UI', sans-serif; }
+    #menu .section-tag { display: block; text-align: center; }
+    .menu-tabs { display: flex; justify-content: center; gap: 0; margin-bottom: 3rem; border: 1px solid rgba(201,168,76,0.3); border-radius: 4px; width: fit-content; margin-left: auto; margin-right: auto; overflow: hidden; }
+    .menu-tab { padding: 0.6rem 1.8rem; font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; border: none; background: transparent; color: rgba(245,240,232,0.5); font-family: 'Segoe UI', sans-serif; transition: all 0.2s; }
+    .menu-tab.active { background: var(--gold); color: var(--dark); font-weight: 700; }
+    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: 900px; margin: 0 auto; }
+    .menu-item { padding: 1.4rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+    .menu-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.06); }
+    .menu-name { font-size: 0.95rem; color: var(--cream); }
+    .menu-desc { font-size: 0.78rem; color: rgba(245,240,232,0.4); margin-top: 0.2rem; font-family: 'Segoe UI', sans-serif; }
+    .menu-price { color: var(--gold); font-size: 0.95rem; white-space: nowrap; font-family: 'Segoe UI', sans-serif; }
+
+    /* RESERVATION */
+    #rezerwacja { padding: 90px 6%; background: var(--cream); }
+    .rez-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1000px; margin: 0 auto; align-items: start; }
+    .rez-info h2 { font-size: 2.2rem; margin-bottom: 1rem; font-style: italic; }
+    .rez-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.95rem; }
+    .rez-detail { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: flex-start; }
+    .rez-detail-icon { font-size: 1.2rem; margin-top: 2px; }
+    .rez-detail-text strong { display: block; font-size: 0.85rem; font-family: 'Segoe UI', sans-serif; }
+    .rez-detail-text span { font-size: 0.82rem; color: var(--muted); font-family: 'Segoe UI', sans-serif; }
+    .rez-form { background: var(--dark); border-radius: 8px; padding: 2.5rem; }
+    .rez-form h3 { color: var(--cream); font-size: 1.2rem; margin-bottom: 1.5rem; font-style: italic; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.78rem; color: rgba(245,240,232,0.5); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; font-family: 'Segoe UI', sans-serif; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px; padding: 0.7rem 1rem; color: var(--cream); font-size: 0.9rem;
+      font-family: 'Segoe UI', sans-serif; outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+    .form-group select option { background: #1a1208; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-submit { width: 100%; margin-top: 0.5rem; }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 3rem 6%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(201,168,76,0.15); }
+    .footer-logo { font-size: 1.4rem; color: var(--gold); font-style: italic; }
+    footer p { font-size: 0.8rem; color: rgba(245,240,232,0.35); font-family: 'Segoe UI', sans-serif; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.8rem; color: rgba(245,240,232,0.4); font-family: 'Segoe UI', sans-serif; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .about-grid, .rez-grid, .menu-grid { grid-template-columns: 1fr; }
+      .nav-links, .nav-btn { display: none; }
+      .menu-item:nth-child(odd) { border-right: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Bella Cucina</div>
+  <ul class="nav-links">
+    <li><a href="#about">O nas</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#rezerwacja">Rezerwacja</a></li>
+  </ul>
+  <a href="#rezerwacja" class="nav-btn">Zarezerwuj stolik</a>
+</nav>
+
+<section id="hero">
+  <div>
+    <div class="hero-sub">Restauracja włoska · od 1998</div>
+    <div class="hero-divider"></div>
+    <h1>Smak <span>Włoch</span><br/>w Twoim mieście</h1>
+    <p>Autentyczna kuchnia włoska przygotowywana ze świeżych składników. Rodzinna atmosfera, wino z Toskanii i pasta jak u mamy.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-gold">Zobacz menu</a>
+      <a href="#rezerwacja" class="btn-outline">Zarezerwuj stolik</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img">🍝</div>
+    <div class="about-text">
+      <div class="section-tag">Nasza historia</div>
+      <h2>Gotujemy z pasją od ponad 25 lat</h2>
+      <div class="gold-line"></div>
+      <p>Bella Cucina powstała z miłości do włoskiej kuchni i rodzinnych tradycji. Każde danie przygotowujemy według oryginalnych receptur, używając składników sprowadzanych prosto z Włoch.</p>
+      <p>Nasz szef kuchni, Marco, przez 10 lat pracował w restauracjach Florencji i Rzymu. Dziś dzieli się tym doświadczeniem z gośćmi w Polsce.</p>
+      <a href="#rezerwacja" class="btn-gold" style="display:inline-block; margin-top:1rem;">Odwiedź nas</a>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="section-tag">Co podajemy</div>
+  <h2>Nasze menu</h2>
+  <p class="sub">Sezonowe składniki, tradycyjne receptury</p>
+  <div class="menu-tabs">
+    <button class="menu-tab active">Przystawki</button>
+    <button class="menu-tab">Pasta</button>
+    <button class="menu-tab">Pizza</button>
+    <button class="menu-tab">Desery</button>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-item">
+      <div><div class="menu-name">Bruschetta al pomodoro</div><div class="menu-desc">Pomidory, bazylia, oliwa z oliwek</div></div>
+      <div class="menu-price">22 zł</div>
+    </div>
+    <div class="menu-item">
+      <div><div class="menu-name">Carpaccio di manzo</div><div class="menu-desc">Wołowina, rukola, parmezan</div></div>
+      <div class="menu-price">38 zł</div>
+    </div>
+    <div class="menu-item">
+      <div><div class="menu-name">Burrata con prosciutto</div><div class="menu-desc">Burrata, szynka parmeńska, miód</div></div>
+      <div class="menu-price">44 zł</div>
+    </div>
+    <div class="menu-item">
+      <div><div class="menu-name">Zuppa di pomodoro</div><div class="menu-desc">Krem pomidorowy, bazylia, grzanki</div></div>
+      <div class="menu-price">26 zł</div>
+    </div>
+    <div class="menu-item">
+      <div><div class="menu-name">Antipasto misto</div><div class="menu-desc">Deska wędlin i serów włoskich</div></div>
+      <div class="menu-price">58 zł</div>
+    </div>
+    <div class="menu-item">
+      <div><div class="menu-name">Insalata caprese</div><div class="menu-desc">Mozzarella, pomidory, bazylia</div></div>
+      <div class="menu-price">32 zł</div>
+    </div>
+  </div>
+</section>
+
+<section id="rezerwacja">
+  <div class="rez-grid">
+    <div class="rez-info">
+      <div class="section-tag">Rezerwacja</div>
+      <h2>Zarezerwuj stolik</h2>
+      <div class="gold-line"></div>
+      <p>Zapraszamy na niezapomnianą kolację. Rezerwacje przyjmujemy telefonicznie lub przez formularz. Polecamy rezerwować z wyprzedzeniem, szczególnie w weekendy.</p>
+      <div class="rez-detail">
+        <div class="rez-detail-icon">📍</div>
+        <div class="rez-detail-text"><strong>Adres</strong><span>ul. Włoska 12, Warszawa</span></div>
+      </div>
+      <div class="rez-detail">
+        <div class="rez-detail-icon">📞</div>
+        <div class="rez-detail-text"><strong>Telefon</strong><span>+48 22 123 45 67</span></div>
+      </div>
+      <div class="rez-detail">
+        <div class="rez-detail-icon">🕐</div>
+        <div class="rez-detail-text"><strong>Godziny otwarcia</strong><span>Pon–Czw 12:00–22:00 · Pt–Nd 12:00–23:00</span></div>
+      </div>
+    </div>
+    <div class="rez-form">
+      <h3>Formularz rezerwacji</h3>
+      <div class="form-row">
+        <div class="form-group"><label>Imię i nazwisko</label><input type="text" placeholder="Jan Kowalski" /></div>
+        <div class="form-group"><label>Telefon</label><input type="tel" placeholder="+48 600 000 000" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Data</label><input type="date" /></div>
+        <div class="form-group"><label>Godzina</label><input type="time" /></div>
+      </div>
+      <div class="form-group">
+        <label>Liczba osób</label>
+        <select><option>1 osoba</option><option>2 osoby</option><option selected>3–4 osoby</option><option>5–6 osób</option><option>7+ osób</option></select>
+      </div>
+      <div class="form-group"><label>Uwagi (opcjonalnie)</label><textarea rows="3" placeholder="Alergie, urodziny, specjalne życzenia..."></textarea></div>
+      <a href="#" class="btn-gold form-submit" style="display:block; text-align:center; padding:0.85rem;">Zarezerwuj stolik</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Bella Cucina</div>
+  <p>© 2025 Bella Cucina · Restauracja włoska</p>
+  <div class="footer-links">
+    <a href="#about">O nas</a>
+    <a href="#menu">Menu</a>
+    <a href="#rezerwacja">Rezerwacja</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PeakForm – Klub Fitness</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080c0c;
+      --bg2: #0d1414;
+      --bg3: #121c1c;
+      --accent: #00e5c8;
+      --accent2: #00b89e;
+      --text: #e0f0ee;
+      --muted: #5a7a76;
+      --border: #1a2e2c;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(8,12,12,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 6%; display: flex; align-items: center; justify-content: space-between; height: 66px;
+    }
+    .nav-logo { font-size: 1.5rem; font-weight: 900; letter-spacing: -1px; color: var(--accent); text-transform: uppercase; }
+    .nav-logo span { color: var(--text); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.85rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-btn { background: var(--accent); color: var(--bg); padding: 0.55rem 1.4rem; border-radius: 4px; font-size: 0.82rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; transition: background 0.2s; }
+    .nav-btn:hover { background: var(--accent2); }
+
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #080c0c 0%, #0a1a18 60%, #080c0c 100%);
+      display: flex; align-items: center; padding: 100px 6% 60px;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,229,200,0.07) 0%, transparent 70%);
+    }
+    .hero-tag { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+    #hero h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 900; line-height: 1.0; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: -2px; }
+    #hero h1 span { color: var(--accent); }
+    #hero p { color: var(--muted); font-size: 1rem; max-width: 480px; margin-bottom: 2.5rem; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-accent { background: var(--accent); color: var(--bg); padding: 0.85rem 2rem; border-radius: 4px; font-weight: 800; font-size: 0.88rem; letter-spacing: 1px; text-transform: uppercase; transition: background 0.2s; }
+    .btn-accent:hover { background: var(--accent2); }
+    .btn-ghost { border: 1px solid var(--border); color: var(--text); padding: 0.85rem 2rem; border-radius: 4px; font-size: 0.88rem; letter-spacing: 1px; text-transform: uppercase; transition: border-color 0.2s; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; flex-wrap: wrap; }
+    .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--accent); line-height: 1; }
+    .stat-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 0.2rem; }
+
+    section { padding: 90px 6%; }
+    .section-tag { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+    .section-title { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: -1px; }
+
+    #zajecia { background: var(--bg2); }
+    .zajecia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+    .zajecia-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1.8rem; transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .zajecia-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform: scaleX(0); transition: transform 0.3s; }
+    .zajecia-card:hover { border-color: rgba(0,229,200,0.3); transform: translateY(-4px); }
+    .zajecia-card:hover::before { transform: scaleX(1); }
+    .zajecia-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .zajecia-card h3 { font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
+    .zajecia-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+    .zajecia-meta { display: flex; gap: 1rem; margin-top: 1rem; }
+    .zajecia-meta span { font-size: 0.75rem; color: var(--accent); background: rgba(0,229,200,0.08); border: 1px solid rgba(0,229,200,0.2); padding: 0.2rem 0.6rem; border-radius: 3px; }
+
+    #cennik { background: var(--bg); }
+    .cennik-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; max-width: 900px; }
+    .cennik-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+      padding: 2.2rem; text-align: center; transition: all 0.3s;
+    }
+    .cennik-card.featured { border-color: var(--accent); background: linear-gradient(135deg, rgba(0,229,200,0.06), var(--bg2)); }
+    .cennik-card:hover { transform: translateY(-4px); }
+    .cennik-name { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .cennik-price { font-size: 3rem; font-weight: 900; color: var(--accent); line-height: 1; }
+    .cennik-price span { font-size: 1rem; color: var(--muted); font-weight: 400; }
+    .cennik-features { list-style: none; margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.6rem; }
+    .cennik-features li { font-size: 0.85rem; color: var(--muted); }
+    .cennik-features li::before { content: '— '; color: var(--accent); }
+    .cennik-btn { display: block; background: var(--accent); color: var(--bg); padding: 0.75rem; border-radius: 4px; font-weight: 800; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; transition: background 0.2s; }
+    .cennik-btn:hover { background: var(--accent2); }
+    .cennik-card:not(.featured) .cennik-btn { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .cennik-card:not(.featured) .cennik-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    #kontakt { background: var(--bg2); }
+    .kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .kontakt-info p { color: var(--muted); margin-bottom: 2rem; }
+    .kontakt-item { display: flex; gap: 1rem; margin-bottom: 1.2rem; align-items: center; }
+    .kontakt-item-icon { width: 42px; height: 42px; background: rgba(0,229,200,0.08); border: 1px solid rgba(0,229,200,0.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .kontakt-item-text strong { display: block; font-size: 0.85rem; }
+    .kontakt-item-text span { font-size: 0.82rem; color: var(--muted); }
+    .kontakt-form { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.75rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 4px; padding: 0.7rem 1rem; color: var(--text); font-size: 0.9rem;
+      font-family: inherit; outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+    .form-group select option { background: var(--bg2); }
+
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 6%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-size: 1.3rem; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: -1px; }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+
+    @media (max-width: 768px) {
+      .kontakt-grid { grid-template-columns: 1fr; }
+      .nav-links, .nav-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Peak<span>Form</span></div>
+  <ul class="nav-links">
+    <li><a href="#zajecia">Zajęcia</a></li>
+    <li><a href="#cennik">Cennik</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="#kontakt" class="nav-btn">Darmowy trening</a>
+</nav>
+
+<section id="hero">
+  <div>
+    <div class="hero-tag">Klub fitness · Otwarte 24/7</div>
+    <h1>Przekrocz<br/><span>swoje</span><br/>granice</h1>
+    <p>Nowoczesny sprzęt, profesjonalni trenerzy i ponad 30 zajęć grupowych tygodniowo. Zacznij dziś – pierwszy trening gratis.</p>
+    <div class="hero-btns">
+      <a href="#kontakt" class="btn-accent">Darmowy trening</a>
+      <a href="#zajecia" class="btn-ghost">Zobacz zajęcia</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">500+</div><div class="stat-label">Aktywnych członków</div></div>
+      <div><div class="stat-num">30+</div><div class="stat-label">Zajęć tygodniowo</div></div>
+      <div><div class="stat-num">24/7</div><div class="stat-label">Dostęp do siłowni</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="zajecia">
+  <div class="section-tag">Co oferujemy</div>
+  <h2 class="section-title">Zajęcia grupowe</h2>
+  <div class="zajecia-grid">
+    <div class="zajecia-card">
+      <div class="zajecia-icon">🏋️</div>
+      <h3>Siłownia</h3>
+      <p>Pełne wyposażenie – wolne ciężary, maszyny, strefa cardio. Dostęp 24/7 dla wszystkich członków.</p>
+      <div class="zajecia-meta"><span>24/7</span><span>Wszystkie poziomy</span></div>
+    </div>
+    <div class="zajecia-card">
+      <div class="zajecia-icon">🥊</div>
+      <h3>Kickboxing</h3>
+      <p>Intensywny trening cardio łączący techniki boksu i kickboxingu. Spalisz do 800 kcal w godzinę.</p>
+      <div class="zajecia-meta"><span>Pon / Śr / Pt</span><span>Średni</span></div>
+    </div>
+    <div class="zajecia-card">
+      <div class="zajecia-icon">🧘</div>
+      <h3>Yoga & Stretch</h3>
+      <p>Relaks, elastyczność i równowaga. Idealne uzupełnienie intensywnych treningów siłowych.</p>
+      <div class="zajecia-meta"><span>Wt / Czw / Nd</span><span>Każdy poziom</span></div>
+    </div>
+    <div class="zajecia-card">
+      <div class="zajecia-icon">🚴</div>
+      <h3>Spinning</h3>
+      <p>Dynamiczny trening na rowerach stacjonarnych przy energetycznej muzyce. Efekty widoczne od pierwszego tygodnia.</p>
+      <div class="zajecia-meta"><span>Codziennie</span><span>Każdy poziom</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="cennik">
+  <div class="section-tag">Członkostwo</div>
+  <h2 class="section-title">Wybierz plan</h2>
+  <div class="cennik-grid">
+    <div class="cennik-card">
+      <div class="cennik-name">Basic</div>
+      <div class="cennik-price">89<span> zł/mies.</span></div>
+      <ul class="cennik-features">
+        <li>Dostęp do siłowni</li>
+        <li>Godziny 6:00–22:00</li>
+        <li>Szatnia i prysznice</li>
+      </ul>
+      <a href="#kontakt" class="cennik-btn">Wybierz</a>
+    </div>
+    <div class="cennik-card featured">
+      <div class="cennik-name">Pro</div>
+      <div class="cennik-price">149<span> zł/mies.</span></div>
+      <ul class="cennik-features">
+        <li>Dostęp 24/7</li>
+        <li>Wszystkie zajęcia grupowe</li>
+        <li>1 sesja z trenerem/mies.</li>
+        <li>Strefa sauna</li>
+      </ul>
+      <a href="#kontakt" class="cennik-btn">Wybierz</a>
+    </div>
+    <div class="cennik-card">
+      <div class="cennik-name">Elite</div>
+      <div class="cennik-price">249<span> zł/mies.</span></div>
+      <ul class="cennik-features">
+        <li>Wszystko z Pro</li>
+        <li>4 sesje z trenerem/mies.</li>
+        <li>Plan żywieniowy</li>
+        <li>Priorytetowe rezerwacje</li>
+      </ul>
+      <a href="#kontakt" class="cennik-btn">Wybierz</a>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="kontakt-grid">
+    <div class="kontakt-info">
+      <div class="section-tag">Kontakt</div>
+      <h2 class="section-title">Zacznij dziś</h2>
+      <p>Pierwszy trening jest na nasz koszt. Wypełnij formularz, a oddzwonimy w ciągu 2 godzin.</p>
+      <div class="kontakt-item"><div class="kontakt-item-icon">📍</div><div class="kontakt-item-text"><strong>Adres</strong><span>ul. Sportowa 8, Warszawa</span></div></div>
+      <div class="kontakt-item"><div class="kontakt-item-icon">📞</div><div class="kontakt-item-text"><strong>Telefon</strong><span>+48 500 123 456</span></div></div>
+      <div class="kontakt-item"><div class="kontakt-item-icon">🕐</div><div class="kontakt-item-text"><strong>Godziny</strong><span>Siłownia otwarta 24/7</span></div></div>
+    </div>
+    <div class="kontakt-form">
+      <div class="form-group"><label>Imię i nazwisko</label><input type="text" placeholder="Jan Kowalski" /></div>
+      <div class="form-group"><label>Telefon</label><input type="tel" placeholder="+48 600 000 000" /></div>
+      <div class="form-group"><label>Interesuje mnie</label>
+        <select><option>Karnet miesięczny</option><option>Darmowy trening próbny</option><option>Zajęcia grupowe</option><option>Trening personalny</option></select>
+      </div>
+      <a href="#" class="btn-accent" style="display:block; text-align:center; margin-top:0.5rem;">Zapisz się</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">PeakForm</div>
+  <p>© 2025 PeakForm Fitness Club</p>
+  <a href="#kontakt" class="btn-accent" style="font-size:0.82rem; padding:0.5rem 1.2rem;">Darmowy trening</a>
+</footer>
+
+</body>
+</html>
