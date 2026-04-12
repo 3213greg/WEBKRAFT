@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236c63ff'/><text y='72' x='50' text-anchor='middle' font-size='58' font-family='Segoe UI,sans-serif' font-weight='900' fill='white'>W</text></svg>" />
-  <title>Webcrafft – Strony internetowe na zamówienie | Kuba Leśkiewicz</title>
-  <meta name="description" content="Webcrafft – profesjonalne strony internetowe na zamówienie. Szybko, nowocześnie, w dobrej cenie. Zadzwoń: 881 578 996" />
+  <title>Tworzenie Stron Internetowych na Zamówienie | Webcrafft – Kuba Leśkiewicz</title>
+  <meta name="description" content="Profesjonalne strony internetowe na zamówienie – wizytówki, strony firmowe, landing page. Szybka realizacja, dobra cena. Zadzwoń: 881 578 996" />
+  <meta name="keywords" content="strony internetowe na zamówienie, tworzenie stron internetowych, strona firmowa, strona wizytówkowa, landing page, tanie strony www" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -254,8 +255,370 @@
 
     .offer-features li::before { content: '✓'; color: var(--accent); font-weight: 700; }
 
+    /* CENNIK */
+    #cennik { background: var(--bg); }
+
+    .cennik-tabs {
+      display: flex; gap: 0.5rem; margin-bottom: 2.5rem;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.4rem; width: fit-content;
+    }
+    .cennik-tab {
+      padding: 0.55rem 1.4rem; border-radius: 7px; font-size: 0.9rem;
+      font-weight: 600; cursor: pointer; border: none; background: transparent;
+      color: var(--text-muted); transition: all 0.2s;
+    }
+    .cennik-tab.active { background: var(--accent); color: #fff; }
+
+    .cennik-panel { display: none; }
+    .cennik-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 960px; margin: 0 auto; }
+
+    .cennik-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .cennik-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--accent); transform: scaleX(0); transition: transform 0.3s;
+    }
+    .cennik-card:hover { border-color: rgba(108,99,255,0.4); transform: translateY(-5px); box-shadow: 0 16px 48px rgba(108,99,255,0.12); }
+    .cennik-card:hover::before { transform: scaleX(1); }
+    .cennik-card.featured { border-color: rgba(108,99,255,0.5); background: linear-gradient(135deg, rgba(108,99,255,0.08) 0%, var(--bg2) 100%); }
+    .cennik-card.featured::before { transform: scaleX(1); }
+
+    .cennik-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .cennik-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .cennik-price { font-size: 1.8rem; font-weight: 800; color: var(--accent); margin: 0.8rem 0; line-height: 1; }
+    .cennik-price span { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
+    .cennik-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; }
+    .cennik-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .cennik-features li { font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
+    .cennik-features li::before { content: '✓'; color: var(--accent); font-weight: 700; }
+    .cennik-btn { display: block; text-align: center; background: var(--accent); color: #fff; padding: 0.7rem 1rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; transition: background 0.2s; }
+    .cennik-btn:hover { background: var(--accent-dark); }
+    .cennik-card:not(.featured) .cennik-btn { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .cennik-card:not(.featured) .cennik-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* PORTFOLIO */
+    #portfolio { background: var(--bg2); }
+
+    .portfolio-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.4rem;
+      width: fit-content;
+    }
+
+    .portfolio-tab {
+      padding: 0.55rem 1.4rem;
+      border-radius: 7px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .portfolio-tab.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .portfolio-panel { display: none; }
+    .portfolio-panel.active { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+    .portfolio-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .portfolio-card:hover {
+      border-color: rgba(108,99,255,0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(108,99,255,0.12);
+    }
+
+    .portfolio-card a.portfolio-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .portfolio-preview {
+      position: relative;
+    }
+
+    .portfolio-preview-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(108,99,255,0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      gap: 0.4rem;
+      letter-spacing: 0.5px;
+    }
+
+    .portfolio-card:hover .portfolio-preview-overlay { opacity: 1; }
+
+    .portfolio-preview {
+      width: 100%;
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-info {
+      padding: 1.2rem 1.4rem;
+    }
+
+    .portfolio-info h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .portfolio-info p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    .portfolio-tag {
+      display: inline-block;
+      background: rgba(108,99,255,0.12);
+      border: 1px solid rgba(108,99,255,0.25);
+      color: #a89fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+      margin-top: 0.7rem;
+      margin-right: 0.3rem;
+    }
+
+    /* --- WEBSITE PREVIEWS (miniatura layoutu) --- */
+    .mock { width: 100%; height: 180px; overflow: hidden; position: relative; font-size: 0; }
+    .mock * { box-sizing: border-box; }
+
+    /* RESTAURACJA */
+    .mock-rest { background: #1a1208; display: flex; flex-direction: column; }
+    .mock-rest .m-nav { height: 14px; background: #12100a; border-bottom: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; padding: 0 8px; gap: 6px; flex-shrink: 0; }
+    .mock-rest .m-nav .m-logo { width: 28px; height: 5px; background: #c9a84c; border-radius: 1px; }
+    .mock-rest .m-nav .m-links { display: flex; gap: 4px; margin-left: auto; }
+    .mock-rest .m-nav .m-links span { width: 16px; height: 3px; background: rgba(201,168,76,0.3); border-radius: 1px; }
+    .mock-rest .m-hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 70%); padding: 8px; }
+    .mock-rest .m-hero .m-tag { width: 50px; height: 3px; background: rgba(201,168,76,0.4); border-radius: 1px; }
+    .mock-rest .m-hero .m-h1 { width: 90px; height: 7px; background: rgba(240,237,230,0.7); border-radius: 1px; }
+    .mock-rest .m-hero .m-h1b { width: 70px; height: 7px; background: rgba(240,237,230,0.5); border-radius: 1px; }
+    .mock-rest .m-hero .m-p { width: 110px; height: 3px; background: rgba(240,237,230,0.2); border-radius: 1px; }
+    .mock-rest .m-hero .m-p2 { width: 90px; height: 3px; background: rgba(240,237,230,0.15); border-radius: 1px; }
+    .mock-rest .m-hero .m-btns { display: flex; gap: 4px; margin-top: 2px; }
+    .mock-rest .m-hero .m-btn1 { width: 44px; height: 10px; background: #c9a84c; border-radius: 2px; }
+    .mock-rest .m-hero .m-btn2 { width: 44px; height: 10px; border: 1px solid rgba(201,168,76,0.4); border-radius: 2px; }
+    .mock-rest .m-section { height: 44px; background: #12100a; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 0 10px; flex-shrink: 0; }
+    .mock-rest .m-section .m-card { width: 36px; height: 30px; background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.15); border-radius: 3px; }
+
+    /* FITNESS */
+    .mock-fit { background: #080c0c; display: flex; flex-direction: column; }
+    .mock-fit .m-nav { height: 14px; background: rgba(8,12,12,0.98); border-bottom: 1px solid #1a2e2c; display: flex; align-items: center; padding: 0 8px; gap: 5px; flex-shrink: 0; }
+    .mock-fit .m-nav .m-logo { width: 32px; height: 5px; background: #00e5c8; border-radius: 1px; }
+    .mock-fit .m-nav .m-links { display: flex; gap: 4px; margin-left: auto; }
+    .mock-fit .m-nav .m-links span { width: 14px; height: 3px; background: rgba(0,229,200,0.2); border-radius: 1px; }
+    .mock-fit .m-nav .m-btn { width: 28px; height: 8px; background: #00e5c8; border-radius: 2px; margin-left: 6px; }
+    .mock-fit .m-hero { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 8px 12px; gap: 4px; }
+    .mock-fit .m-hero .m-tag { width: 40px; height: 3px; background: rgba(0,229,200,0.4); border-radius: 1px; }
+    .mock-fit .m-hero .m-h1 { width: 80px; height: 9px; background: rgba(224,240,238,0.8); border-radius: 1px; }
+    .mock-fit .m-hero .m-h1b { width: 60px; height: 9px; background: rgba(0,229,200,0.7); border-radius: 1px; }
+    .mock-fit .m-hero .m-h1c { width: 70px; height: 9px; background: rgba(224,240,238,0.6); border-radius: 1px; }
+    .mock-fit .m-hero .m-p { width: 100px; height: 3px; background: rgba(90,122,118,0.6); border-radius: 1px; margin-top: 2px; }
+    .mock-fit .m-hero .m-btn { width: 50px; height: 10px; background: #00e5c8; border-radius: 2px; margin-top: 4px; }
+    .mock-fit .m-stats { height: 28px; display: flex; align-items: center; gap: 12px; padding: 0 12px; flex-shrink: 0; }
+    .mock-fit .m-stats .m-stat { display: flex; flex-direction: column; gap: 2px; }
+    .mock-fit .m-stats .m-stat .n { width: 20px; height: 5px; background: #00e5c8; border-radius: 1px; }
+    .mock-fit .m-stats .m-stat .l { width: 28px; height: 3px; background: rgba(90,122,118,0.4); border-radius: 1px; }
+    .mock-fit .m-cards { height: 40px; background: #0d1414; display: flex; align-items: center; gap: 5px; padding: 0 10px; flex-shrink: 0; }
+    .mock-fit .m-cards .m-card { flex: 1; height: 28px; background: #121c1c; border: 1px solid #1a2e2c; border-radius: 3px; }
+
+    /* KANCELARIA */
+    .mock-kan { background: #f8f7f4; display: flex; flex-direction: column; }
+    .mock-kan .m-nav { height: 14px; background: #12100e; border-bottom: 1px solid rgba(184,150,62,0.2); display: flex; align-items: center; padding: 0 8px; gap: 5px; flex-shrink: 0; }
+    .mock-kan .m-nav .m-logo { width: 36px; height: 5px; background: rgba(184,150,62,0.8); border-radius: 1px; }
+    .mock-kan .m-nav .m-links { display: flex; gap: 4px; margin-left: auto; }
+    .mock-kan .m-nav .m-links span { width: 16px; height: 3px; background: rgba(240,237,230,0.2); border-radius: 1px; }
+    .mock-kan .m-hero { flex: 1; background: #12100e; display: flex; flex-direction: column; justify-content: center; padding: 8px 12px; gap: 4px; position: relative; overflow: hidden; }
+    .mock-kan .m-hero::after { content: 'LEX'; position: absolute; right: -5px; top: 50%; transform: translateY(-50%); font-size: 3rem; font-weight: 900; color: rgba(184,150,62,0.04); font-family: sans-serif; }
+    .mock-kan .m-hero .m-eyebrow { display: flex; align-items: center; gap: 4px; }
+    .mock-kan .m-hero .m-eyebrow .line { width: 12px; height: 1px; background: #b8963e; }
+    .mock-kan .m-hero .m-eyebrow span { width: 40px; height: 3px; background: rgba(184,150,62,0.5); border-radius: 1px; }
+    .mock-kan .m-hero .m-h1 { width: 100px; height: 7px; background: rgba(240,237,230,0.7); border-radius: 1px; }
+    .mock-kan .m-hero .m-h1b { width: 80px; height: 7px; background: rgba(240,237,230,0.5); border-radius: 1px; }
+    .mock-kan .m-hero .m-p { width: 110px; height: 3px; background: rgba(240,237,230,0.2); border-radius: 1px; margin-top: 2px; }
+    .mock-kan .m-hero .m-p2 { width: 90px; height: 3px; background: rgba(240,237,230,0.15); border-radius: 1px; }
+    .mock-kan .m-hero .m-btns { display: flex; gap: 4px; margin-top: 4px; }
+    .mock-kan .m-hero .m-btn1 { width: 44px; height: 10px; background: #b8963e; border-radius: 1px; }
+    .mock-kan .m-hero .m-btn2 { width: 44px; height: 10px; border: 1px solid rgba(184,150,62,0.3); border-radius: 1px; }
+    .mock-kan .m-specs { height: 38px; background: #f0ede6; display: flex; align-items: center; gap: 1px; flex-shrink: 0; }
+    .mock-kan .m-specs .m-spec { flex: 1; height: 100%; background: #f8f7f4; border-right: 1px solid #ddd8ce; display: flex; flex-direction: column; justify-content: center; gap: 3px; padding: 0 6px; }
+    .mock-kan .m-specs .m-spec .t { width: 10px; height: 3px; background: rgba(184,150,62,0.5); border-radius: 1px; }
+    .mock-kan .m-specs .m-spec .b { width: 28px; height: 3px; background: rgba(42,37,32,0.3); border-radius: 1px; }
+    .mock-kan .m-specs .m-spec .b2 { width: 20px; height: 3px; background: rgba(42,37,32,0.2); border-radius: 1px; }
+
+    /* FOTOGRAF */
+    .mock-foto { background: #0a0a0a; display: flex; flex-direction: column; }
+    .mock-foto .m-nav { height: 14px; background: rgba(10,10,10,0.95); display: flex; align-items: center; padding: 0 8px; gap: 5px; flex-shrink: 0; }
+    .mock-foto .m-nav .m-logo { width: 30px; height: 4px; background: rgba(255,255,255,0.6); border-radius: 1px; }
+    .mock-foto .m-nav .m-links { display: flex; gap: 4px; margin-left: auto; }
+    .mock-foto .m-nav .m-links span { width: 14px; height: 3px; background: rgba(255,255,255,0.15); border-radius: 1px; }
+    .mock-foto .m-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; padding: 2px; }
+    .mock-foto .m-grid .g1 { background: linear-gradient(135deg, #1e1e1e, #2e2e2e); }
+    .mock-foto .m-grid .g2 { background: linear-gradient(135deg, #141414, #242424); }
+    .mock-foto .m-grid .g3 { background: linear-gradient(135deg, #252525, #353535); }
+    .mock-foto .m-grid .g4 { background: linear-gradient(135deg, #181818, #282828); }
+    .mock-foto .m-grid .g5 { background: linear-gradient(135deg, #202020, #303030); }
+    .mock-foto .m-grid .g6 { background: linear-gradient(135deg, #161616, #262626); }
+    .mock-foto .m-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.45); gap: 4px; }
+    .mock-foto .m-overlay .m-h1 { width: 70px; height: 6px; background: rgba(255,255,255,0.8); border-radius: 1px; }
+    .mock-foto .m-overlay .m-p { width: 90px; height: 3px; background: rgba(255,255,255,0.25); border-radius: 1px; }
+    .mock-foto .m-overlay .m-btns { display: flex; gap: 4px; margin-top: 4px; }
+    .mock-foto .m-overlay .m-btn1 { width: 36px; height: 9px; background: rgba(255,255,255,0.9); border-radius: 1px; }
+    .mock-foto .m-overlay .m-btn2 { width: 36px; height: 9px; border: 1px solid rgba(255,255,255,0.3); border-radius: 1px; }
+    .mock-foto .m-bar { height: 22px; background: #111; border-top: 1px solid #222; display: flex; align-items: center; gap: 4px; padding: 0 8px; flex-shrink: 0; }
+    .mock-foto .m-bar span { width: 22px; height: 3px; background: rgba(255,255,255,0.12); border-radius: 1px; }
+    .mock-foto .m-bar span.act { background: rgba(255,255,255,0.5); }
+
+    /* --- GRAPHIC PREVIEWS --- */
+    .prev-logo-bud {
+      background: linear-gradient(135deg, #0f1923 0%, #1a2d3d 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .prev-logo-bud svg { width: 140px; height: 100px; }
+
+    .prev-logo-cafe {
+      background: linear-gradient(135deg, #1a0f0a 0%, #2d1a0f 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .prev-logo-cafe svg { width: 140px; height: 100px; }
+
+    .prev-social-gym {
+      background: #0a0a0a;
+      display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;
+    }
+    .prev-social-gym .sg-post {
+      width: 72px; height: 72px; border-radius: 8px;
+      background: linear-gradient(135deg, #ff4500, #ff8c00);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 900; color: #fff; text-align: center; line-height: 1.2;
+      letter-spacing: 0.5px;
+    }
+    .prev-social-gym .sg-post2 {
+      width: 72px; height: 72px; border-radius: 8px;
+      background: linear-gradient(135deg, #1a1a1a, #333);
+      border: 2px solid #ff4500;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .prev-social-gym .sg-post3 {
+      width: 72px; height: 72px; border-radius: 8px;
+      background: linear-gradient(135deg, #ff4500, #c0392b);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.55rem; font-weight: 800; color: #fff; text-align: center; padding: 6px;
+    }
+
+    .prev-social-beauty {
+      background: #1a0f14;
+      display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;
+    }
+    .prev-social-beauty .sb-post {
+      width: 72px; height: 72px; border-radius: 8px;
+      background: linear-gradient(135deg, #c9748a, #e8a0b4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 700; color: #fff; text-align: center; padding: 6px; line-height: 1.3;
+    }
+    .prev-social-beauty .sb-post2 {
+      width: 72px; height: 72px; border-radius: 8px;
+      background: linear-gradient(135deg, #2a1520, #3d1f2d);
+      border: 1px solid rgba(201,116,138,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .prev-social-beauty .sb-post3 {
+      width: 72px; height: 72px; border-radius: 8px;
+      background: linear-gradient(135deg, #e8a0b4, #c9748a);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    }
+    .prev-social-beauty .sb-post3 span { width: 40px; height: 3px; background: rgba(255,255,255,0.7); border-radius: 2px; }
+
+    /* GRAFIKA */
+    #grafika { background: var(--bg); }
+
+    .grafika-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grafika-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grafika-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ff6b9d, #a78bfa);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .grafika-card:hover {
+      border-color: rgba(255,107,157,0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(255,107,157,0.1);
+    }
+
+    .grafika-card:hover::before { transform: scaleX(1); }
+
+    .grafika-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .grafika-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .grafika-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; }
+
+    .grafika-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .grafika-features li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grafika-features li::before { content: '✦'; color: #ff6b9d; font-size: 0.7rem; }
+
+    .grafika-cta {
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .btn-grafika {
+      background: linear-gradient(135deg, #ff6b9d, #a78bfa);
+      color: #fff;
+      border: none;
+    }
+    .btn-grafika:hover { opacity: 0.9; transform: translateY(-1px); }
+
     /* HOW */
-    #how { background: var(--bg); }
+    #how { background: var(--bg2); }
 
     .steps {
       display: grid;
@@ -468,9 +831,12 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo">Web<span>crafft</span></div>
+  <a href="#hero" class="logo">Web<span>crafft</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#offer">Oferta</a></li>
+    <li><a href="#grafika">Grafika</a></li>
+    <li><a href="#cennik">Cennik</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#how">Jak działam</a></li>
     <li><a href="#about">O mnie</a></li>
     <li><a href="#contact">Kontakt</a></li>
@@ -484,16 +850,16 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-content">
-    <div class="hero-badge">💻 Strony internetowe na zamówienie</div>
+    <div class="hero-badge">💻 Strony internetowe i grafika na zamówienie</div>
     <h1>Twoja strona,<br />Twoje <span>zasady</span></h1>
-    <p>Projektuję i tworzę nowoczesne strony internetowe dla firm, freelancerów i każdego, kto chce zaistnieć w sieci. Szybko, estetycznie i bez zbędnych komplikacji.</p>
+    <p>Projektuję i tworzę nowoczesne strony internetowe oraz grafiki na zamówienie – logo, posty social media i więcej. Dla firm, freelancerów i każdego, kto chce zaistnieć w sieci. Szybko, estetycznie i bez zbędnych komplikacji.</p>
     <div class="hero-btns">
       <a href="#contact" class="btn btn-accent">Zamów stronę</a>
       <a href="#offer" class="btn btn-outline">Zobacz ofertę</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-num">24h</div>
+        <div class="stat-num">do 12h</div>
         <div class="stat-label">Czas odpowiedzi</div>
       </div>
       <div class="stat-item">
@@ -552,6 +918,352 @@
         <li>Responsywność (mobile)</li>
       </ul>
     </div>
+  </div>
+</section>
+
+<!-- GRAFIKA -->
+<section id="grafika">
+  <div class="section-header reveal">
+    <div class="section-label">Grafika</div>
+    <h2 class="section-title">Grafiki na zamówienie</h2>
+    <p class="section-desc">Projektuję grafiki dopasowane do Twojej marki – od logo po materiały reklamowe. Wszystko od zera, bez szablonów.</p>
+  </div>
+  <div class="grafika-grid">
+    <div class="grafika-card reveal">
+      <div class="grafika-icon">🎨</div>
+      <h3>Logo i identyfikacja</h3>
+      <p>Profesjonalne logo dla firmy lub marki osobistej. Dostajesz pliki w formatach gotowych do druku i internetu.</p>
+      <ul class="grafika-features">
+        <li>Projekt od zera</li>
+        <li>Kilka propozycji do wyboru</li>
+        <li>Pliki PNG, SVG, PDF</li>
+        <li>Wersja jasna i ciemna</li>
+      </ul>
+    </div>
+    <div class="grafika-card reveal">
+      <div class="grafika-icon">📱</div>
+      <h3>Grafiki social media</h3>
+      <p>Posty, stories, banery na Facebooka, Instagrama czy LinkedIn. Spójne wizualnie, gotowe do publikacji.</p>
+      <ul class="grafika-features">
+        <li>Posty i stories</li>
+        <li>Banery reklamowe</li>
+        <li>Okładki profili</li>
+        <li>Szablony do edycji</li>
+      </ul>
+    </div>
+    <div class="grafika-card reveal">
+      <div class="grafika-icon">✏️</div>
+      <h3>Inne projekty graficzne</h3>
+      <p>Masz inny pomysł? Chętnie porozmawiam. Tworzę też grafiki na zamówienie – okładki, thumbnails, infografiki i więcej.</p>
+      <ul class="grafika-features">
+        <li>Okładki YouTube / Spotify</li>
+        <li>Infografiki</li>
+        <li>Ilustracje cyfrowe</li>
+        <li>Wycena indywidualna</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grafika-cta reveal">
+    <a href="#contact" class="btn btn-grafika" style="padding: 0.9rem 2.4rem; font-size: 1rem; border-radius: 8px; font-weight: 600;">🎨 Zamów grafikę</a>
+  </div>
+</section>
+
+<!-- CENNIK -->
+<section id="cennik">
+  <div class="section-header reveal">
+    <div class="section-label">Cennik</div>
+    <h2 class="section-title">Ile to kosztuje?</h2>
+    <p class="section-desc">Przejrzyste ceny, bez ukrytych kosztów. Wycena zawsze bezpłatna i bez zobowiązań.</p>
+  </div>
+
+  <div class="cennik-tabs reveal">
+    <button class="cennik-tab active" onclick="switchCennik('strony', event)">🌐 Strony</button>
+    <button class="cennik-tab" onclick="switchCennik('grafika', event)">🎨 Grafika</button>
+  </div>
+
+  <div class="cennik-panel active" id="cpanel-strony">
+    <div class="cennik-card reveal">
+      <div class="cennik-icon">🏢</div>
+      <h3>Strona wizytówkowa</h3>
+      <div class="cennik-price">250 <span>zł</span></div>
+      <p>Prosta, elegancka strona dla firmy lub freelancera. Idealna do prezentacji usług i kontaktu.</p>
+      <ul class="cennik-features">
+        <li>Projekt graficzny</li>
+        <li>Responsywność (mobile)</li>
+        <li>Formularz kontaktowy</li>
+        <li>Optymalizacja SEO</li>
+      </ul>
+      <a href="#contact" onclick="selectService('Strona wizytówkowa')" class="cennik-btn">Zamów</a>
+    </div>
+
+    <div class="cennik-card featured reveal">
+      <div class="featured-badge">⭐ Najpopularniejsze</div>
+      <div class="cennik-icon">🚀</div>
+      <h3>Strona firmowa</h3>
+      <div class="cennik-price">400 <span>zł</span></div>
+      <p>Rozbudowana strona z wieloma sekcjami – oferta, o firmie, realizacje, kontakt.</p>
+      <ul class="cennik-features">
+        <li>Indywidualny projekt</li>
+        <li>Wiele sekcji / podstron</li>
+        <li>Animacje i efekty</li>
+        <li>Responsywność (mobile)</li>
+        <li>Formularz kontaktowy</li>
+        <li>Optymalizacja SEO</li>
+      </ul>
+      <a href="#contact" onclick="selectService('Strona firmowa')" class="cennik-btn">Zamów</a>
+    </div>
+
+    <div class="cennik-card reveal">
+      <div class="cennik-icon">🛒</div>
+      <h3>Landing page</h3>
+      <div class="cennik-price">350 <span>zł</span></div>
+      <p>Jednostronicowa strona nastawiona na konwersję – idealna do kampanii reklamowych.</p>
+      <ul class="cennik-features">
+        <li>Projekt pod konwersję</li>
+        <li>Szybkie ładowanie</li>
+        <li>Formularz / CTA</li>
+        <li>Responsywność (mobile)</li>
+      </ul>
+      <a href="#contact" onclick="selectService('Landing page')" class="cennik-btn">Zamów</a>
+    </div>
+  </div>
+
+  <div class="cennik-panel" id="cpanel-grafika">
+    <div class="cennik-card reveal">
+      <div class="cennik-icon">🎨</div>
+      <h3>Logo i identyfikacja</h3>
+      <div class="cennik-price">50–100 <span>zł</span></div>
+      <p>Profesjonalne logo dla firmy lub marki osobistej. Pliki gotowe do druku i internetu.</p>
+      <ul class="cennik-features">
+        <li>Projekt od zera</li>
+        <li>Kilka propozycji do wyboru</li>
+        <li>Pliki PNG, SVG, PDF</li>
+        <li>Wersja jasna i ciemna</li>
+      </ul>
+      <a href="#contact" onclick="selectService('Logo / identyfikacja wizualna')" class="cennik-btn">Zamów</a>
+    </div>
+
+    <div class="cennik-card featured reveal">
+      <div class="featured-badge">⭐ Najpopularniejsze</div>
+      <div class="cennik-icon">📱</div>
+      <h3>Grafiki social media</h3>
+      <div class="cennik-price">30 <span>zł / szt.</span></div>
+      <p>Posty, stories, banery na Facebooka, Instagrama czy LinkedIn. Spójne wizualnie.</p>
+      <ul class="cennik-features">
+        <li>Posty i stories</li>
+        <li>Banery reklamowe</li>
+        <li>Okładki profili</li>
+        <li>Pakiet 10 szt. od 200 zł</li>
+      </ul>
+      <a href="#contact" onclick="selectService('Grafiki social media')" class="cennik-btn">Zamów</a>
+    </div>
+
+    <div class="cennik-card reveal">
+      <div class="cennik-icon">✏️</div>
+      <h3>Inne projekty</h3>
+      <div class="cennik-price" style="font-size:1.2rem; margin-top:1rem;">Wycena indywidualna</div>
+      <p>Okładki YouTube, infografiki, ilustracje cyfrowe i inne. Napisz – wycenię bezpłatnie.</p>
+      <ul class="cennik-features">
+        <li>Okładki YouTube / Spotify</li>
+        <li>Infografiki</li>
+        <li>Ilustracje cyfrowe</li>
+        <li>Bezpłatna wycena</li>
+      </ul>
+      <a href="#contact" class="cennik-btn">Zapytaj</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-header reveal">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Moje realizacje</h2>
+    <p class="section-desc">Kilka przykładów tego, co tworzę – strony internetowe i grafiki na zamówienie.</p>
+  </div>
+
+  <div class="portfolio-tabs reveal">
+    <button class="portfolio-tab active" onclick="switchTab('strony')">🌐 Strony</button>
+    <button class="portfolio-tab" onclick="switchTab('grafiki')">🎨 Grafiki</button>
+  </div>
+
+  <!-- STRONY -->
+  <div class="portfolio-panel active" id="panel-strony">
+
+    <div class="portfolio-card reveal">
+      <a href="portfolio-restauracja.html" target="_blank" class="portfolio-link">
+        <div class="portfolio-preview">
+          <div class="mock mock-rest">
+            <div class="m-nav"><div class="m-logo"></div><div class="m-links"><span></span><span></span><span></span></div></div>
+            <div class="m-hero">
+              <div class="m-tag"></div>
+              <div class="m-h1"></div><div class="m-h1b"></div>
+              <div class="m-p"></div><div class="m-p2"></div>
+              <div class="m-btns"><div class="m-btn1"></div><div class="m-btn2"></div></div>
+            </div>
+            <div class="m-section"><div class="m-card"></div><div class="m-card"></div><div class="m-card"></div></div>
+          </div>
+          <div class="portfolio-preview-overlay">🔗 Zobacz stronę</div>
+        </div>
+        <div class="portfolio-info">
+          <h3>Strona dla restauracji</h3>
+          <p>Elegancka strona z menu online, galerią i formularzem rezerwacji stolika.</p>
+          <span class="portfolio-tag">Strona firmowa</span>
+          <span class="portfolio-tag">Gastronomia</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="portfolio-card reveal">
+      <a href="portfolio-fitness.html" target="_blank" class="portfolio-link">
+        <div class="portfolio-preview">
+          <div class="mock mock-fit">
+            <div class="m-nav"><div class="m-logo"></div><div class="m-links"><span></span><span></span><span></span></div><div class="m-btn"></div></div>
+            <div class="m-hero">
+              <div class="m-tag"></div>
+              <div class="m-h1"></div><div class="m-h1b"></div><div class="m-h1c"></div>
+              <div class="m-p"></div>
+              <div class="m-btn"></div>
+            </div>
+            <div class="m-stats"><div class="m-stat"><div class="n"></div><div class="l"></div></div><div class="m-stat"><div class="n"></div><div class="l"></div></div><div class="m-stat"><div class="n"></div><div class="l"></div></div></div>
+            <div class="m-cards"><div class="m-card"></div><div class="m-card"></div><div class="m-card"></div><div class="m-card"></div></div>
+          </div>
+          <div class="portfolio-preview-overlay">🔗 Zobacz stronę</div>
+        </div>
+        <div class="portfolio-info">
+          <h3>Strona dla klubu fitness</h3>
+          <p>Nowoczesna strona z grafikiem zajęć, cennikiem i zapisami online.</p>
+          <span class="portfolio-tag">Landing page</span>
+          <span class="portfolio-tag">Sport</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="portfolio-card reveal">
+      <a href="portfolio-kancelaria.html" target="_blank" class="portfolio-link">
+        <div class="portfolio-preview">
+          <div class="mock mock-kan">
+            <div class="m-nav"><div class="m-logo"></div><div class="m-links"><span></span><span></span><span></span></div></div>
+            <div class="m-hero">
+              <div class="m-eyebrow"><div class="line"></div><span></span></div>
+              <div class="m-h1"></div><div class="m-h1b"></div>
+              <div class="m-p"></div><div class="m-p2"></div>
+              <div class="m-btns"><div class="m-btn1"></div><div class="m-btn2"></div></div>
+            </div>
+            <div class="m-specs">
+              <div class="m-spec"><div class="t"></div><div class="b"></div><div class="b2"></div></div>
+              <div class="m-spec"><div class="t"></div><div class="b"></div><div class="b2"></div></div>
+              <div class="m-spec"><div class="t"></div><div class="b"></div><div class="b2"></div></div>
+              <div class="m-spec"><div class="t"></div><div class="b"></div><div class="b2"></div></div>
+            </div>
+          </div>
+          <div class="portfolio-preview-overlay">🔗 Zobacz stronę</div>
+        </div>
+        <div class="portfolio-info">
+          <h3>Strona dla kancelarii prawnej</h3>
+          <p>Stonowana, profesjonalna strona wizytówkowa z opisem specjalizacji i kontaktem.</p>
+          <span class="portfolio-tag">Strona wizytówkowa</span>
+          <span class="portfolio-tag">Prawo</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="portfolio-card reveal">
+      <a href="portfolio-fotograf.html" target="_blank" class="portfolio-link">
+        <div class="portfolio-preview" style="position:relative;">
+          <div class="mock mock-foto">
+            <div class="m-nav"><div class="m-logo"></div><div class="m-links"><span></span><span></span><span></span></div></div>
+            <div class="m-grid" style="position:relative;">
+              <div class="g1"></div><div class="g2"></div><div class="g3"></div>
+              <div class="g4"></div><div class="g5"></div><div class="g6"></div>
+              <div class="m-overlay">
+                <div class="m-h1"></div>
+                <div class="m-p"></div>
+                <div class="m-btns"><div class="m-btn1"></div><div class="m-btn2"></div></div>
+              </div>
+            </div>
+            <div class="m-bar"><span class="act"></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="portfolio-preview-overlay">🔗 Zobacz stronę</div>
+        </div>
+        <div class="portfolio-info">
+          <h3>Strona dla fotografa</h3>
+          <p>Portfolio fotografa z galerią prac, pakietami cenowymi i formularzem kontaktowym.</p>
+          <span class="portfolio-tag">Portfolio</span>
+          <span class="portfolio-tag">Fotografia</span>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- GRAFIKI -->
+  <div class="portfolio-panel" id="panel-grafiki">
+
+    <div class="portfolio-card reveal">
+      <div class="portfolio-preview prev-logo-bud">
+        <svg viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="70,10 110,50 110,85 30,85 30,50" fill="none" stroke="#4a9eff" stroke-width="2.5"/>
+          <rect x="55" y="60" width="30" height="25" fill="#4a9eff" opacity="0.3"/>
+          <rect x="55" y="60" width="30" height="25" fill="none" stroke="#4a9eff" stroke-width="1.5"/>
+          <text x="70" y="97" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#4a9eff" letter-spacing="3">BUDMAX</text>
+        </svg>
+      </div>
+      <div class="portfolio-info">
+        <h3>Logo dla firmy budowlanej</h3>
+        <p>Minimalistyczne logo z geometrycznym domem i mocnym, czytelnym krojem pisma.</p>
+        <span class="portfolio-tag">Logo</span>
+        <span class="portfolio-tag">Budownictwo</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card reveal">
+      <div class="portfolio-preview prev-logo-cafe">
+        <svg viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="70" cy="46" r="28" fill="none" stroke="#c9a96e" stroke-width="2"/>
+          <path d="M58,46 Q70,30 82,46 Q70,62 58,46Z" fill="#c9a96e" opacity="0.25"/>
+          <path d="M58,46 Q70,30 82,46 Q70,62 58,46Z" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+          <text x="70" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#c9a96e" letter-spacing="4">CAFÉ LUNA</text>
+          <line x1="40" y1="82" x2="55" y2="82" stroke="#c9a96e" stroke-width="0.8" opacity="0.6"/>
+          <line x1="85" y1="82" x2="100" y2="82" stroke="#c9a96e" stroke-width="0.8" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="portfolio-info">
+        <h3>Logo dla kawiarni</h3>
+        <p>Eleganckie logo w stylu vintage. Delikatna złota paleta i klasyczna typografia.</p>
+        <span class="portfolio-tag">Logo</span>
+        <span class="portfolio-tag">Gastronomia</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card reveal">
+      <div class="portfolio-preview prev-social-gym">
+        <div class="sg-post">TRENING<br/>DNIA</div>
+        <div class="sg-post2">🔥</div>
+        <div class="sg-post3">ZAPISZ SIĘ NA PRÓBNY TRENING</div>
+      </div>
+      <div class="portfolio-info">
+        <h3>Grafiki social media dla siłowni</h3>
+        <p>Zestaw postów na Instagram i Facebook. Agresywna, energetyczna stylistyka.</p>
+        <span class="portfolio-tag">Social media</span>
+        <span class="portfolio-tag">Sport</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card reveal">
+      <div class="portfolio-preview prev-social-beauty">
+        <div class="sb-post">NOWA<br/>KOLEKCJA<br/>WIOSNA</div>
+        <div class="sb-post2">🌸</div>
+        <div class="sb-post3"><span></span><span style="width:28px"></span><span style="width:34px"></span></div>
+      </div>
+      <div class="portfolio-info">
+        <h3>Grafiki social media dla studia urody</h3>
+        <p>Pastelowe posty na Instagram. Spójna identyfikacja, miękka kolorystyka.</p>
+        <span class="portfolio-tag">Social media</span>
+        <span class="portfolio-tag">Beauty</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -622,7 +1334,7 @@
   <div class="section-header reveal">
     <div class="section-label">Kontakt</div>
     <h2 class="section-title">Porozmawiajmy o Twojej stronie</h2>
-    <p class="section-desc">Napisz lub zadzwoń – odpiszę w ciągu 24 godzin i przygotujemy razem coś fajnego.</p>
+    <p class="section-desc">Napisz lub zadzwoń – odpiszę w ciągu 12 godzin i przygotujemy razem coś fajnego.</p>
   </div>
   <div class="contact-grid">
     <div class="contact-info reveal">
@@ -644,7 +1356,7 @@
         <div class="contact-item-icon">⏱️</div>
         <div class="contact-item-text">
           <label>Czas odpowiedzi</label>
-          <span>Do 24 godzin</span>
+          <span>Do 12 godzin</span>
         </div>
       </div>
       <div class="contact-item">
@@ -679,6 +1391,8 @@
             <option>Strona wizytówkowa</option>
             <option>Strona firmowa</option>
             <option>Landing page</option>
+            <option>Logo / identyfikacja wizualna</option>
+            <option>Grafiki social media</option>
             <option>Inne / nie wiem jeszcze</option>
           </select>
         </div>
@@ -698,7 +1412,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Web<span>crafft</span></div>
-  <p>© 2025 Webcrafft – Kuba Leśkiewicz</p>
+  <p>© 2025 Webcrafft</p>
   <a href="tel:881578996" class="btn btn-accent">📞 881 578 996</a>
 </footer>
 
@@ -713,6 +1427,31 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   reveals.forEach(r => observer.observe(r));
+
+  function selectService(name) {
+    const select = document.getElementById('service');
+    if (!select) return;
+    for (let i = 0; i < select.options.length; i++) {
+      if (select.options[i].value === name || select.options[i].text === name) {
+        select.selectedIndex = i;
+        break;
+      }
+    }
+  }
+
+  function switchCennik(name, e) {
+    document.querySelectorAll('.cennik-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.cennik-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('cpanel-' + name).classList.add('active');
+    e.target.classList.add('active');
+  }
+
+  function switchTab(name) {
+    document.querySelectorAll('.portfolio-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.portfolio-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
 
   const contactForm = document.getElementById('contactForm');
   contactForm.addEventListener('submit', async function(e) {
