@@ -1072,7 +1072,7 @@
 
 <!-- TOP BAR -->
 <div id="topbar">
-  🔥 Zamów teraz i otrzymaj <strong>-15% rabatu</strong> &nbsp;·&nbsp; <a href="#contact">Skorzystaj →</a>
+  🔥 Zamów teraz i otrzymaj <strong>-10% rabatu</strong> &nbsp;·&nbsp; <a href="#contact">Skorzystaj →</a>
   <button id="topbar-close" onclick="document.getElementById('topbar').style.display='none'">✕</button>
 </div>
 
@@ -1089,8 +1089,10 @@
     <li><a href="#offer">Oferta</a></li>
     <li><a href="#grafika">Grafika</a></li>
     <li><a href="#cennik">Cennik</a></li>
+    <li><a href="#kalkulator">Kalkulator</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#how">Jak działam</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#about">O mnie</a></li>
     <li><a href="#contact">Kontakt</a></li>
   </ul>
@@ -1218,7 +1220,7 @@
     </div>
   </div>
   <div class="grafika-cta reveal">
-    <a href="#contact" class="btn btn-grafika" style="padding: 0.9rem 2.4rem; font-size: 1rem; border-radius: 8px; font-weight: 600;">🎨 Zamów grafikę</a>
+    <a href="#cennik" onclick="switchCennik('grafika', event)" class="btn btn-grafika" style="padding: 0.9rem 2.4rem; font-size: 1rem; border-radius: 8px; font-weight: 600;">🎨 Zamów grafikę</a>
   </div>
 </section>
 
@@ -1660,7 +1662,7 @@
     <div class="kalk-result">
       <div class="kalk-total-label">Szacunkowa cena</div>
       <div class="kalk-total" id="kalk-total">250 zł</div>
-      <div class="kalk-discount" id="kalk-discount">✅ Z rabatem -15%: <strong id="kalk-discounted">213 zł</strong></div>
+      <div class="kalk-discount" id="kalk-discount">✅ Z rabatem -10%: <strong id="kalk-discounted">225 zł</strong></div>
       <div class="kalk-note">Ostateczna wycena po konsultacji</div>
       <a href="#contact" class="btn btn-accent" style="display:block;text-align:center;margin-top:1.5rem;padding:12px;">Zamów wycenę →</a>
     </div>
@@ -1941,7 +1943,7 @@
     btn.classList.add('active');
     kalkVals[group] = parseInt(btn.dataset.val);
     const total = Object.values(kalkVals).reduce((a, b) => a + b, 0);
-    const discounted = Math.round(total * 0.85);
+    const discounted = Math.round(total * 0.90);
     document.getElementById('kalk-total').textContent = total + ' zł';
     document.getElementById('kalk-discounted').textContent = discounted + ' zł';
   }
