@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
@@ -423,18 +423,6 @@
     .cart-bank-note {
       margin-top: 10px; font-size: 0.78rem; color: var(--text-muted);
       line-height: 1.5; border-top: 1px solid var(--border); padding-top: 10px;
-    }
-
-    /* TOP BAR */
-    #topbar {
-      background: var(--accent); color: #fff;
-      text-align: center; padding: 10px 48px 10px 16px;
-      font-size: 0.85rem; position: relative; z-index: 101;
-    }
-    #topbar a { color: #fff; font-weight: 700; text-decoration: underline; }
-    #topbar-close {
-      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-      background: none; border: none; color: #fff; cursor: pointer; font-size: 1rem; padding: 4px 8px;
     }
 
     /* COOKIE */
@@ -1070,12 +1058,6 @@
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div id="topbar">
-  🔥 Zamów teraz i otrzymaj <strong>-10% rabatu</strong> &nbsp;·&nbsp; <a href="#contact">Skorzystaj →</a>
-  <button id="topbar-close" onclick="document.getElementById('topbar').style.display='none'">✕</button>
-</div>
-
 <!-- COOKIE BANNER -->
 <div id="cookie-banner">
   <span>🍪 Ta strona używa plików cookie do analizy ruchu. <a href="#" style="color:var(--accent)">Dowiedz się więcej</a></span>
@@ -1662,7 +1644,6 @@
     <div class="kalk-result">
       <div class="kalk-total-label">Szacunkowa cena</div>
       <div class="kalk-total" id="kalk-total">250 zł</div>
-      <div class="kalk-discount" id="kalk-discount">✅ Z rabatem -10%: <strong id="kalk-discounted">225 zł</strong></div>
       <div class="kalk-note">Ostateczna wycena po konsultacji</div>
       <a href="#contact" class="btn btn-accent" style="display:block;text-align:center;margin-top:1.5rem;padding:12px;">Zamów wycenę →</a>
     </div>
@@ -1943,9 +1924,7 @@
     btn.classList.add('active');
     kalkVals[group] = parseInt(btn.dataset.val);
     const total = Object.values(kalkVals).reduce((a, b) => a + b, 0);
-    const discounted = Math.round(total * 0.90);
     document.getElementById('kalk-total').textContent = total + ' zł';
-    document.getElementById('kalk-discounted').textContent = discounted + ' zł';
   }
 
   // POPUP
@@ -1994,17 +1973,6 @@
   </div>
 </div>
 <div id="cart-overlay" onclick="toggleCart()"></div>
-
-<!-- POPUP RABAT -->
-<div id="popup-overlay" onclick="closePopup()"></div>
-<div id="popup">
-  <button onclick="closePopup()" style="position:absolute;top:12px;right:16px;background:none;border:none;color:var(--text-muted);font-size:1.2rem;cursor:pointer;">✕</button>
-  <div style="font-size:2.5rem;margin-bottom:12px;">🎁</div>
-  <h3 style="font-size:1.3rem;font-weight:800;color:var(--text);margin-bottom:8px;">Specjalna oferta!</h3>
-  <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">Zamów stronę dziś i otrzymaj <strong style="color:var(--accent)">darmowe 3 grafiki social media</strong> w prezencie.</p>
-  <a href="#contact" onclick="closePopup()" class="btn btn-accent" style="display:block;text-align:center;padding:12px;">Skorzystaj z oferty →</a>
-  <button onclick="closePopup()" style="display:block;width:100%;margin-top:10px;background:none;border:none;color:var(--text-muted);font-size:0.82rem;cursor:pointer;">Nie, dziękuję</button>
-</div>
 
 </body>
 </html>
