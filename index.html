@@ -425,7 +425,99 @@
       line-height: 1.5; border-top: 1px solid var(--border); padding-top: 10px;
     }
 
-    /* PORTFOLIO */
+    /* TOP BAR */
+    #topbar {
+      background: var(--accent); color: #fff;
+      text-align: center; padding: 10px 48px 10px 16px;
+      font-size: 0.85rem; position: relative; z-index: 101;
+    }
+    #topbar a { color: #fff; font-weight: 700; text-decoration: underline; }
+    #topbar-close {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: #fff; cursor: pointer; font-size: 1rem; padding: 4px 8px;
+    }
+
+    /* COOKIE */
+    #cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 14px 5%; display: flex; align-items: center;
+      justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      font-size: 0.85rem; color: var(--text-muted);
+    }
+    #cookie-banner.hidden { display: none; }
+
+    /* DARK MODE */
+    body.light {
+      --bg: #f5f5f7; --bg2: #ffffff; --bg3: #e8e8ed;
+      --text: #1d1d1f; --text-body: #3a3a3c; --text-muted: #86868b;
+      --border: #d2d2d7;
+    }
+
+    /* FAQ */
+    .faq-list { max-width: 760px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; color: var(--text);
+      font-size: 1rem; font-weight: 600; padding: 18px 0;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; font-family: inherit; text-align: left; gap: 12px;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--accent); }
+    .faq-q span { font-size: 1.3rem; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-q.open span { transform: rotate(45deg); }
+    .faq-a {
+      display: none; padding: 0 0 18px; color: var(--text-muted);
+      font-size: 0.92rem; line-height: 1.7;
+    }
+    .faq-a.open { display: block; }
+
+    /* KALKULATOR */
+    .kalk-wrap {
+      display: grid; grid-template-columns: 1fr 280px; gap: 40px;
+      align-items: start; max-width: 960px;
+    }
+    .kalk-group { margin-bottom: 28px; }
+    .kalk-label { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .kalk-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    .kalk-btn {
+      background: var(--bg2); border: 1px solid var(--border);
+      color: var(--text-muted); padding: 10px 16px; border-radius: 8px;
+      cursor: pointer; font-family: inherit; font-size: 0.85rem; font-weight: 500;
+      transition: all 0.2s; text-align: center; line-height: 1.4;
+    }
+    .kalk-btn small { display: block; font-size: 0.75rem; color: var(--accent); margin-top: 2px; }
+    .kalk-btn:hover { border-color: var(--accent); color: var(--text); }
+    .kalk-btn.active { background: rgba(108,99,255,0.12); border-color: var(--accent); color: var(--text); }
+    .kalk-result {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px; position: sticky; top: 80px;
+    }
+    .kalk-total-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .kalk-total { font-size: 2.8rem; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; }
+    .kalk-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; }
+    .kalk-discount { font-size: 0.85rem; color: #2ecc71; font-weight: 600; margin-top: 6px; }
+    @media (max-width: 700px) { .kalk-wrap { grid-template-columns: 1fr; } }
+
+    /* POPUP */
+    #popup-overlay {
+      display: none; position: fixed; inset: 0; z-index: 400;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+    }
+    #popup-overlay.open { display: block; }
+    #popup {
+      display: none; position: fixed; top: 50%; left: 50%; z-index: 401;
+      transform: translate(-50%, -50%);
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 16px; padding: 40px 32px; max-width: 380px; width: 90%;
+      text-align: center;
+    }
+    #popup.open { display: block; animation: popupIn 0.3s ease; }
+    @keyframes popupIn {
+      from { opacity: 0; transform: translate(-50%, -48%) scale(0.95); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
     #portfolio { background: var(--bg2); }
 
     .portfolio-tabs {
@@ -978,6 +1070,18 @@
 </head>
 <body>
 
+<!-- TOP BAR -->
+<div id="topbar">
+  🔥 Zamów teraz i otrzymaj <strong>-15% rabatu</strong> &nbsp;·&nbsp; <a href="#contact">Skorzystaj →</a>
+  <button id="topbar-close" onclick="document.getElementById('topbar').style.display='none'">✕</button>
+</div>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <span>🍪 Ta strona używa plików cookie do analizy ruchu. <a href="#" style="color:var(--accent)">Dowiedz się więcej</a></span>
+  <button onclick="acceptCookies()" class="btn btn-accent" style="padding:6px 16px;font-size:0.82rem;">Akceptuję</button>
+</div>
+
 <!-- NAV -->
 <nav>
   <a href="#hero" class="logo">Web<span>crafft</span></a>
@@ -991,6 +1095,7 @@
     <li><a href="#contact">Kontakt</a></li>
   </ul>
   <a href="#contact" class="btn btn-accent nav-cta">Zamów stronę</a>
+  <button id="darkmode-toggle" onclick="toggleDark()" title="Zmień motyw" style="background:none;border:1px solid var(--border);color:var(--text-muted);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all 0.2s;flex-shrink:0;">🌙</button>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -1478,6 +1583,90 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq" style="background:var(--bg2);">
+  <div class="section-header reveal">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Najczęstsze pytania</h2>
+  </div>
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Ile trwa realizacja strony? <span>+</span></button>
+      <div class="faq-a">Zazwyczaj 3–7 dni roboczych od momentu dostarczenia materiałów. Przy prostych stronach wizytówkowych nawet 1–2 dni.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Co muszę dostarczyć? <span>+</span></button>
+      <div class="faq-a">Wystarczy krótki opis firmy, logo (jeśli masz) i zdjęcia. Jeśli nie masz — pomogę dobrać darmowe grafiki stockowe.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Czy strona będzie działać na telefonie? <span>+</span></button>
+      <div class="faq-a">Tak, każda strona jest w pełni responsywna — działa na telefonie, tablecie i komputerze.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Czy mogę później zmieniać treści? <span>+</span></button>
+      <div class="faq-a">Tak. Po oddaniu strony możesz zgłaszać drobne poprawki bezpłatnie przez 14 dni. Większe zmiany wyceniam indywidualnie.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Jak wygląda płatność? <span>+</span></button>
+      <div class="faq-a">Bez żadnej zaliczki. Najpierw opisujesz mi co chcesz mieć na stronie — ja robię projekt i pokazuję Ci gotowy efekt. Możesz wtedy zgłaszać zmiany. Płacisz dopiero na końcu, przed podpięciem Twojej własnej domeny. Zero ryzyka z Twojej strony.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Czy robisz hosting i domenę? <span>+</span></button>
+      <div class="faq-a">Pomagam z wdrożeniem na Netlify (darmowy hosting). Domenę możesz kupić samodzielnie za ~50 zł/rok — pomogę ją podpiąć.</div>
+    </div>
+  </div>
+</section>
+
+<!-- KALKULATOR -->
+<section id="kalkulator" style="background:var(--bg);">
+  <div class="section-header reveal">
+    <div class="section-label">Kalkulator</div>
+    <h2 class="section-title">Oblicz cenę swojej strony</h2>
+    <p class="section-desc">Wybierz opcje i sprawdź szacunkową wycenę.</p>
+  </div>
+  <div class="kalk-wrap reveal">
+    <div class="kalk-options">
+      <div class="kalk-group">
+        <div class="kalk-label">Rodzaj strony</div>
+        <div class="kalk-btns">
+          <button class="kalk-btn active" data-group="typ" data-val="250" onclick="kalkSelect(this)">Wizytówkowa<br><small>250 zł</small></button>
+          <button class="kalk-btn" data-group="typ" data-val="350" onclick="kalkSelect(this)">Landing page<br><small>350 zł</small></button>
+          <button class="kalk-btn" data-group="typ" data-val="400" onclick="kalkSelect(this)">Firmowa<br><small>400 zł</small></button>
+        </div>
+      </div>
+      <div class="kalk-group">
+        <div class="kalk-label">Formularz kontaktowy</div>
+        <div class="kalk-btns">
+          <button class="kalk-btn active" data-group="form" data-val="0" onclick="kalkSelect(this)">Tak (w cenie)</button>
+          <button class="kalk-btn" data-group="form" data-val="0" onclick="kalkSelect(this)">Nie</button>
+        </div>
+      </div>
+      <div class="kalk-group">
+        <div class="kalk-label">Logo</div>
+        <div class="kalk-btns">
+          <button class="kalk-btn active" data-group="logo" data-val="0" onclick="kalkSelect(this)">Mam własne</button>
+          <button class="kalk-btn" data-group="logo" data-val="75" onclick="kalkSelect(this)">Potrzebuję (+75 zł)</button>
+        </div>
+      </div>
+      <div class="kalk-group">
+        <div class="kalk-label">Grafiki social media</div>
+        <div class="kalk-btns">
+          <button class="kalk-btn active" data-group="social" data-val="0" onclick="kalkSelect(this)">Nie potrzebuję</button>
+          <button class="kalk-btn" data-group="social" data-val="150" onclick="kalkSelect(this)">5 grafik (+150 zł)</button>
+          <button class="kalk-btn" data-group="social" data-val="200" onclick="kalkSelect(this)">10 grafik (+200 zł)</button>
+        </div>
+      </div>
+    </div>
+    <div class="kalk-result">
+      <div class="kalk-total-label">Szacunkowa cena</div>
+      <div class="kalk-total" id="kalk-total">250 zł</div>
+      <div class="kalk-discount" id="kalk-discount">✅ Z rabatem -15%: <strong id="kalk-discounted">213 zł</strong></div>
+      <div class="kalk-note">Ostateczna wycena po konsultacji</div>
+      <a href="#contact" class="btn btn-accent" style="display:block;text-align:center;margin-top:1.5rem;padding:12px;">Zamów wycenę →</a>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header reveal">
@@ -1714,6 +1903,62 @@
     }
   });
 </script>
+<script>
+  // TOP BAR slots countdown
+  let slots = parseInt(localStorage.getItem('slots') || '1');
+
+  // COOKIE
+  function acceptCookies() {
+    document.getElementById('cookie-banner').classList.add('hidden');
+    localStorage.setItem('cookies', '1');
+  }
+  if (localStorage.getItem('cookies')) document.getElementById('cookie-banner').classList.add('hidden');
+
+  // DARK MODE
+  function toggleDark() {
+    document.body.classList.toggle('light');
+    const btn = document.getElementById('darkmode-toggle');
+    btn.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
+    localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+  }
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light');
+    document.getElementById('darkmode-toggle').textContent = '☀️';
+  }
+
+  // FAQ
+  function toggleFaq(btn) {
+    btn.classList.toggle('open');
+    const ans = btn.nextElementSibling;
+    ans.classList.toggle('open');
+  }
+
+  // KALKULATOR
+  const kalkVals = { typ: 250, form: 0, logo: 0, social: 0 };
+  function kalkSelect(btn) {
+    const group = btn.dataset.group;
+    document.querySelectorAll(`.kalk-btn[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    kalkVals[group] = parseInt(btn.dataset.val);
+    const total = Object.values(kalkVals).reduce((a, b) => a + b, 0);
+    const discounted = Math.round(total * 0.85);
+    document.getElementById('kalk-total').textContent = total + ' zł';
+    document.getElementById('kalk-discounted').textContent = discounted + ' zł';
+  }
+
+  // POPUP
+  function closePopup() {
+    document.getElementById('popup').classList.remove('open');
+    document.getElementById('popup-overlay').classList.remove('open');
+    localStorage.setItem('popup_shown', '1');
+  }
+  if (!localStorage.getItem('popup_shown')) {
+    setTimeout(() => {
+      document.getElementById('popup').classList.add('open');
+      document.getElementById('popup-overlay').classList.add('open');
+    }, 8000);
+  }
+</script>
 <!-- KOSZYK FLOATING -->
 <div id="cart-bubble" onclick="toggleCart()" title="Koszyk">
   🛒 <span id="cart-count">0</span>
@@ -1747,6 +1992,17 @@
   </div>
 </div>
 <div id="cart-overlay" onclick="toggleCart()"></div>
+
+<!-- POPUP RABAT -->
+<div id="popup-overlay" onclick="closePopup()"></div>
+<div id="popup">
+  <button onclick="closePopup()" style="position:absolute;top:12px;right:16px;background:none;border:none;color:var(--text-muted);font-size:1.2rem;cursor:pointer;">✕</button>
+  <div style="font-size:2.5rem;margin-bottom:12px;">🎁</div>
+  <h3 style="font-size:1.3rem;font-weight:800;color:var(--text);margin-bottom:8px;">Specjalna oferta!</h3>
+  <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">Zamów stronę dziś i otrzymaj <strong style="color:var(--accent)">darmowe 3 grafiki social media</strong> w prezencie.</p>
+  <a href="#contact" onclick="closePopup()" class="btn btn-accent" style="display:block;text-align:center;padding:12px;">Skorzystaj z oferty →</a>
+  <button onclick="closePopup()" style="display:block;width:100%;margin-top:10px;background:none;border:none;color:var(--text-muted);font-size:0.82rem;cursor:pointer;">Nie, dziękuję</button>
+</div>
 
 </body>
 </html>
