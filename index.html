@@ -299,6 +299,132 @@
     .cennik-card:not(.featured) .cennik-btn { background: transparent; border: 1px solid var(--border); color: var(--text); }
     .cennik-card:not(.featured) .cennik-btn:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* ADD TO CART BUTTON */
+    .add-to-cart {
+      display: block; width: 100%; margin-top: 8px;
+      padding: 0.6rem 1rem; border-radius: 8px;
+      background: transparent; border: 1px dashed var(--accent);
+      color: var(--accent); font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; font-family: inherit;
+      transition: all 0.2s;
+    }
+    .add-to-cart:hover { background: rgba(108,99,255,0.1); }
+    .add-to-cart.added { background: rgba(108,99,255,0.15); border-style: solid; }
+
+    /* CART BUBBLE */
+    #cart-bubble {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      background: var(--accent); color: #fff;
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      user-select: none;
+    }
+    #cart-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(108,99,255,0.5); }
+    #cart-count {
+      position: absolute; top: -4px; right: -4px;
+      background: #e63946; color: #fff;
+      font-size: 0.7rem; font-weight: 700;
+      width: 20px; height: 20px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      display: none;
+    }
+
+    /* CART DRAWER */
+    #cart-overlay {
+      display: none; position: fixed; inset: 0; z-index: 201;
+      background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+    }
+    #cart-overlay.open { display: block; }
+    #cart-drawer {
+      position: fixed; top: 0; right: -420px; bottom: 0; z-index: 202;
+      width: 400px; max-width: 95vw;
+      background: var(--bg2); border-left: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+      overflow-y: auto;
+    }
+    #cart-drawer.open { right: 0; }
+    .cart-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: var(--bg2); z-index: 1;
+    }
+    .cart-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .cart-close {
+      background: none; border: none; color: var(--text-muted);
+      font-size: 1.2rem; cursor: pointer; padding: 4px 8px;
+      border-radius: 6px; transition: background 0.2s;
+    }
+    .cart-close:hover { background: var(--bg3); color: var(--text); }
+    .cart-items { padding: 16px 24px; flex: 1; }
+    .cart-empty { padding: 40px 24px; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+    .cart-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0; border-bottom: 1px solid var(--border); gap: 12px;
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .cart-item-price { font-size: 0.85rem; color: var(--accent); font-weight: 700; white-space: nowrap; }
+    .cart-item-remove {
+      background: none; border: none; color: var(--text-muted);
+      cursor: pointer; font-size: 1rem; padding: 2px 6px;
+      border-radius: 4px; transition: color 0.2s;
+    }
+    .cart-item-remove:hover { color: #e63946; }
+    .cart-footer { padding: 16px 24px 24px; border-top: 1px solid var(--border); }
+    .cart-total {
+      font-size: 1rem; color: var(--text-muted);
+      margin-bottom: 16px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cart-total strong { color: var(--accent); font-size: 1.3rem; }
+    .cart-footer input,
+    .cart-footer textarea {
+      width: 100%; background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 14px; color: var(--text);
+      font-size: 0.88rem; font-family: inherit; margin-bottom: 10px;
+      outline: none; transition: border-color 0.2s;
+    }
+    .cart-footer input:focus,
+    .cart-footer textarea:focus { border-color: var(--accent); }
+    .cart-footer textarea { resize: vertical; min-height: 70px; }
+    .cart-submit {
+      width: 100%; padding: 12px; background: var(--accent); color: #fff;
+      border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; font-family: inherit; transition: background 0.2s;
+    }
+    .cart-submit:hover { background: var(--accent-dark); }
+    .cart-success {
+      display: none; margin-top: 12px; padding: 12px;
+      background: rgba(39,174,96,0.1); border: 1px solid rgba(39,174,96,0.3);
+      color: #2ecc71; border-radius: 8px; text-align: center;
+      font-weight: 600; font-size: 0.9rem;
+    }
+
+    .cart-bank {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 16px; margin-bottom: 16px;
+    }
+    .cart-bank-title {
+      font-size: 0.8rem; font-weight: 700; color: var(--text);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;
+    }
+    .cart-bank-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 6px 0; border-bottom: 1px solid var(--border);
+      gap: 12px;
+    }
+    .cart-bank-row:last-of-type { border-bottom: none; }
+    .cart-bank-row span { font-size: 0.78rem; color: var(--text-muted); flex-shrink: 0; }
+    .cart-bank-row strong { font-size: 0.82rem; color: var(--text); text-align: right; word-break: break-all; }
+    .cart-bank-note {
+      margin-top: 10px; font-size: 0.78rem; color: var(--text-muted);
+      line-height: 1.5; border-top: 1px solid var(--border); padding-top: 10px;
+    }
+
     /* PORTFOLIO */
     #portfolio { background: var(--bg2); }
 
@@ -865,9 +991,6 @@
     <li><a href="#contact">Kontakt</a></li>
   </ul>
   <a href="#contact" class="btn btn-accent nav-cta">Zamów stronę</a>
-  <a href="https://www.instagram.com/web.crafft/" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram" title="Instagram">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-  </a>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -1019,7 +1142,7 @@
         <li>Formularz kontaktowy</li>
         <li>Optymalizacja SEO</li>
       </ul>
-      <a href="#contact" onclick="selectService('Strona wizytówkowa')" class="cennik-btn">Zamów</a>
+      <button class="add-to-cart" data-name="Strona wizytówkowa" data-price="250">🛒 Dodaj do koszyka</button>
     </div>
 
     <div class="cennik-card featured reveal">
@@ -1036,7 +1159,7 @@
         <li>Formularz kontaktowy</li>
         <li>Optymalizacja SEO</li>
       </ul>
-      <a href="#contact" onclick="selectService('Strona firmowa')" class="cennik-btn">Zamów</a>
+      <button class="add-to-cart" data-name="Strona firmowa" data-price="400">🛒 Dodaj do koszyka</button>
     </div>
 
     <div class="cennik-card reveal">
@@ -1050,7 +1173,7 @@
         <li>Formularz / CTA</li>
         <li>Responsywność (mobile)</li>
       </ul>
-      <a href="#contact" onclick="selectService('Landing page')" class="cennik-btn">Zamów</a>
+      <button class="add-to-cart" data-name="Landing page" data-price="350">🛒 Dodaj do koszyka</button>
     </div>
   </div>
 
@@ -1066,7 +1189,7 @@
         <li>Pliki PNG, SVG, PDF</li>
         <li>Wersja jasna i ciemna</li>
       </ul>
-      <a href="#contact" onclick="selectService('Logo / identyfikacja wizualna')" class="cennik-btn">Zamów</a>
+      <button class="add-to-cart" data-name="Logo i identyfikacja" data-price="75">🛒 Dodaj do koszyka</button>
     </div>
 
     <div class="cennik-card featured reveal">
@@ -1081,7 +1204,7 @@
         <li>Okładki profili</li>
         <li>Pakiet 10 szt. od 200 zł</li>
       </ul>
-      <a href="#contact" onclick="selectService('Grafiki social media')" class="cennik-btn">Zamów</a>
+      <button class="add-to-cart" data-name="Grafiki social media" data-price="30">🛒 Dodaj do koszyka</button>
     </div>
 
     <div class="cennik-card reveal">
@@ -1095,7 +1218,7 @@
         <li>Ilustracje cyfrowe</li>
         <li>Bezpłatna wycena</li>
       </ul>
-      <a href="#contact" class="cennik-btn">Zapytaj</a>
+      <a href="#contact" class="cennik-btn" style="font-size:0.85rem;">Zapytaj o wycenę →</a>
     </div>
   </div>
 </section>
@@ -1392,26 +1515,6 @@
           <span>Bezpłatna, bez zobowiązań</span>
         </div>
       </div>
-      <a href="https://www.instagram.com/web.crafft/" target="_blank" rel="noopener" class="contact-item ig" style="text-decoration:none;">
-        <svg class="ig-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <defs>
-            <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#f09433"/>
-              <stop offset="25%" stop-color="#e6683c"/>
-              <stop offset="50%" stop-color="#dc2743"/>
-              <stop offset="75%" stop-color="#cc2366"/>
-              <stop offset="100%" stop-color="#bc1888"/>
-            </linearGradient>
-          </defs>
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-        </svg>
-        <div class="contact-item-text">
-          <label>Instagram</label>
-          <span style="color:#e1306c;font-weight:600;">@web.crafft</span>
-        </div>
-      </a>
     </div>
     <div class="contact-form reveal">
       <h3>Napisz do mnie</h3>
@@ -1474,6 +1577,97 @@
   }, { threshold: 0.1 });
   reveals.forEach(r => observer.observe(r));
 
+  // ── KOSZYK ──
+  let cart = [];
+
+  function toggleCart() {
+    document.getElementById('cart-drawer').classList.toggle('open');
+    document.getElementById('cart-overlay').classList.toggle('open');
+  }
+
+  function renderCart() {
+    const itemsEl = document.getElementById('cart-items');
+    const emptyEl = document.getElementById('cart-empty');
+    const footerEl = document.getElementById('cart-footer');
+    const countEl = document.getElementById('cart-count');
+    const totalEl = document.getElementById('cart-total-val');
+
+    itemsEl.innerHTML = '';
+    if (cart.length === 0) {
+      emptyEl.style.display = 'block';
+      footerEl.style.display = 'none';
+      countEl.style.display = 'none';
+    } else {
+      emptyEl.style.display = 'none';
+      footerEl.style.display = 'block';
+      countEl.style.display = 'flex';
+      countEl.textContent = cart.length;
+      let total = 0;
+      cart.forEach((item, i) => {
+        total += item.price;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <div style="flex:1">
+            <div class="cart-item-name">${item.name}</div>
+          </div>
+          <div class="cart-item-price">${item.price} zł</div>
+          <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button>
+        `;
+        itemsEl.appendChild(div);
+      });
+      totalEl.textContent = total + ' zł';
+      document.getElementById('cart-hidden-order').value =
+        cart.map(i => i.name + ' – ' + i.price + ' zł').join(', ') + ' | Razem: ' + total + ' zł';
+    }
+  }
+
+  function removeFromCart(i) {
+    const btn = document.querySelector(`.add-to-cart[data-name="${cart[i].name}"]`);
+    if (btn) btn.classList.remove('added');
+    cart.splice(i, 1);
+    renderCart();
+  }
+
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.dataset.name;
+      const price = parseInt(btn.dataset.price);
+      if (cart.find(i => i.name === name)) return;
+      cart.push({ name, price });
+      btn.classList.add('added');
+      btn.textContent = '✅ Dodano';
+      renderCart();
+      document.getElementById('cart-drawer').classList.add('open');
+      document.getElementById('cart-overlay').classList.add('open');
+    });
+  });
+
+  const cartForm = document.getElementById('cart-form');
+  cartForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = cartForm.querySelector('.cart-submit');
+    btn.textContent = 'Wysyłanie...';
+    btn.disabled = true;
+    const res = await fetch(cartForm.action, {
+      method: 'POST',
+      body: new FormData(cartForm),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      document.getElementById('cart-success').style.display = 'block';
+      cartForm.reset();
+      cart = [];
+      document.querySelectorAll('.add-to-cart').forEach(b => {
+        b.classList.remove('added');
+        b.textContent = '🛒 Dodaj do koszyka';
+      });
+      renderCart();
+    }
+    btn.textContent = '✅ Wyślij zamówienie';
+    btn.disabled = false;
+  });
+
   function selectService(name) {
     const select = document.getElementById('service');
     if (!select) return;
@@ -1520,5 +1714,39 @@
     }
   });
 </script>
+<!-- KOSZYK FLOATING -->
+<div id="cart-bubble" onclick="toggleCart()" title="Koszyk">
+  🛒 <span id="cart-count">0</span>
+</div>
+
+<div id="cart-drawer">
+  <div class="cart-header">
+    <h3>🛒 Koszyk</h3>
+    <button onclick="toggleCart()" class="cart-close">✕</button>
+  </div>
+  <div id="cart-items" class="cart-items"></div>
+  <div class="cart-empty" id="cart-empty">Koszyk jest pusty</div>
+  <div class="cart-footer" id="cart-footer" style="display:none;">
+    <div class="cart-total">Razem: <strong id="cart-total-val">0 zł</strong></div>
+    <form id="cart-form" action="https://formspree.io/f/mpqkalwl" method="POST">
+      <input type="hidden" name="zamowienie" id="cart-hidden-order" />
+      <input type="text" name="imie" placeholder="Imię i nazwisko *" required />
+      <input type="email" name="email" placeholder="E-mail *" required />
+      <input type="tel" name="telefon" placeholder="Telefon" />
+      <textarea name="uwagi" placeholder="Dodatkowe uwagi..." rows="3"></textarea>
+      <button type="submit" class="cart-submit">✅ Wyślij zamówienie</button>
+    </form>
+    <div class="cart-bank">
+      <div class="cart-bank-title">💳 Dane do przelewu</div>
+      <div class="cart-bank-row"><span>Odbiorca</span><strong>Jakub Leśkiewicz</strong></div>
+      <div class="cart-bank-row"><span>IBAN</span><strong>PL74 1160 2202 0000 0005 3777 5717</strong></div>
+      <div class="cart-bank-row"><span>Tytuł</span><strong>Zamówienie – [Twoje imię]</strong></div>
+      <div class="cart-bank-note">Po wysłaniu formularza przelej kwotę z podsumowania. Realizację zaczynam po zaksięgowaniu wpłaty.</div>
+    </div>
+    <div class="cart-success" id="cart-success">✅ Zamówienie wysłane! Odezwę się wkrótce.</div>
+  </div>
+</div>
+<div id="cart-overlay" onclick="toggleCart()"></div>
+
 </body>
 </html>
