@@ -157,6 +157,7 @@
     <div class="tabs">
       <button class="tab-btn active" onclick="switchTab('zamowienia', this)">🛒 Zamówienia</button>
       <button class="tab-btn" onclick="switchTab('wiadomosci', this)">✉️ Wiadomości</button>
+      <button class="tab-btn" onclick="switchTab('ustawienia', this)">⚙️ Ustawienia</button>
     </div>
 
     <!-- ZAMOWIENIA -->
@@ -182,30 +183,22 @@
       </div>
     </div>
 
-    <!-- WIADOMOSCI -->
-    <div class="tab-panel" id="tab-wiadomosci">
-      <div class="table-wrap">
-        <div class="loading" id="load-wiadomosci">Ładowanie...</div>
-        <table id="table-wiadomosci" style="display:none">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Data</th>
-              <th>Imię</th>
-              <th>Email</th>
-              <th>Telefon</th>
-              <th>Rodzaj strony</th>
-              <th>Wiadomość</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="body-wiadomosci"></tbody>
-        </table>
-        <div class="empty" id="empty-wiadomosci" style="display:none">Brak wiadomości</div>
+    <!-- USTAWIENIA -->
+    <div class="tab-panel" id="tab-ustawienia">
+      <div class="table-wrap" style="padding:2rem">
+        <h3 style="margin-bottom:1.5rem;font-size:1.1rem">Ceny na stronie webcrafft.pl</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:600px" id="settings-form">
+          <div class="loading" style="grid-column:1/-1">Ładowanie ustawień...</div>
+        </div>
+        <button onclick="saveSettings()" id="save-btn" style="margin-top:1.5rem;background:var(--accent);color:#fff;border:none;padding:.75rem 2rem;border-radius:8px;font-size:.95rem;font-weight:700;cursor:pointer;display:none">
+          💾 Zapisz zmiany
+        </button>
+        <div id="save-msg" style="margin-top:1rem;color:var(--green);font-weight:600;display:none">✅ Zapisano! Zmiany widoczne na stronie.</div>
       </div>
     </div>
-  </div>
-</div>
+
+  </div><!-- end panel-body -->
+</div><!-- end panel-screen -->
 
 <script>
   const TOKEN_KEY = 'webcrafft_token';
@@ -316,6 +309,49 @@
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('tab-' + name).classList.add('active');
+    if (name === 'ustawienia') loadSettings();
+  }
+
+  const settingsLabels = {
+    cena_wizytowkowa: 'Strona wizytówkowa (zł)',
+    cena_landing: 'Landing page (zł)',
+    cena_firmowa: 'Strona firmowa (zł)',
+    cena_logo: 'Logo i identyfikacja (zł)',
+    cena_social: 'Grafiki social media (zł/szt.)'
+  };
+
+  async function loadSettings() {
+    const res = await fetch('/.netlify/functions/settings');
+    const data = await res.json();
+    const form = document.getElementById('settings-form');
+    form.innerHTML = Object.entries(settingsLabels).map(([key, label]) => `
+      <div>
+        <label style="display:block;font-size:.8rem;color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:1px">${label}</label>
+        <input id="set-${key}" value="${data[key] || ''}"
+          style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.65rem 1rem;color:var(--text);font-size:.95rem;outline:none;transition:border-color .2s"
+          onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'" />
+      </div>
+    `).join('');
+    document.getElementById('save-btn').style.display = 'block';
+  }
+
+  async function saveSettings() {
+    const token = localStorage.getItem(TOKEN_KEY);
+    const updates = {};
+    Object.keys(settingsLabels).forEach(key => {
+      const el = document.getElementById('set-' + key);
+      if (el) updates[key] = el.value;
+    });
+    const res = await fetch('/.netlify/functions/settings', {
+      method: 'POST',
+      headers: { 'x-admin-token': token },
+      body: JSON.stringify(updates)
+    });
+    if (res.ok) {
+      const msg = document.getElementById('save-msg');
+      msg.style.display = 'block';
+      setTimeout(() => msg.style.display = 'none', 3000);
+    }
   }
 </script>
 </body>
