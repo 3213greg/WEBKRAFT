@@ -1223,7 +1223,7 @@
     <div class="cennik-card reveal">
       <div class="cennik-icon">🏢</div>
       <h3>Strona wizytówkowa</h3>
-      <div class="cennik-price">250 <span>zł</span></div>
+      <div class="cennik-price"><span data-price-key="cena_wizytowkowa"></span>250</span> <span>zł</span></div>
       <p>Prosta, elegancka strona dla firmy lub freelancera. Idealna do prezentacji usług i kontaktu.</p>
       <ul class="cennik-features">
         <li>Projekt graficzny</li>
@@ -1238,7 +1238,7 @@
       <div class="featured-badge">⭐ Najpopularniejsze</div>
       <div class="cennik-icon">🚀</div>
       <h3>Strona firmowa</h3>
-      <div class="cennik-price">400 <span>zł</span></div>
+      <div class="cennik-price"><span data-price-key="cena_firmowa"></span>400</span> <span>zł</span></div>
       <p>Rozbudowana strona z wieloma sekcjami – oferta, o firmie, realizacje, kontakt.</p>
       <ul class="cennik-features">
         <li>Indywidualny projekt</li>
@@ -1254,7 +1254,7 @@
     <div class="cennik-card reveal">
       <div class="cennik-icon">🛒</div>
       <h3>Landing page</h3>
-      <div class="cennik-price">350 <span>zł</span></div>
+      <div class="cennik-price"><span data-price-key="cena_landing"></span>350</span> <span>zł</span></div>
       <p>Jednostronicowa strona nastawiona na konwersję – idealna do kampanii reklamowych.</p>
       <ul class="cennik-features">
         <li>Projekt pod konwersję</li>
@@ -1270,7 +1270,7 @@
     <div class="cennik-card reveal">
       <div class="cennik-icon">🎨</div>
       <h3>Logo i identyfikacja</h3>
-      <div class="cennik-price">50–100 <span>zł</span></div>
+      <div class="cennik-price"><span data-price-key="cena_logo"></span>50–100</span> <span>zł</span></div>
       <p>Profesjonalne logo dla firmy lub marki osobistej. Pliki gotowe do druku i internetu.</p>
       <ul class="cennik-features">
         <li>Projekt od zera</li>
@@ -1285,7 +1285,7 @@
       <div class="featured-badge">⭐ Najpopularniejsze</div>
       <div class="cennik-icon">📱</div>
       <h3>Grafiki social media</h3>
-      <div class="cennik-price">30 <span>zł / szt.</span></div>
+      <div class="cennik-price"><span data-price-key="cena_social"></span>30</span> <span>zł / szt.</span></div>
       <p>Posty, stories, banery na Facebooka, Instagrama czy LinkedIn. Spójne wizualnie.</p>
       <ul class="cennik-features">
         <li>Posty i stories</li>
@@ -1613,9 +1613,9 @@
       <div class="kalk-group">
         <div class="kalk-label">Rodzaj strony</div>
         <div class="kalk-btns">
-          <button class="kalk-btn active" data-group="typ" data-val="250" onclick="kalkSelect(this)">Wizytówkowa<br><small>250 zł</small></button>
-          <button class="kalk-btn" data-group="typ" data-val="350" onclick="kalkSelect(this)">Landing page<br><small>350 zł</small></button>
-          <button class="kalk-btn" data-group="typ" data-val="400" onclick="kalkSelect(this)">Firmowa<br><small>400 zł</small></button>
+          <button class="kalk-btn active" data-group="typ" data-val="250" data-price-ref="cena_wizytowkowa" onclick="kalkSelect(this)">Wizytówkowa<br><small>250 zł</small></button>
+          <button class="kalk-btn" data-group="typ" data-val="350" data-price-ref="cena_landing" onclick="kalkSelect(this)">Landing page<br><small>350 zł</small></button>
+          <button class="kalk-btn" data-group="typ" data-val="400" data-price-ref="cena_firmowa" onclick="kalkSelect(this)">Firmowa<br><small>400 zł</small></button>
         </div>
       </div>
       <div class="kalk-group">
@@ -1821,11 +1821,21 @@
     const btn = cartForm.querySelector('.cart-submit');
     btn.textContent = 'Wysyłanie...';
     btn.disabled = true;
-    const res = await fetch(cartForm.action, {
+
+    const zamowienie = cart.map(i => i.name + ' – ' + i.price + ' zł').join(', ');
+    const total = cart.reduce((s, i) => s + i.price, 0);
+
+    const res = await fetch('/.netlify/functions/order', {
       method: 'POST',
-      body: new FormData(cartForm),
-      headers: { 'Accept': 'application/json' }
+      body: JSON.stringify({
+        imie: cartForm.querySelector('[name="imie"]').value,
+        email: cartForm.querySelector('[name="email"]').value,
+        telefon: cartForm.querySelector('[name="telefon"]').value,
+        zamowienie: zamowienie + ' | Razem: ' + total + ' zł',
+        uwagi: cartForm.querySelector('[name="uwagi"]').value
+      })
     });
+
     if (res.ok) {
       document.getElementById('cart-success').style.display = 'block';
       cartForm.reset();
@@ -1871,10 +1881,15 @@
     const btn = contactForm.querySelector('button[type="submit"]');
     btn.textContent = 'Wysyłanie...';
     btn.disabled = true;
-    const res = await fetch(contactForm.action, {
+    const res = await fetch('/.netlify/functions/contact', {
       method: 'POST',
-      body: new FormData(contactForm),
-      headers: { 'Accept': 'application/json' }
+      body: JSON.stringify({
+        imie: contactForm.querySelector('[name="imie"]').value,
+        email: contactForm.querySelector('[name="email"]').value,
+        telefon: contactForm.querySelector('[name="telefon"]')?.value || '',
+        rodzaj_strony: contactForm.querySelector('[name="rodzaj_strony"]')?.value || '',
+        wiadomosc: contactForm.querySelector('[name="wiadomosc"]').value
+      })
     });
     if (res.ok) {
       document.getElementById('formSuccess').style.display = 'block';
@@ -1927,8 +1942,36 @@
     document.getElementById('kalk-total').textContent = total + ' zł';
   }
 
-  // POPUP
-  function closePopup() {
+  // POBIERZ CENY Z PANELU ADMINA
+  async function loadPrices() {
+    try {
+      const res = await fetch('/.netlify/functions/settings');
+      const data = await res.json();
+      const sets = [
+        { key: 'cena_wizytowkowa', val: '250', kalkGroup: 'typ' },
+        { key: 'cena_landing',     val: '350', kalkGroup: 'typ' },
+        { key: 'cena_firmowa',     val: '400', kalkGroup: 'typ' },
+      ];
+      sets.forEach(s => {
+        if (!data[s.key]) return;
+        // cennik ceny
+        document.querySelectorAll(`[data-price-key="${s.key}"]`).forEach(el => el.textContent = data[s.key] + ' zł');
+        // kalkulator przyciski
+        document.querySelectorAll(`[data-price-ref="${s.key}"]`).forEach(el => {
+          el.dataset.val = data[s.key];
+          const sm = el.querySelector('small');
+          if (sm) sm.textContent = data[s.key] + ' zł';
+        });
+      });
+      if (data.cena_logo) document.querySelectorAll('[data-price-key="cena_logo"]').forEach(el => el.textContent = data.cena_logo + ' zł');
+      if (data.cena_social) document.querySelectorAll('[data-price-key="cena_social"]').forEach(el => el.textContent = data.cena_social + ' zł / szt.');
+      // odśwież domyślną wartość kalkulatora
+      const activeTyp = document.querySelector('.kalk-btn.active[data-group="typ"]');
+      if (activeTyp) kalkVals.typ = parseInt(activeTyp.dataset.val);
+      document.getElementById('kalk-total').textContent = Object.values(kalkVals).reduce((a,b)=>a+b,0) + ' zł';
+    } catch(e) {}
+  }
+  loadPrices();
     document.getElementById('popup').classList.remove('open');
     document.getElementById('popup-overlay').classList.remove('open');
     localStorage.setItem('popup_shown', '1');
