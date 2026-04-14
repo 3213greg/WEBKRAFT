@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236c63ff'/><text y='72' x='50' text-anchor='middle' font-size='58' font-family='Segoe UI,sans-serif' font-weight='900' fill='white'>W</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236c63ff'/><text y='72' x='50' text-anchor='middle' font-size='58' font-family='Segoe UI,sans-serif' font-weight='900' fill='white'>S</text></svg>" />
   <title>Tworzenie Stron Internetowych na Zamówienie | SiteWorks – Kuba Leśkiewicz</title>
   <meta name="description" content="Profesjonalne strony internetowe na zamówienie – wizytówki, strony firmowe, landing page. Szybka realizacja, dobra cena. Zadzwoń: 881 578 996" />
   <meta name="keywords" content="strony internetowe na zamówienie, tworzenie stron internetowych, strona firmowa, strona wizytówkowa, landing page, tanie strony www" />
@@ -1079,6 +1079,7 @@
     <li><a href="#contact">Kontakt</a></li>
   </ul>
   <a href="#contact" class="btn btn-accent nav-cta">Zamów stronę</a>
+  <button id="lang-toggle" onclick="toggleLang()" title="Change language" style="background:none;border:1px solid var(--border);color:var(--text-muted);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:0.75rem;font-weight:700;transition:all 0.2s;flex-shrink:0;">PL</button>
   <button id="darkmode-toggle" onclick="toggleDark()" title="Zmień motyw" style="background:none;border:1px solid var(--border);color:var(--text-muted);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all 0.2s;flex-shrink:0;">🌙</button>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -1972,6 +1973,8 @@
     } catch(e) {}
   }
   loadPrices();
+  
+  function closePopup() {
     document.getElementById('popup').classList.remove('open');
     document.getElementById('popup-overlay').classList.remove('open');
     localStorage.setItem('popup_shown', '1');
@@ -1982,6 +1985,21 @@
       document.getElementById('popup-overlay').classList.add('open');
     }, 8000);
   }
+
+  // LANGUAGE TOGGLE
+  function toggleLang() {
+    const currentLang = localStorage.getItem('lang') || 'pl';
+    const newLang = currentLang === 'pl' ? 'en' : 'pl';
+    localStorage.setItem('lang', newLang);
+    document.getElementById('lang-toggle').textContent = newLang.toUpperCase();
+    
+    if (newLang === 'en') {
+      alert('English version coming soon! 🇬🇧\n\nFor now, please use Google Translate or contact me in English: 881 578 996');
+    }
+  }
+  // Load saved language
+  const savedLang = localStorage.getItem('lang') || 'pl';
+  document.getElementById('lang-toggle').textContent = savedLang.toUpperCase();
 </script>
 <!-- KOSZYK FLOATING -->
 <div id="cart-bubble" onclick="toggleCart()" title="Koszyk">
