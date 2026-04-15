@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admina – SiteWorks</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0d0d0f; color: #e8e8f0; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+
+    /* LOGIN */
+    #login-screen { width: 100%; max-width: 380px; padding: 20px; }
+    .login-box { background: #141417; border: 1px solid #2a2a32; border-radius: 16px; padding: 40px 32px; }
+    .login-box h1 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .login-box p { color: #888; font-size: 0.85rem; margin-bottom: 2rem; }
+    .login-box label { display: block; font-size: 0.8rem; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .login-box input { width: 100%; background: #1c1c21; border: 1px solid #2a2a32; border-radius: 8px; padding: 10px 14px; color: #e8e8f0; font-size: 0.95rem; font-family: inherit; outline: none; margin-bottom: 16px; transition: border-color 0.2s; }
+    .login-box input:focus { border-color: #6c63ff; }
+    .login-box button { width: 100%; padding: 12px; background: #6c63ff; color: #fff; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+    .login-box button:hover { background: #574fd6; }
+    .login-error { color: #e63946; font-size: 0.85rem; margin-top: 10px; text-align: center; display: none; }
+
+    /* PANEL */
+    #panel-screen { display: none; width: 100%; max-width: 560px; padding: 20px; }
+    .panel-box { background: #141417; border: 1px solid #2a2a32; border-radius: 16px; padding: 40px 32px; }
+    .panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
+    .panel-header h1 { font-size: 1.3rem; font-weight: 800; }
+    .panel-header span { color: #6c63ff; }
+    .logout-btn { background: transparent; border: 1px solid #2a2a32; color: #888; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-family: inherit; transition: all 0.2s; }
+    .logout-btn:hover { border-color: #e63946; color: #e63946; }
+
+    .price-group { margin-bottom: 20px; }
+    .price-group label { display: block; font-size: 0.8rem; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .price-row { display: flex; gap: 10px; align-items: center; }
+    .price-row input { flex: 1; background: #1c1c21; border: 1px solid #2a2a32; border-radius: 8px; padding: 10px 14px; color: #e8e8f0; font-size: 1rem; font-family: inherit; outline: none; transition: border-color 0.2s; }
+    .price-row input:focus { border-color: #6c63ff; }
+    .price-row span { color: #888; font-size: 0.9rem; white-space: nowrap; }
+
+    .save-btn { width: 100%; padding: 13px; background: #6c63ff; color: #fff; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; margin-top: 10px; }
+    .save-btn:hover { background: #574fd6; }
+    .save-btn:disabled { background: #3a3a4a; cursor: not-allowed; }
+
+    .msg { margin-top: 14px; padding: 12px; border-radius: 8px; text-align: center; font-weight: 600; font-size: 0.9rem; display: none; }
+    .msg.ok { background: rgba(39,174,96,0.1); border: 1px solid rgba(39,174,96,0.3); color: #2ecc71; }
+    .msg.err { background: rgba(230,57,70,0.1); border: 1px solid rgba(230,57,70,0.3); color: #e63946; }
+
+    .loading { text-align: center; color: #888; font-size: 0.9rem; padding: 20px 0; }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <h1>Panel <span style="color:#6c63ff">SiteWorks</span></h1>
+    <p>Zaloguj się, aby zarządzać cenami</p>
+    <label>Login</label>
+    <input type="text" id="login-input" placeholder="login" />
+    <label>Hasło</label>
+    <input type="password" id="pass-input" placeholder="hasło" onkeydown="if(event.key==='Enter')doLogin()" />
+    <button onclick="doLogin()">Zaloguj się</button>
+    <div class="login-error" id="login-error">Nieprawidłowy login lub hasło</div>
+  </div>
+</div>
+
+<!-- PANEL -->
+<div id="panel-screen">
+  <div class="panel-box">
+    <div class="panel-header">
+      <h1>Ceny – <span>SiteWorks</span></h1>
+      <button class="logout-btn" onclick="doLogout()">Wyloguj</button>
+    </div>
+
+    <div id="panel-loading" class="loading">Ładowanie cen...</div>
+    <div id="panel-form" style="display:none">
+      <div class="price-group">
+        <label>Strona wizytówkowa</label>
+        <div class="price-row">
+          <input type="number" id="p-wizytowkowa" min="0" />
+          <span>zł</span>
+        </div>
+      </div>
+      <div class="price-group">
+        <label>Strona firmowa</label>
+        <div class="price-row">
+          <input type="number" id="p-firmowa" min="0" />
+          <span>zł</span>
+        </div>
+      </div>
+      <div class="price-group">
+        <label>Landing page</label>
+        <div class="price-row">
+          <input type="number" id="p-landing" min="0" />
+          <span>zł</span>
+        </div>
+      </div>
+      <div class="price-group">
+        <label>Logo i identyfikacja</label>
+        <div class="price-row">
+          <input type="number" id="p-logo" min="0" />
+          <span>zł</span>
+        </div>
+      </div>
+      <div class="price-group">
+        <label>Grafiki social media (za sztukę)</label>
+        <div class="price-row">
+          <input type="number" id="p-social" min="0" />
+          <span>zł / szt.</span>
+        </div>
+      </div>
+
+      <button class="save-btn" id="save-btn" onclick="savePrices()">💾 Zapisz ceny</button>
+      <div class="msg" id="msg"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const SUPA_URL = 'https://cnqhvtluramdhktvkect.supabase.co';
+  const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNucWh2dGx1cmFtZGhrdHZrZWN0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMzY1NzIsImV4cCI6MjA5MTgxMjU3Mn0.RigkQC9omwIzRI3gXa7Uo16RnnS8eg6MEAp7hfI6H_w';
+  const LOGIN = 'kuba2115';
+  const PASS  = 'kuba2115PL@';
+
+  const KEYS = [
+    { key: 'cena_wizytowkowa', id: 'p-wizytowkowa' },
+    { key: 'cena_firmowa',     id: 'p-firmowa' },
+    { key: 'cena_landing',     id: 'p-landing' },
+    { key: 'cena_logo',        id: 'p-logo' },
+    { key: 'cena_social',      id: 'p-social' },
+  ];
+
+  // sprawdź czy zalogowany
+  if (sessionStorage.getItem('sw_admin') === '1') showPanel();
+
+  function doLogin() {
+    const l = document.getElementById('login-input').value.trim();
+    const p = document.getElementById('pass-input').value;
+    if (l === LOGIN && p === PASS) {
+      sessionStorage.setItem('sw_admin', '1');
+      showPanel();
+    } else {
+      document.getElementById('login-error').style.display = 'block';
+    }
+  }
+
+  function doLogout() {
+    sessionStorage.removeItem('sw_admin');
+    document.getElementById('panel-screen').style.display = 'none';
+    document.getElementById('login-screen').style.display = 'flex';
+    document.body.style.alignItems = 'center';
+  }
+
+  function showPanel() {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('panel-screen').style.display = 'block';
+    document.body.style.alignItems = 'flex-start';
+    loadPrices();
+  }
+
+  async function loadPrices() {
+    try {
+      const res = await fetch(`${SUPA_URL}/rest/v1/ceny?select=klucz,wartosc`, {
+        headers: { 'apikey': SUPA_KEY, 'Authorization': `Bearer ${SUPA_KEY}` }
+      });
+      const rows = await res.json();
+      document.getElementById('panel-loading').style.display = 'none';
+      document.getElementById('panel-form').style.display = 'block';
+      if (Array.isArray(rows)) {
+        rows.forEach(r => {
+          const field = KEYS.find(k => k.key === r.klucz);
+          if (field) document.getElementById(field.id).value = r.wartosc;
+        });
+      }
+    } catch(e) {
+      document.getElementById('panel-loading').textContent = 'Błąd połączenia z bazą danych.';
+    }
+  }
+
+  async function savePrices() {
+    const btn = document.getElementById('save-btn');
+    btn.disabled = true;
+    btn.textContent = 'Zapisywanie...';
+
+    try {
+      for (const k of KEYS) {
+        const val = parseInt(document.getElementById(k.id).value);
+        if (isNaN(val)) continue;
+        await fetch(`${SUPA_URL}/rest/v1/ceny?klucz=eq.${k.key}`, {
+          method: 'PATCH',
+          headers: {
+            'apikey': SUPA_KEY,
+            'Authorization': `Bearer ${SUPA_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({ wartosc: val })
+        });
+      }
+      showMsg('✅ Ceny zapisane!', 'ok');
+    } catch(e) {
+      showMsg('❌ Błąd zapisu. Spróbuj ponownie.', 'err');
+    }
+
+    btn.disabled = false;
+    btn.textContent = '💾 Zapisz ceny';
+  }
+
+  function showMsg(text, type) {
+    const el = document.getElementById('msg');
+    el.textContent = text;
+    el.className = 'msg ' + type;
+    el.style.display = 'block';
+    setTimeout(() => el.style.display = 'none', 3000);
+  }
+</script>
+</body>
+</html>
