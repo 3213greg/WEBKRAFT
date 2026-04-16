@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Piekarnia XXX – XXX | Świeże Pieczywo</title>
+  <meta name="description" content="Piekarnia XXX. Świeże pieczywo wypiekane tradycyjnymi metodami." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --brown: #3d1f0a;
+      --cream: #f5f0e8;
+      --dark: #1a0f05;
+      --text: #2a1a0a;
+      --text-muted: #8a7060;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,15,5,0.95);
+      backdrop-filter: blur(12px);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.7); font-size: 0.88rem; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-btn {
+      background: var(--gold); color: var(--dark);
+      padding: 0.6rem 1.4rem; border-radius: 6px;
+      font-weight: 600; font-size: 0.88rem; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover { background: var(--gold-light); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: white; }
+
+    /* HERO */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(135deg, #1a0f05 0%, #3d1f0a 40%, #1a0f05 100%);
+      overflow: hidden;
+    }
+    .hero-video::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(61,31,10,0.8) 0%, transparent 60%);
+      animation: heroGlow 6s ease-in-out infinite alternate;
+    }
+    @keyframes heroGlow {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    @keyframes zoomBg {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+    .hero-particles {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .particle {
+      position: absolute; width: 3px; height: 3px;
+      background: var(--gold); border-radius: 50%; opacity: 0;
+      animation: float linear infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, rgba(26,15,5,0.5) 0%, rgba(26,15,5,0.3) 50%, rgba(26,15,5,0.8) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; color: white;
+      padding: 100px 5% 60px;
+      max-width: 800px;
+    }
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid rgba(201,168,76,0.6);
+      color: var(--gold);
+      padding: 0.4rem 1.2rem; border-radius: 20px;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900; line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero-content h1 span { color: var(--gold); }
+    .hero-content p {
+      font-size: 1.1rem; color: rgba(255,255,255,0.8);
+      max-width: 560px; margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-gold {
+      background: var(--gold); color: var(--dark);
+      padding: 1rem 2.5rem; border-radius: 6px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: all 0.3s; display: inline-block;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline-white {
+      background: transparent; color: white;
+      border: 2px solid rgba(255,255,255,0.4);
+      padding: 1rem 2.5rem; border-radius: 6px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      transition: all 0.3s; display: inline-block;
+    }
+    .btn-outline-white:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-scroll {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+      z-index: 2; color: rgba(255,255,255,0.5); font-size: 0.8rem;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll::after { content: '↓'; font-size: 1.2rem; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+    /* STATS */
+    #stats {
+      background: var(--dark);
+      padding: 3rem 5%;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2rem; text-align: center;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .stat-item { color: white; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--gold); }
+    .stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* SECTIONS */
+    section { padding: 80px 5%; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 1rem; color: var(--brown); }
+    .section-desc { color: var(--text-muted); max-width: 560px; font-size: 1rem; line-height: 1.7; }
+    .section-header { margin-bottom: 3.5rem; }
+
+    /* O NAS */
+    #o-nas { background: white; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img {
+      width: 100%; height: 500px; object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 30px 80px rgba(61,31,10,0.2);
+    }
+    .about-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--gold); color: var(--dark);
+      padding: 1.5rem; border-radius: 12px;
+      text-align: center; font-weight: 700;
+      box-shadow: 0 10px 30px rgba(201,168,76,0.4);
+    }
+    .about-badge .num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; line-height: 1; }
+    .about-badge .txt { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .about-text p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.2rem; }
+    .about-features { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+    .about-features li { display: flex; align-items: center; gap: 0.8rem; font-weight: 500; }
+    .about-features li::before { content: '✦'; color: var(--gold); font-size: 0.8rem; }
+
+    /* PRODUKTY */
+    #produkty { background: var(--cream); }
+    .produkty-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .produkt-card {
+      background: white; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(61,31,10,0.08);
+      transition: all 0.3s;
+    }
+    .produkt-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(61,31,10,0.15); }
+    .produkt-img { width: 100%; height: 220px; object-fit: cover; }
+    .produkt-info { padding: 1.5rem; }
+    .produkt-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--brown); }
+    .produkt-info p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+    .produkt-tag { display: inline-block; background: rgba(201,168,76,0.15); color: var(--gold); font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 4px; margin-top: 0.8rem; }
+
+    /* GALERIA */
+    #galeria { background: var(--dark); padding: 80px 0; }
+    #galeria .section-header { padding: 0 5%; }
+    #galeria .section-title { color: white; }
+    #galeria .section-label { color: var(--gold); }
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 250px 250px;
+      gap: 4px;
+      margin-top: 3rem;
+    }
+    .galeria-item { overflow: hidden; position: relative; cursor: pointer; }
+    .galeria-item:first-child { grid-column: span 2; grid-row: span 2; }
+    .galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .galeria-item:hover img { transform: scale(1.08); }
+    .galeria-overlay {
+      position: absolute; inset: 0;
+      background: rgba(201,168,76,0.7);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s;
+      font-size: 2rem;
+    }
+    .galeria-item:hover .galeria-overlay { opacity: 1; }
+
+    /* OPINIE */
+    #opinie { background: white; }
+    .opinie-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .opinia-card {
+      background: var(--cream); border-radius: 14px; padding: 2rem;
+      border-left: 4px solid var(--gold);
+      transition: transform 0.3s;
+    }
+    .opinia-card:hover { transform: translateY(-4px); }
+    .stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 1rem; }
+    .opinia-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; font-style: italic; margin-bottom: 1.2rem; }
+    .opinia-autor { font-weight: 700; color: var(--brown); font-size: 0.9rem; }
+    .opinia-date { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* KONTAKT */
+    #kontakt { background: var(--brown); color: white; }
+    #kontakt .section-title { color: white; }
+    .kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .kontakt-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .kontakt-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .kontakt-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+    .kontakt-item h3 { font-size: 0.8rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+    .kontakt-item p { font-size: 1rem; font-weight: 600; }
+    .kontakt-map { border-radius: 12px; overflow: hidden; height: 300px; }
+    .kontakt-map iframe { width: 100%; height: 100%; border: none; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark); color: rgba(255,255,255,0.5);
+      padding: 2rem 5%; text-align: center;
+      font-size: 0.82rem;
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+    footer span { color: var(--gold); }
+
+    .placeholder-img {
+      width: 100%; background: rgba(201,168,76,0.1);
+      border: 2px dashed rgba(201,168,76,0.4);
+      border-radius: 12px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.8rem; color: var(--gold); font-size: 0.9rem; font-weight: 600;
+      text-align: center; padding: 2rem;
+    }
+    .placeholder-img .ph-icon { font-size: 2.5rem; }
+    .placeholder-img.tall { height: 500px; }
+    .placeholder-img.medium { height: 220px; }
+    .placeholder-img.galeria-ph { width: 100%; height: 100%; min-height: 250px; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .about-grid, .kontakt-grid { grid-template-columns: 1fr; }
+      #stats { grid-template-columns: repeat(2, 1fr); }
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+      .galeria-item:first-child { grid-column: span 2; grid-row: span 1; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      #stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">🍞 Piekarnia XXX</a>
+  <ul class="nav-links">
+    <li><a href="#o-nas">O nas</a></li>
+    <li><a href="#produkty">Produkty</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#opinie">Opinie</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="tel:XXX" class="nav-btn">📞 Zadzwoń</a>
+  <button class="hamburger" onclick="this.nextElementSibling && document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO z wideo w tle -->
+<section id="hero">
+  <div class="hero-video">
+    <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;">
+      <source src="piekarnia10.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-particles" id="particles"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌾 Tradycja od pokoleń · XXX</div>
+    <h1>Piekarnia<br /><span>XXX</span></h1>
+    <p>Wypiekamy chleb tak jak robił to dziadek – z pasją, naturalnych składników i według sprawdzonych receptur. Poczuj smak prawdziwego pieczywa.</p>
+    <div class="hero-btns">
+      <a href="#produkty" class="btn-gold">🍞 Zobacz produkty</a>
+      <a href="#kontakt" class="btn-outline-white">📍 Znajdź nas</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Przewiń w dół</div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stat-item reveal">
+    <div class="stat-num">70+</div>
+    <div class="stat-label">Lat tradycji</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">4.7★</div>
+    <div class="stat-label">Ocena Google</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">199</div>
+    <div class="stat-label">Opinii klientów</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Naturalne składniki</div>
+  </div>
+</div>
+
+<!-- O NAS -->
+<section id="o-nas">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <div class="placeholder-img tall">
+        <div class="ph-icon">📸</div>
+        <div>Wasze zdjęcie<br><small style="opacity:0.7">np. wnętrze piekarni, piec, zespół</small></div>
+      </div>
+      <div class="about-badge">
+        <div class="num">70+</div>
+        <div class="txt">Lat tradycji</div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-label">Nasza historia</div>
+      <h2 class="section-title">Smak, który pamiętasz z dzieciństwa</h2>
+      <p>Piekarnia Mojego Dziadka to miejsce, gdzie czas się zatrzymał. Każdy bochenek chleba wypiekamy z miłością, używając tylko naturalnych składników i sprawdzonych receptur przekazywanych z pokolenia na pokolenie.</p>
+      <p>Gdy wchodzisz do naszej piekarni, czujesz ten wyjątkowy zapach świeżego pieczywa – taki sam jak 70 lat temu, gdy dziadek rozpalał pierwszy piec.</p>
+      <ul class="about-features">
+        <li>Naturalne składniki bez konserwantów</li>
+        <li>Tradycyjne receptury od pokoleń</li>
+        <li>Świeże pieczywo każdego dnia</li>
+        <li>Chleb na zakwasie własnej produkcji</li>
+        <li>Dostawa i zamówienia na wesela</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUKTY -->
+<section id="produkty">
+  <div class="section-header reveal">
+    <div class="section-label">Nasze wypieki</div>
+    <h2 class="section-title">Prosto z pieca</h2>
+    <p class="section-desc">Każdy produkt wypiekamy codziennie rano, żebyś zawsze dostał świeże pieczywo.</p>
+  </div>
+  <div class="produkty-grid">
+    <div class="produkt-card reveal">
+      <div class="placeholder-img medium">
+        <div class="ph-icon">📸</div>
+        <div>Wasze zdjęcie<br><small>Chleb Wiejski Dziadka</small></div>
+      </div>
+      <div class="produkt-info">
+        <h3>Chleb Wiejski Dziadka</h3>
+        <p>Nasz flagowy produkt. Wypiekany na naturalnym zakwasie, z chrupiącą skórką i miękkim wnętrzem. Smakuje jak z dzieciństwa.</p>
+        <span class="produkt-tag">⭐ Bestseller</span>
+      </div>
+    </div>
+    <div class="produkt-card reveal">
+      <div class="placeholder-img medium">
+        <div class="ph-icon">📸</div>
+        <div>Wasze zdjęcie<br><small>Świeże Bułki</small></div>
+      </div>
+      <div class="produkt-info">
+        <h3>Świeże Bułki</h3>
+        <p>Chrupiące na zewnątrz, miękkie w środku. Idealne na śniadanie. Dostępne codziennie od 6:00 rano.</p>
+        <span class="produkt-tag">🌅 Codziennie świeże</span>
+      </div>
+    </div>
+    <div class="produkt-card reveal">
+      <div class="placeholder-img medium">
+        <div class="ph-icon">📸</div>
+        <div>Wasze zdjęcie<br><small>Chleb Razowy</small></div>
+      </div>
+      <div class="produkt-info">
+        <h3>Chleb Razowy</h3>
+        <p>Pełnoziarnisty, zdrowy i sycący. Bogaty w błonnik i składniki odżywcze. Polecany przez dietetyków.</p>
+        <span class="produkt-tag">💚 Zdrowy wybór</span>
+      </div>
+    </div>
+    <div class="produkt-card reveal">
+      <div class="placeholder-img medium">
+        <div class="ph-icon">📸</div>
+        <div>Wasze zdjęcie<br><small>Wyroby Cukiernicze</small></div>
+      </div>
+      <div class="produkt-info">
+        <h3>Wyroby Cukiernicze</h3>
+        <p>Drożdżówki, rogale, makowce i inne słodkości. Idealne na każdą okazję – wesela, urodziny, chrzciny.</p>
+        <span class="produkt-tag">🎂 Na zamówienie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria">
+  <div class="section-header reveal">
+    <div class="section-label">Galeria</div>
+    <h2 class="section-title" style="color:white">Zajrzyj do naszej piekarni</h2>
+  </div>
+  <div class="galeria-grid">
+    <div class="galeria-item">
+      <div class="placeholder-img galeria-ph"><div class="ph-icon">📸</div><div>Wasze zdjęcie</div></div>
+      <div class="galeria-overlay">🍞</div>
+    </div>
+    <div class="galeria-item">
+      <div class="placeholder-img galeria-ph"><div class="ph-icon">📸</div><div>Wasze zdjęcie</div></div>
+      <div class="galeria-overlay">🌾</div>
+    </div>
+    <div class="galeria-item">
+      <div class="placeholder-img galeria-ph"><div class="ph-icon">📸</div><div>Wasze zdjęcie</div></div>
+      <div class="galeria-overlay">✨</div>
+    </div>
+    <div class="galeria-item">
+      <div class="placeholder-img galeria-ph"><div class="ph-icon">📸</div><div>Wasze zdjęcie</div></div>
+      <div class="galeria-overlay">❤️</div>
+    </div>
+    <div class="galeria-item">
+      <div class="placeholder-img galeria-ph"><div class="ph-icon">📸</div><div>Wasze zdjęcie</div></div>
+      <div class="galeria-overlay">🎂</div>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIE -->
+<section id="opinie">
+  <div class="section-header reveal">
+    <div class="section-label">Opinie klientów</div>
+    <h2 class="section-title">Co mówią o nas klienci?</h2>
+    <p class="section-desc">4.7/5 na podstawie 199 opinii Google. Dziękujemy za każde słowo!</p>
+  </div>
+  <div class="opinie-grid">
+    <div class="opinia-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="opinia-text">"Kupiłem chleb wiejski, smakuje wspaniale. Po wejściu do piekarni chleb, bułki pachną, cały sklep pachnie tak jak bym się cofnął o 50 lat, czyli smaki z dzieciństwa."</p>
+      <div class="opinia-autor">Krzysztof Woźniak</div>
+      <div class="opinia-date">2 miesiące temu · Google</div>
+    </div>
+    <div class="opinia-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="opinia-text">"Zamawiałam w tej piekarni chleb na wesele i wszystko było świetnie. Obsługa bardzo pomocna i miła, pani za ladą świetnie doradziła chleb dziadka i wiejski."</p>
+      <div class="opinia-autor">Anna</div>
+      <div class="opinia-date">5 miesięcy temu · Google</div>
+    </div>
+    <div class="opinia-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="opinia-text">"Najlepszy chleb w Radomiu! Chodzę tu od lat i nigdy się nie zawiodłem. Polecam szczególnie chleb na zakwasie – niesamowity smak i aromat."</p>
+      <div class="opinia-autor">Marek K.</div>
+      <div class="opinia-date">1 miesiąc temu · Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="section-header reveal">
+    <div class="section-label">Znajdź nas</div>
+    <h2 class="section-title">Odwiedź nas w XXX</h2>
+  </div>
+  <div class="kontakt-grid">
+    <div class="kontakt-info reveal">
+      <div class="kontakt-item">
+        <div class="kontakt-icon">📍</div>
+        <div>
+          <h3>Adres</h3>
+          <p>Andrzeja Struga XXX<br>XX-XXX XXX</p>
+        </div>
+      </div>
+      <div class="kontakt-item">
+        <div class="kontakt-icon">📞</div>
+        <div>
+          <h3>Telefon</h3>
+          <p><a href="tel:XXX" style="color:white">XXX XXX XXX</a></p>
+        </div>
+      </div>
+      <div class="kontakt-item">
+        <div class="kontakt-icon">🕐</div>
+        <div>
+          <h3>Godziny otwarcia</h3>
+          <p>Pon–Pt: 06:00–18:00<br>Sob: 06:00–14:00<br>Niedz: Zamknięte</p>
+        </div>
+      </div>
+      <div class="kontakt-item">
+        <div class="kontakt-icon">🎂</div>
+        <div>
+          <h3>Zamówienia specjalne</h3>
+          <p>Wesela, urodziny, chrzciny<br>Zadzwoń i zapytaj o wycenę</p>
+        </div>
+      </div>
+      <a href="tel:XXX" class="btn-gold" style="width:fit-content;margin-top:1rem;">📞 Zadzwoń: XXX XXX XXX</a>
+    </div>
+    <div class="kontakt-map reveal">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2468.5!2d21.1471!3d51.4027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDI0JzA5LjciTiAyMcKwMDgnNDkuNiJF!5e0!3m2!1spl!2spl!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Piekarnia XXX</span> · ul. XXX, XXX · Tel: XXX XXX XXX</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;">Strona wykonana przez <span>SiteWorks.pl</span></p>
+</footer>
+
+<script>
+  // REVEAL ANIMATION
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // PARTICLES
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.width = p.style.height = (Math.random() * 4 + 2) + 'px';
+    p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    p.style.opacity = Math.random() * 0.5;
+    container.appendChild(p);
+  }
+</script>
+</body>
+</html>
