@@ -53,6 +53,20 @@
       background: radial-gradient(circle, rgba(0,229,200,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
+    #hero-video {
+      position: absolute; inset: 0; z-index: 0; overflow: hidden;
+    }
+    #hero-video video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.35;
+      transition: opacity 1s ease;
+    }
+    #hero-video video.hidden { opacity: 0; }
+    #hero-video::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,12,12,0.7) 0%, rgba(10,26,24,0.5) 60%, rgba(8,12,12,0.7) 100%);
+    }
     #hero::after {
       content: 'PEAK';
       position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
@@ -282,6 +296,14 @@
 
 <!-- HERO -->
 <section id="hero">
+  <div id="hero-video">
+    <video id="vid1" autoplay muted playsinline>
+      <source src="fintes1.mp4" type="video/mp4" />
+    </video>
+    <video id="vid2" muted playsinline class="hidden">
+      <source src="fitnes2.mp4" type="video/mp4" />
+    </video>
+  </div>
   <div class="hero-inner">
     <div class="hero-tag">Klub fitness · Warszawa · Otwarte 24/7</div>
     <h1>Przekrocz<br/><span>swoje</span><br/>granice</h1>
@@ -758,6 +780,31 @@
   const navLinks = document.getElementById('navLinks');
   hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Video switcher — przełącza między fintes1 i fitnes2
+  const vid1 = document.getElementById('vid1');
+  const vid2 = document.getElementById('vid2');
+  let current = 1;
+
+  function switchVideo() {
+    if (current === 1) {
+      vid2.currentTime = 0;
+      vid2.play();
+      vid2.classList.remove('hidden');
+      vid1.classList.add('hidden');
+      current = 2;
+      vid2.onended = switchVideo;
+    } else {
+      vid1.currentTime = 0;
+      vid1.play();
+      vid1.classList.remove('hidden');
+      vid2.classList.add('hidden');
+      current = 1;
+      vid1.onended = switchVideo;
+    }
+  }
+
+  vid1.onended = switchVideo;
 
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
