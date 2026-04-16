@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
@@ -139,6 +139,22 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+    }
+
+    #hero-video {
+      position: absolute; inset: 0; z-index: 0; overflow: hidden;
+    }
+    #hero-video video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.18;
+    }
+    #hero-video::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(108,99,255,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(108,99,255,0.12) 0%, transparent 50%),
+        rgba(13,13,15,0.75);
     }
 
     #hero::before {
@@ -1182,6 +1198,11 @@
 
 <!-- HERO -->
 <section id="hero" aria-label="Strona główna SiteWorks">
+  <div id="hero-video">
+    <video autoplay muted loop playsinline>
+      <source src="siteworks1.mp4" type="video/mp4" />
+    </video>
+  </div>
   <div class="hero-content">
     <div class="hero-badge">💻 Strony internetowe i grafika na zamówienie</div>
     <h1>Tworzenie stron internetowych<br />na zamówienie – <span>SiteWorks</span></h1>
