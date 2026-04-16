@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pogotowie Hydrauliczne Kraków 24h | +48 731 445 210</title>
+  <meta name="description" content="Pogotowie hydrauliczne i kanalizacyjne Kraków. Działamy 24h/7 dni w tygodniu. Awarie, udrażnianie, kamerowanie. Zadzwoń: +48 731 445 210" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1a6fc4;
+      --blue-dark: #1558a0;
+      --blue-light: #2980d9;
+      --bg: #0a0e14;
+      --bg2: #0f1520;
+      --bg3: #141c2a;
+      --text: #e8edf5;
+      --text-muted: #7a8a9e;
+      --border: #1e2a3a;
+      --red: #e74c3c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* TOP BAR */
+    .topbar {
+      background: var(--blue);
+      padding: 0.5rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .topbar p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.5px;
+    }
+
+    .topbar a {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,14,20,0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-main {
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .logo-main span { color: var(--blue-light); }
+
+    .logo-sub {
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.5rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: #c0392b; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(231,76,60,0.4); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover { border-color: var(--blue-light); color: var(--blue-light); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 5% 60px;
+      background:
+        linear-gradient(135deg, rgba(26,111,196,0.15) 0%, transparent 60%),
+        var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -300px; right: -300px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,111,196,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content { max-width: 680px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(231,76,60,0.15);
+      border: 1px solid rgba(231,76,60,0.4);
+      color: #e74c3c;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-content h1 span { color: var(--blue-light); }
+
+    .hero-location {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-btns .btn { padding: 1rem 2rem; font-size: 1rem; }
+
+    .hero-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+    }
+
+    .hero-phone-icon { font-size: 1.5rem; }
+
+    .hero-phone-text label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-phone-text a {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+
+    .hero-phone-text a:hover { color: var(--blue-light); }
+
+    /* AWARIE */
+    .awarie-bar {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 5%;
+    }
+
+    .awarie-label {
+      font-size: 0.68rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 1rem;
+    }
+
+    .awarie-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .awaria-tag {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .awaria-tag:hover { border-color: var(--blue); color: var(--text); }
+
+    /* SECTIONS */
+    section { padding: 80px 5%; }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+
+    .section-title span { color: var(--blue-light); }
+
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 560px;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .section-header { margin-bottom: 3rem; }
+
+    /* ABOUT */
+    #about { background: var(--bg2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .feature::before {
+      content: '✓';
+      color: var(--blue-light);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .about-visual {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+
+    .about-visual .big-icon { font-size: 4rem; margin-bottom: 1rem; }
+
+    .about-visual h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .about-visual p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 1.5rem;
+    }
+
+    .astat {
+      background: var(--bg3);
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .astat-num {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--blue-light);
+      line-height: 1;
+    }
+
+    .astat-label {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* SERVICES */
+    #services { background: var(--bg); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .service-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.8rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(26,111,196,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(26,111,196,0.1);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+
+    .service-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* PRICES */
+    #prices { background: var(--bg2); }
+
+    .prices-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .price-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .price-card:hover { border-color: var(--blue); }
+
+    .price-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .price-val {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--blue-light);
+      white-space: nowrap;
+    }
+
+    .prices-note {
+      background: rgba(26,111,196,0.08);
+      border: 1px solid rgba(26,111,196,0.2);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-item:hover { border-color: var(--blue); }
+    .contact-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+
+    .contact-item-text label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-item-text a,
+    .contact-item-text span {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    .contact-item-text a:hover { color: var(--blue-light); }
+
+    .contact-form {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+
+    .contact-form h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--blue); }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: var(--bg3); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-submit { width: 100%; padding: 0.9rem; font-size: 0.95rem; border-radius: 6px; }
+
+    .form-success {
+      display: none;
+      background: rgba(26,111,196,0.1);
+      border: 1px solid rgba(26,111,196,0.3);
+      color: var(--blue-light);
+      border-radius: 6px;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.88rem;
+      margin-top: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* FLOATING CALL */
+    .floating-call {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 999;
+    }
+
+    .floating-call a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--red);
+      color: #fff;
+      padding: 0.9rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 25px rgba(231,76,60,0.5);
+      transition: all 0.3s;
+    }
+
+    .floating-call a:hover {
+      background: #c0392b;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(231,76,60,0.6);
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-visual { order: -1; }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 64px; left: 0; right: 0;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 5%;
+        gap: 1.2rem;
+      }
+      .hamburger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .about-features { grid-template-columns: 1fr; }
+      .topbar { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <p>🕐 Działamy 24h / 7 dni w tygodniu – Kraków i okolice</p>
+  <a href="tel:+48731445210">📞 +48 731 445 210</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <span class="logo-main">Pogotowie <span>Hydrauliczne</span></span>
+    <span class="logo-sub">Kraków · 24h · 7 dni w tygodniu</span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">O nas</a></li>
+    <li><a href="#services">Usługi</a></li>
+    <li><a href="#prices">Cennik</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+  </ul>
+  <a href="tel:+48731445210" class="btn btn-red nav-cta">📞 Zadzwoń</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Dostępni teraz · 24h / 7 dni
+    </div>
+    <h1>Pogotowie<br /><span>Hydrauliczne</span><br />Kraków</h1>
+    <div class="hero-location">📍 Kraków i okolice · od 2015 roku</div>
+    <p>Awaria nie czeka – my też nie. Szybka reakcja na każdą awarię hydrauliczną i kanalizacyjną. Zadzwoń teraz, przyjedziemy.</p>
+    <div class="hero-btns">
+      <a href="tel:+48731445210" class="btn btn-red">📞 +48 731 445 210</a>
+      <a href="#services" class="btn btn-outline">Nasze usługi</a>
+    </div>
+    <div class="hero-phone">
+      <div class="hero-phone-icon">📞</div>
+      <div class="hero-phone-text">
+        <label>Zadzwoń teraz – działamy 24h</label>
+        <a href="tel:+48731445210">+48 731 445 210</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARIE BAR -->
+<div class="awarie-bar">
+  <div class="awarie-label">Najczęstsze awarie które usuwamy</div>
+  <div class="awarie-list">
+    <span class="awaria-tag">💧 Pęknięta rura</span>
+    <span class="awaria-tag">🚿 Nagły przeciek</span>
+    <span class="awaria-tag">🔩 Uszkodzona uszczelka</span>
+    <span class="awaria-tag">🚽 Zapchana kanalizacja</span>
+    <span class="awaria-tag">🛁 Wanna / umywalka</span>
+    <span class="awaria-tag">🏗️ Piony kanalizacyjne</span>
+    <span class="awaria-tag">📷 Kamerowanie kanalizacji</span>
+    <span class="awaria-tag">🔍 Szukanie nieszczelności</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="section-header">
+        <div class="section-eyebrow">O firmie</div>
+        <h2 class="section-title">Krakowska firma<br /><span>od 2015 roku</span></h2>
+        <p class="section-desc">Jesteśmy polską, krakowską firmą hydrauliczną z wieloletnim doświadczeniem. Działamy szybko, rzetelnie i skutecznie.</p>
+      </div>
+      <div class="about-text">
+        <p>Właściciel firmy: <strong>Tomasz Wiśniewski</strong><br />Kierownik Robót Hydraulicznych: <strong>Piotr Kowalczyk</strong></p>
+        <p>Specjalizujemy się w usuwaniu awarii hydraulicznych i kanalizacyjnych na terenie Krakowa i okolic. Działamy całą dobę, 7 dni w tygodniu – bo awaria nie pyta o porę.</p>
+      </div>
+      <div class="about-features">
+        <div class="feature">Działamy 24h / 7 dni</div>
+        <div class="feature">Szybki dojazd</div>
+        <div class="feature">Doświadczony zespół</div>
+        <div class="feature">Od 2011 roku</div>
+        <div class="feature">Wycena na miejscu</div>
+        <div class="feature">Nowoczesny sprzęt</div>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <div class="big-icon">🔧</div>
+      <h3>Pogotowie Hydrauliczne</h3>
+      <p>Kraków · ul. Długa 18/3</p>
+      <a href="tel:+48731445210" class="btn btn-red" style="margin-top:1rem;display:inline-block;">📞 Zadzwoń teraz</a>
+      <div class="about-stats">
+        <div class="astat">
+          <div class="astat-num">24h</div>
+          <div class="astat-label">Dostępność</div>
+        </div>
+        <div class="astat">
+          <div class="astat-num">7/7</div>
+          <div class="astat-label">Dni w tygodniu</div>
+        </div>
+        <div class="astat">
+          <div class="astat-num">2011</div>
+          <div class="astat-label">Rok założenia</div>
+        </div>
+        <div class="astat">
+          <div class="astat-num">⚡</div>
+          <div class="astat-label">Szybki dojazd</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Co robimy</div>
+    <h2 class="section-title">Nasze <span>usługi</span></h2>
+    <p class="section-desc">Kompleksowe usługi hydrauliczne i kanalizacyjne – od drobnych napraw po nowe instalacje.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🚽</div>
+      <h3>Udrażnianie kanalizacji</h3>
+      <p>Zapchana toaleta, umywalka, wanna, kratka w posadzce. Szybkie i skuteczne udrożnienie każdego odpływu.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📷</div>
+      <h3>Kamerowanie kanalizacji</h3>
+      <p>Inspekcja TV kamerą endoskopową – lokalizacja zatorów, pęknięć i nieszczelności w trudno dostępnych miejscach.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🔍</div>
+      <h3>Lokalizacja nieszczelności</h3>
+      <p>Wykrywanie i lokalizacja wycieków w instalacji wodociągowej (cwu, zwu, cyrkulacja). Próby ciśnieniowe.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🛁</div>
+      <h3>Biały montaż</h3>
+      <p>Montaż i demontaż: bidet, brodzik, kabina, toaleta, umywalka, wanna, zlew i inne elementy sanitarne.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🔧</div>
+      <h3>Naprawy i wymiana</h3>
+      <p>Wymiana baterii, bojlerów, pomp, uszczelek, węży, wodomierzy, zaworów kulowych i innych elementów instalacji.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🏗️</div>
+      <h3>Nowe instalacje</h3>
+      <p>Wykonanie nowych instalacji wodociągowych (miedź, PE, PEX, PVC, stal). Przeróbki i przenoszenie punktów wodnych.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">❄️</div>
+      <h3>Zamrażanie rur</h3>
+      <p>Zamrażanie rur od 1/2″ do 2″ – umożliwia naprawę instalacji bez konieczności odcinania wody w całym budynku.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🔌</div>
+      <h3>Podłączenia AGD</h3>
+      <p>Podłączenie pralki, zmywarki, lodówki z kostkarką, stelaży podtynkowych i innych urządzeń.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICES -->
+<section id="prices">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Orientacyjny cennik</div>
+    <h2 class="section-title">Przybliżone <span>ceny usług</span></h2>
+    <p class="section-desc">Ceny orientacyjne. Dokładna wycena ustalana indywidualnie na miejscu.</p>
+  </div>
+  <div class="prices-grid reveal">
+    <div class="price-card">
+      <span class="price-name">Montaż / demontaż toalety</span>
+      <span class="price-val">od 290 zł</span>
+    </div>
+    <div class="price-card">
+      <span class="price-name">Udrażnianie odpływów</span>
+      <span class="price-val">od 250 zł</span>
+    </div>
+    <div class="price-card">
+      <span class="price-name">Kamerowanie kanalizacji</span>
+      <span class="price-val">od 300 zł</span>
+    </div>
+    <div class="price-card">
+      <span class="price-name">Próba ciśnieniowa</span>
+      <span class="price-val">od 150 zł / nitka</span>
+    </div>
+    <div class="price-card">
+      <span class="price-name">Montaż kabin, wanien, toalet</span>
+      <span class="price-val">wycena indyw.</span>
+    </div>
+    <div class="price-card">
+      <span class="price-name">Inne prace hydrauliczne</span>
+      <span class="price-val">wycena indyw.</span>
+    </div>
+  </div>
+  <div class="prices-note reveal">
+    ℹ️ Podstawową metodą rozliczania jest wycena na podstawie czasu pracy hydraulików i sprzętu na miejscu. Telefonicznie podajemy tylko orientacyjne ceny. Cena dla każdego klienta ustalana jest indywidualnie.
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Kontakt</div>
+    <h2 class="section-title">Zadzwoń lub <span>napisz</span></h2>
+    <p class="section-desc">Działamy 24h / 7 dni w tygodniu. W nagłych przypadkach – dzwoń od razu.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div class="contact-item-text">
+          <label>Telefon (24h)</label>
+          <a href="tel:+48731445210">+48 731 445 210</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-item-text">
+          <label>E-mail</label>
+          <a href="mailto:kontakt@pogotowie-hydrauliczne.pl">kontakt@pogotowie-hydrauliczne.pl</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div class="contact-item-text">
+          <label>Adres</label>
+          <span>ul. Długa 18/3<br />Kraków 31-147</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🏢</div>
+        <div class="contact-item-text">
+          <label>Dane firmy</label>
+          <span>NIP: 6771234567<br />REGON: 123456789</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <h3>Wyślij wiadomość</h3>
+      <form onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Imię i nazwisko *</label>
+            <input type="text" required placeholder="Jan Kowalski" />
+          </div>
+          <div class="form-group">
+            <label>Telefon *</label>
+            <input type="tel" required placeholder="+48 600 000 000" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Rodzaj usługi</label>
+          <select>
+            <option value="">– wybierz –</option>
+            <option>Awaria – pilne!</option>
+            <option>Udrażnianie kanalizacji</option>
+            <option>Kamerowanie kanalizacji</option>
+            <option>Biały montaż</option>
+            <option>Nowa instalacja</option>
+            <option>Próba ciśnieniowa</option>
+            <option>Inne</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Opis problemu</label>
+          <textarea placeholder="Opisz problem lub awarię..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-blue form-submit">Wyślij wiadomość</button>
+        <div class="form-success" id="formSuccess">✓ Wiadomość wysłana. Odezwiemy się wkrótce!</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div style="font-size:1rem;font-weight:800;color:var(--text);margin-bottom:0.3rem;">Pogotowie Hydrauliczne Kraków</div>
+    <p>ul. Długa 18/3, 31-147 Kraków · NIP: 6771234567</p>
+  </div>
+  <p>© 2025 Pogotowie Hydrauliczne · Tomasz Wiśniewski</p>
+  <a href="tel:+48731445210" class="btn btn-red">📞 731 445 210</a>
+</footer>
+
+<!-- FLOATING CALL -->
+<div class="floating-call">
+  <a href="tel:+48731445210">📞 Zadzwoń 24h</a>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  function submitForm(e) {
+    e.preventDefault();
+    document.getElementById('formSuccess').style.display = 'block';
+    e.target.querySelector('.form-submit').style.display = 'none';
+  }
+</script>
+</body>
+</html>

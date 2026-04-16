@@ -1,2067 +1,966 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236c63ff'/><text y='72' x='50' text-anchor='middle' font-size='58' font-family='Segoe UI,sans-serif' font-weight='900' fill='white'>S</text></svg>" />
-
-  <!-- SEO: Title & Meta -->
-  <title>Tworzenie Stron Internetowych na Zamówienie | SiteWorks – Kuba Leśkiewicz</title>
-  <meta name="description" content="Profesjonalne strony internetowe na zamówienie – wizytówki, strony firmowe, landing page. Szybka realizacja, uczciwa cena. Zadzwoń: 881 578 996" />
-  <meta name="keywords" content="tworzenie stron internetowych, strony internetowe na zamówienie, strona firmowa, strona wizytówkowa, landing page, projektowanie stron www, SiteWorks, Kuba Leśkiewicz" />
-  <meta name="author" content="Kuba Leśkiewicz – SiteWorks" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://siteworks.pl/" />
-
-  <!-- Open Graph (Facebook, LinkedIn) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://siteworks.pl/" />
-  <meta property="og:title" content="Tworzenie Stron Internetowych na Zamówienie | SiteWorks" />
-  <meta property="og:description" content="Nowoczesne strony internetowe na zamówienie – wizytówki, strony firmowe, landing page. Szybka realizacja, uczciwa cena. Zadzwoń: 881 578 996" />
-  <meta property="og:locale" content="pl_PL" />
-  <meta property="og:site_name" content="SiteWorks" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Tworzenie Stron Internetowych na Zamówienie | SiteWorks" />
-  <meta name="twitter:description" content="Nowoczesne strony internetowe na zamówienie – wizytówki, strony firmowe, landing page. Szybka realizacja, uczciwa cena." />
-
-  <!-- Schema.org – LocalBusiness -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "SiteWorks – Kuba Leśkiewicz",
-    "description": "Tworzenie stron internetowych na zamówienie – wizytówki, strony firmowe, landing page, grafika.",
-    "url": "https://siteworks.pl",
-    "telephone": "+48881578996",
-    "email": "kontakt@siteworks.pl",
-    "priceRange": "zł–zł",
-    "image": "https://siteworks.pl/og-image.jpg",
-    "sameAs": [],
-    "offers": {
-      "@type": "Offer",
-      "description": "Tworzenie stron internetowych na zamówienie",
-      "priceCurrency": "PLN"
-    }
-  }
-  </script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --accent: #6c63ff;
-      --accent-dark: #574fd6;
-      --bg: #0d0d0f;
-      --bg2: #141417;
-      --bg3: #1c1c21;
-      --text: #e8e8f0;
-      --text-muted: #888;
-      --border: #2a2a32;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(13,13,15,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
-
-    .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
-    .logo span { color: var(--accent); }
-
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 0.9rem; color: var(--text-muted); transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
-
-    .btn {
-      display: inline-block;
-      padding: 0.6rem 1.4rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: none;
-    }
-
-    .btn-accent { background: var(--accent); color: #fff; }
-    .btn-accent:hover { background: var(--accent-dark); transform: translateY(-1px); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 2px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); transition: all 0.3s; }
-
-    /* HERO */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 5% 60px;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(108,99,255,0.12) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 20%, rgba(108,99,255,0.08) 0%, transparent 50%),
-        var(--bg);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #hero::before {
-      content: '';
-      position: absolute;
-      top: -150px; left: 50%;
-      transform: translateX(-50%);
-      width: 700px; height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(108,99,255,0.1) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-content { max-width: 720px; position: relative; }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(108,99,255,0.15);
-      border: 1px solid rgba(108,99,255,0.4);
-      color: #a89fff;
-      padding: 0.3rem 1rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-content h1 {
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
-      font-weight: 800;
-      line-height: 1.12;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero-content h1 span { color: var(--accent); }
-
-    .hero-content p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 560px;
-      margin: 0 auto 2rem;
-    }
-
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-    .hero-btns .btn { padding: 0.9rem 2.2rem; font-size: 1rem; }
-
-    .hero-stats {
-      display: flex;
-      gap: 3rem;
-      margin-top: 4rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1; }
-    .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
-
-    /* SECTIONS */
-    section { padding: 80px 5%; }
-
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
-    .section-desc { color: var(--text-muted); max-width: 560px; font-size: 1rem; }
-    .section-header { margin-bottom: 3rem; }
-
-    /* OFFER */
-    #offer { background: var(--bg2); }
-
-    .offer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .offer-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 2rem;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .offer-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transition: transform 0.3s;
-    }
-
-    .offer-card:hover {
-      border-color: rgba(108,99,255,0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 16px 48px rgba(108,99,255,0.12);
-    }
-
-    .offer-card:hover::before { transform: scaleX(1); }
-
-    .offer-card.featured {
-      border-color: rgba(108,99,255,0.5);
-      background: linear-gradient(135deg, rgba(108,99,255,0.08) 0%, var(--bg3) 100%);
-    }
-
-    .offer-card.featured::before { transform: scaleX(1); }
-
-    .featured-badge {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 1rem;
-    }
-
-    .offer-icon { font-size: 2.2rem; margin-bottom: 1rem; }
-
-    .offer-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
-
-    .offer-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; }
-
-    .offer-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-
-    .offer-features li {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .offer-features li::before { content: '✓'; color: var(--accent); font-weight: 700; }
-
-    /* CENNIK */
-    #cennik { background: var(--bg); }
-
-    .cennik-tabs {
-      display: flex; gap: 0.5rem; margin-bottom: 2.5rem;
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: 10px; padding: 0.4rem; width: fit-content;
-    }
-    .cennik-tab {
-      padding: 0.55rem 1.4rem; border-radius: 7px; font-size: 0.9rem;
-      font-weight: 600; cursor: pointer; border: none; background: transparent;
-      color: var(--text-muted); transition: all 0.2s;
-    }
-    .cennik-tab.active { background: var(--accent); color: #fff; }
-
-    .cennik-panel { display: none; }
-    .cennik-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 960px; margin: 0 auto; }
-
-    .cennik-card {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 14px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden;
-    }
-    .cennik-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: var(--accent); transform: scaleX(0); transition: transform 0.3s;
-    }
-    .cennik-card:hover { border-color: rgba(108,99,255,0.4); transform: translateY(-5px); box-shadow: 0 16px 48px rgba(108,99,255,0.12); }
-    .cennik-card:hover::before { transform: scaleX(1); }
-    .cennik-card.featured { border-color: rgba(108,99,255,0.5); background: linear-gradient(135deg, rgba(108,99,255,0.08) 0%, var(--bg2) 100%); }
-    .cennik-card.featured::before { transform: scaleX(1); }
-
-    .cennik-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .cennik-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .cennik-price { font-size: 1.8rem; font-weight: 800; color: var(--accent); margin: 0.8rem 0; line-height: 1; }
-    .cennik-price span { font-size: inherit; font-weight: inherit; color: inherit; }
-    .cennik-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; }
-    .cennik-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; }
-    .cennik-features li { font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
-    .cennik-features li::before { content: '✓'; color: var(--accent); font-weight: 700; }
-    .cennik-btn { display: block; text-align: center; background: var(--accent); color: #fff; padding: 0.7rem 1rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; transition: background 0.2s; }
-    .cennik-btn:hover { background: var(--accent-dark); }
-    .cennik-card:not(.featured) .cennik-btn { background: transparent; border: 1px solid var(--border); color: var(--text); }
-    .cennik-card:not(.featured) .cennik-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* ADD TO CART BUTTON */
-    .add-to-cart {
-      display: block; width: 100%; margin-top: 8px;
-      padding: 0.6rem 1rem; border-radius: 8px;
-      background: transparent; border: 1px dashed var(--accent);
-      color: var(--accent); font-size: 0.85rem; font-weight: 600;
-      cursor: pointer; font-family: inherit;
-      transition: all 0.2s;
-    }
-    .add-to-cart:hover { background: rgba(108,99,255,0.1); }
-    .add-to-cart.added { background: rgba(108,99,255,0.15); border-style: solid; }
-
-    /* CART BUBBLE */
-    #cart-bubble {
-      position: fixed; bottom: 28px; right: 28px; z-index: 200;
-      background: var(--accent); color: #fff;
-      width: 56px; height: 56px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; cursor: pointer;
-      box-shadow: 0 4px 20px rgba(108,99,255,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-      user-select: none;
-    }
-    #cart-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(108,99,255,0.5); }
-    #cart-count {
-      position: absolute; top: -4px; right: -4px;
-      background: #e63946; color: #fff;
-      font-size: 0.7rem; font-weight: 700;
-      width: 20px; height: 20px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      display: none;
-    }
-
-    /* CART DRAWER */
-    #cart-overlay {
-      display: none; position: fixed; inset: 0; z-index: 201;
-      background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
-    }
-    #cart-overlay.open { display: block; }
-    #cart-drawer {
-      position: fixed; top: 0; right: -420px; bottom: 0; z-index: 202;
-      width: 400px; max-width: 95vw;
-      background: var(--bg2); border-left: 1px solid var(--border);
-      display: flex; flex-direction: column;
-      transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
-      overflow-y: auto;
-    }
-    #cart-drawer.open { right: 0; }
-    .cart-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 24px; border-bottom: 1px solid var(--border);
-      position: sticky; top: 0; background: var(--bg2); z-index: 1;
-    }
-    .cart-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); }
-    .cart-close {
-      background: none; border: none; color: var(--text-muted);
-      font-size: 1.2rem; cursor: pointer; padding: 4px 8px;
-      border-radius: 6px; transition: background 0.2s;
-    }
-    .cart-close:hover { background: var(--bg3); color: var(--text); }
-    .cart-items { padding: 16px 24px; flex: 1; }
-    .cart-empty { padding: 40px 24px; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
-    .cart-item {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 0; border-bottom: 1px solid var(--border); gap: 12px;
-    }
-    .cart-item:last-child { border-bottom: none; }
-    .cart-item-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
-    .cart-item-price { font-size: 0.85rem; color: var(--accent); font-weight: 700; white-space: nowrap; }
-    .cart-item-remove {
-      background: none; border: none; color: var(--text-muted);
-      cursor: pointer; font-size: 1rem; padding: 2px 6px;
-      border-radius: 4px; transition: color 0.2s;
-    }
-    .cart-item-remove:hover { color: #e63946; }
-    .cart-footer { padding: 16px 24px 24px; border-top: 1px solid var(--border); }
-    .cart-total {
-      font-size: 1rem; color: var(--text-muted);
-      margin-bottom: 16px; padding-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-    }
-    .cart-total strong { color: var(--accent); font-size: 1.3rem; }
-    .cart-footer input,
-    .cart-footer textarea {
-      width: 100%; background: var(--bg3); border: 1px solid var(--border);
-      border-radius: 8px; padding: 10px 14px; color: var(--text);
-      font-size: 0.88rem; font-family: inherit; margin-bottom: 10px;
-      outline: none; transition: border-color 0.2s;
-    }
-    .cart-footer input:focus,
-    .cart-footer textarea:focus { border-color: var(--accent); }
-    .cart-footer textarea { resize: vertical; min-height: 70px; }
-    .cart-submit {
-      width: 100%; padding: 12px; background: var(--accent); color: #fff;
-      border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 700;
-      cursor: pointer; font-family: inherit; transition: background 0.2s;
-    }
-    .cart-submit:hover { background: var(--accent-dark); }
-    .cart-success {
-      display: none; margin-top: 12px; padding: 12px;
-      background: rgba(39,174,96,0.1); border: 1px solid rgba(39,174,96,0.3);
-      color: #2ecc71; border-radius: 8px; text-align: center;
-      font-weight: 600; font-size: 0.9rem;
-    }
-
-    .cart-bank {
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: 8px; padding: 16px; margin-bottom: 16px;
-    }
-    .cart-bank-title {
-      font-size: 0.8rem; font-weight: 700; color: var(--text);
-      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;
-    }
-    .cart-bank-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 6px 0; border-bottom: 1px solid var(--border);
-      gap: 12px;
-    }
-    .cart-bank-row:last-of-type { border-bottom: none; }
-    .cart-bank-row span { font-size: 0.78rem; color: var(--text-muted); flex-shrink: 0; }
-    .cart-bank-row strong { font-size: 0.82rem; color: var(--text); text-align: right; word-break: break-all; }
-    .cart-bank-note {
-      margin-top: 10px; font-size: 0.78rem; color: var(--text-muted);
-      line-height: 1.5; border-top: 1px solid var(--border); padding-top: 10px;
-    }
-
-    /* COOKIE */
-    #cookie-banner {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
-      background: var(--bg2); border-top: 1px solid var(--border);
-      padding: 14px 5%; display: flex; align-items: center;
-      justify-content: space-between; gap: 16px; flex-wrap: wrap;
-      font-size: 0.85rem; color: var(--text-muted);
-    }
-    #cookie-banner.hidden { display: none; }
-
-    /* DARK MODE */
-    body.light {
-      --bg: #f5f5f7; --bg2: #ffffff; --bg3: #e8e8ed;
-      --text: #1d1d1f; --text-body: #3a3a3c; --text-muted: #86868b;
-      --border: #d2d2d7;
-    }
-
-    /* FAQ */
-    .faq-list { max-width: 760px; }
-    .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-q {
-      width: 100%; background: none; border: none; color: var(--text);
-      font-size: 1rem; font-weight: 600; padding: 18px 0;
-      display: flex; justify-content: space-between; align-items: center;
-      cursor: pointer; font-family: inherit; text-align: left; gap: 12px;
-      transition: color 0.2s;
-    }
-    .faq-q:hover { color: var(--accent); }
-    .faq-q span { font-size: 1.3rem; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
-    .faq-q.open span { transform: rotate(45deg); }
-    .faq-a {
-      display: none; padding: 0 0 18px; color: var(--text-muted);
-      font-size: 0.92rem; line-height: 1.7;
-    }
-    .faq-a.open { display: block; }
-
-    /* KALKULATOR */
-    .kalk-wrap {
-      display: grid; grid-template-columns: 1fr 280px; gap: 40px;
-      align-items: start; max-width: 960px;
-    }
-    .kalk-group { margin-bottom: 28px; }
-    .kalk-label { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
-    .kalk-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-    .kalk-btn {
-      background: var(--bg2); border: 1px solid var(--border);
-      color: var(--text-muted); padding: 10px 16px; border-radius: 8px;
-      cursor: pointer; font-family: inherit; font-size: 0.85rem; font-weight: 500;
-      transition: all 0.2s; text-align: center; line-height: 1.4;
-    }
-    .kalk-btn small { display: block; font-size: 0.75rem; color: var(--accent); margin-top: 2px; }
-    .kalk-btn:hover { border-color: var(--accent); color: var(--text); }
-    .kalk-btn.active { background: rgba(108,99,255,0.12); border-color: var(--accent); color: var(--text); }
-    .kalk-result {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 14px; padding: 28px; position: sticky; top: 80px;
-    }
-    .kalk-total-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-    .kalk-total { font-size: 2.8rem; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1; }
-    .kalk-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; }
-    .kalk-discount { font-size: 0.85rem; color: #2ecc71; font-weight: 600; margin-top: 6px; }
-    @media (max-width: 700px) { .kalk-wrap { grid-template-columns: 1fr; } }
-
-    /* POPUP */
-    #popup-overlay {
-      display: none; position: fixed; inset: 0; z-index: 400;
-      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
-    }
-    #popup-overlay.open { display: block; }
-    #popup {
-      display: none; position: fixed; top: 50%; left: 50%; z-index: 401;
-      transform: translate(-50%, -50%);
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 16px; padding: 40px 32px; max-width: 380px; width: 90%;
-      text-align: center;
-    }
-    #popup.open { display: block; animation: popupIn 0.3s ease; }
-    @keyframes popupIn {
-      from { opacity: 0; transform: translate(-50%, -48%) scale(0.95); }
-      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-    #portfolio { background: var(--bg2); }
-
-    .portfolio-tabs {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 2.5rem;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.4rem;
-      width: fit-content;
-    }
-
-    .portfolio-tab {
-      padding: 0.55rem 1.4rem;
-      border-radius: 7px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      transition: all 0.2s;
-    }
-
-    .portfolio-tab.active {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .portfolio-panel { display: none; }
-    .portfolio-panel.active { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-
-    .portfolio-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: all 0.3s;
-    }
-
-    .portfolio-card:hover {
-      border-color: rgba(108,99,255,0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 16px 48px rgba(108,99,255,0.12);
-    }
-
-    .portfolio-card a.portfolio-link {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .portfolio-preview {
-      position: relative;
-    }
-
-    .portfolio-preview-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(108,99,255,0.75);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.25s;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #fff;
-      gap: 0.4rem;
-      letter-spacing: 0.5px;
-    }
-
-    .portfolio-card:hover .portfolio-preview-overlay { opacity: 1; }
-
-    .portfolio-preview {
-      width: 100%;
-      height: 180px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .portfolio-info {
-      padding: 1.2rem 1.4rem;
-    }
-
-    .portfolio-info h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .portfolio-info p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
-
-    .portfolio-tag {
-      display: inline-block;
-      background: rgba(108,99,255,0.12);
-      border: 1px solid rgba(108,99,255,0.25);
-      color: #a89fff;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 0.15rem 0.55rem;
-      border-radius: 4px;
-      margin-top: 0.7rem;
-      margin-right: 0.3rem;
-    }
-
-    /* --- WEBSITE PREVIEWS (miniatura layoutu) --- */
-    .mock { width: 100%; height: 180px; overflow: hidden; position: relative; font-size: 0; }
-    .mock * { box-sizing: border-box; }
-
-    /* RESTAURACJA */
-    .mock-rest { background: #1a1208; display: flex; flex-direction: column; }
-    .mock-rest .m-nav { height: 14px; background: #12100a; border-bottom: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; padding: 0 8px; gap: 6px; flex-shrink: 0; }
-    .mock-rest .m-nav .m-logo { width: 28px; height: 5px; background: #c9a84c; border-radius: 1px; }
-    .mock-rest .m-nav .m-links { display: flex; gap: 4px; margin-left: auto; }
-    .mock-rest .m-nav .m-links span { width: 16px; height: 3px; background: rgba(201,168,76,0.3); border-radius: 1px; }
-    .mock-rest .m-hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 70%); padding: 8px; }
-    .mock-rest .m-hero .m-tag { width: 50px; height: 3px; background: rgba(201,168,76,0.4); border-radius: 1px; }
-    .mock-rest .m-hero .m-h1 { width: 90px; height: 7px; background: rgba(240,237,230,0.7); border-radius: 1px; }
-    .mock-rest .m-hero .m-h1b { width: 70px; height: 7px; background: rgba(240,237,230,0.5); border-radius: 1px; }
-    .mock-rest .m-hero .m-p { width: 110px; height: 3px; background: rgba(240,237,230,0.2); border-radius: 1px; }
-    .mock-rest .m-hero .m-p2 { width: 90px; height: 3px; background: rgba(240,237,230,0.15); border-radius: 1px; }
-    .mock-rest .m-hero .m-btns { display: flex; gap: 4px; margin-top: 2px; }
-    .mock-rest .m-hero .m-btn1 { width: 44px; height: 10px; background: #c9a84c; border-radius: 2px; }
-    .mock-rest .m-hero .m-btn2 { width: 44px; height: 10px; border: 1px solid rgba(201,168,76,0.4); border-radius: 2px; }
-    .mock-rest .m-section { height: 44px; background: #12100a; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 0 10px; flex-shrink: 0; }
-    .mock-rest .m-section .m-card { width: 36px; height: 30px; background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.15); border-radius: 3px; }
-
-    /* FITNESS */
-    .mock-fit { background: #080c0c; display: flex; flex-direction: column; }
-    .mock-fit .m-nav { height: 14px; background: rgba(8,12,12,0.98); border-bottom: 1px solid #1a2e2c; display: flex; align-items: center; padding: 0 8px; gap: 5px; flex-shrink: 0; }
-    .mock-fit .m-nav .m-logo { width: 32px; height: 5px; background: #00e5c8; border-radius: 1px; }
-    .mock-fit .m-nav .m-links { display: flex; gap: 4px; margin-left: auto; }
-    .mock-fit .m-nav .m-links span { width: 14px; height: 3px; background: rgba(0,229,200,0.2); border-radius: 1px; }
-    .mock-fit .m-nav .m-btn { width: 28px; height: 8px; background: #00e5c8; border-radius: 2px; margin-left: 6px; }
-    .mock-fit .m-hero { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 8px 12px; gap: 4px; }
-    .mock-fit .m-hero .m-tag { width: 40px; height: 3px; background: rgba(0,229,200,0.4); border-radius: 1px; }
-    .mock-fit .m-hero .m-h1 { width: 80px; height: 9px; background: rgba(224,240,238,0.8); border-radius: 1px; }
-    .mock-fit .m-hero .m-h1b { width: 60px; height: 9px; background: rgba(0,229,200,0.7); border-radius: 1px; }
-    .mock-fit .m-hero .m-h1c { width: 70px; height: 9px; background: rgba(224,240,238,0.6); border-radius: 1px; }
-    .mock-fit .m-hero .m-p { width: 100px; height: 3px; background: rgba(90,122,118,0.6); border-radius: 1px; margin-top: 2px; }
-    .mock-fit .m-hero .m-btn { width: 50px; height: 10px; background: #00e5c8; border-radius: 2px; margin-top: 4px; }
-    .mock-fit .m-stats { height: 28px; display: flex; align-items: center; gap: 12px; padding: 0 12px; flex-shrink: 0; }
-    .mock-fit .m-stats .m-stat { display: flex; flex-direction: column; gap: 2px; }
-    .mock-fit .m-stats .m-stat .n { width: 20px; height: 5px; background: #00e5c8; border-radius: 1px; }
-    .mock-fit .m-stats .m-stat .l { width: 28px; height: 3px; background: rgba(90,122,118,0.4); border-radius: 1px; }
-    .mock-fit .m-cards { height: 40px; background: #0d1414; display: flex; align-items: center; gap: 5px; padding: 0 10px; flex-shrink: 0; }
-    .mock-fit .m-cards .m-card { flex: 1; height: 28px; background: #121c1c; border: 1px solid #1a2e2c; border-radius: 3px; }
-
-    /* KANCELARIA */
-    .mock-kan { background: #f8f7f4; display: flex; flex-direction: column; }
-    .mock-kan .m-nav { height: 14px; background: #12100e; border-bottom: 1px solid rgba(184,150,62,0.2); display: flex; align-items: center; padding: 0 8px; gap: 5px; flex-shrink: 0; }
-    .mock-kan .m-nav .m-logo { width: 36px; height: 5px; background: rgba(184,150,62,0.8); border-radius: 1px; }
-    .mock-kan .m-nav .m-links { display: flex; gap: 4px; margin-left: auto; }
-    .mock-kan .m-nav .m-links span { width: 16px; height: 3px; background: rgba(240,237,230,0.2); border-radius: 1px; }
-    .mock-kan .m-hero { flex: 1; background: #12100e; display: flex; flex-direction: column; justify-content: center; padding: 8px 12px; gap: 4px; position: relative; overflow: hidden; }
-    .mock-kan .m-hero::after { content: 'LEX'; position: absolute; right: -5px; top: 50%; transform: translateY(-50%); font-size: 3rem; font-weight: 900; color: rgba(184,150,62,0.04); font-family: sans-serif; }
-    .mock-kan .m-hero .m-eyebrow { display: flex; align-items: center; gap: 4px; }
-    .mock-kan .m-hero .m-eyebrow .line { width: 12px; height: 1px; background: #b8963e; }
-    .mock-kan .m-hero .m-eyebrow span { width: 40px; height: 3px; background: rgba(184,150,62,0.5); border-radius: 1px; }
-    .mock-kan .m-hero .m-h1 { width: 100px; height: 7px; background: rgba(240,237,230,0.7); border-radius: 1px; }
-    .mock-kan .m-hero .m-h1b { width: 80px; height: 7px; background: rgba(240,237,230,0.5); border-radius: 1px; }
-    .mock-kan .m-hero .m-p { width: 110px; height: 3px; background: rgba(240,237,230,0.2); border-radius: 1px; margin-top: 2px; }
-    .mock-kan .m-hero .m-p2 { width: 90px; height: 3px; background: rgba(240,237,230,0.15); border-radius: 1px; }
-    .mock-kan .m-hero .m-btns { display: flex; gap: 4px; margin-top: 4px; }
-    .mock-kan .m-hero .m-btn1 { width: 44px; height: 10px; background: #b8963e; border-radius: 1px; }
-    .mock-kan .m-hero .m-btn2 { width: 44px; height: 10px; border: 1px solid rgba(184,150,62,0.3); border-radius: 1px; }
-    .mock-kan .m-specs { height: 38px; background: #f0ede6; display: flex; align-items: center; gap: 1px; flex-shrink: 0; }
-    .mock-kan .m-specs .m-spec { flex: 1; height: 100%; background: #f8f7f4; border-right: 1px solid #ddd8ce; display: flex; flex-direction: column; justify-content: center; gap: 3px; padding: 0 6px; }
-    .mock-kan .m-specs .m-spec .t { width: 10px; height: 3px; background: rgba(184,150,62,0.5); border-radius: 1px; }
-    .mock-kan .m-specs .m-spec .b { width: 28px; height: 3px; background: rgba(42,37,32,0.3); border-radius: 1px; }
-    .mock-kan .m-specs .m-spec .b2 { width: 20px; height: 3px; background: rgba(42,37,32,0.2); border-radius: 1px; }
-
-    /* FOTOGRAF */
-    .mock-foto { background: #0a0a0a; display: flex; flex-direction: column; }
-    .mock-foto .m-nav { height: 14px; background: rgba(10,10,10,0.95); display: flex; align-items: center; padding: 0 8px; gap: 5px; flex-shrink: 0; }
-    .mock-foto .m-nav .m-logo { width: 30px; height: 4px; background: rgba(255,255,255,0.6); border-radius: 1px; }
-    .mock-foto .m-nav .m-links { display: flex; gap: 4px; margin-left: auto; }
-    .mock-foto .m-nav .m-links span { width: 14px; height: 3px; background: rgba(255,255,255,0.15); border-radius: 1px; }
-    .mock-foto .m-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; padding: 2px; }
-    .mock-foto .m-grid .g1 { background: linear-gradient(135deg, #1e1e1e, #2e2e2e); }
-    .mock-foto .m-grid .g2 { background: linear-gradient(135deg, #141414, #242424); }
-    .mock-foto .m-grid .g3 { background: linear-gradient(135deg, #252525, #353535); }
-    .mock-foto .m-grid .g4 { background: linear-gradient(135deg, #181818, #282828); }
-    .mock-foto .m-grid .g5 { background: linear-gradient(135deg, #202020, #303030); }
-    .mock-foto .m-grid .g6 { background: linear-gradient(135deg, #161616, #262626); }
-    .mock-foto .m-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.45); gap: 4px; }
-    .mock-foto .m-overlay .m-h1 { width: 70px; height: 6px; background: rgba(255,255,255,0.8); border-radius: 1px; }
-    .mock-foto .m-overlay .m-p { width: 90px; height: 3px; background: rgba(255,255,255,0.25); border-radius: 1px; }
-    .mock-foto .m-overlay .m-btns { display: flex; gap: 4px; margin-top: 4px; }
-    .mock-foto .m-overlay .m-btn1 { width: 36px; height: 9px; background: rgba(255,255,255,0.9); border-radius: 1px; }
-    .mock-foto .m-overlay .m-btn2 { width: 36px; height: 9px; border: 1px solid rgba(255,255,255,0.3); border-radius: 1px; }
-    .mock-foto .m-bar { height: 22px; background: #111; border-top: 1px solid #222; display: flex; align-items: center; gap: 4px; padding: 0 8px; flex-shrink: 0; }
-    .mock-foto .m-bar span { width: 22px; height: 3px; background: rgba(255,255,255,0.12); border-radius: 1px; }
-    .mock-foto .m-bar span.act { background: rgba(255,255,255,0.5); }
-
-    /* --- GRAPHIC PREVIEWS --- */
-    .prev-logo-bud {
-      background: linear-gradient(135deg, #0f1923 0%, #1a2d3d 100%);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .prev-logo-bud svg { width: 140px; height: 100px; }
-
-    .prev-logo-cafe {
-      background: linear-gradient(135deg, #1a0f0a 0%, #2d1a0f 100%);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .prev-logo-cafe svg { width: 140px; height: 100px; }
-
-    .prev-social-gym {
-      background: #0a0a0a;
-      display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;
-    }
-    .prev-social-gym .sg-post {
-      width: 72px; height: 72px; border-radius: 8px;
-      background: linear-gradient(135deg, #ff4500, #ff8c00);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.6rem; font-weight: 900; color: #fff; text-align: center; line-height: 1.2;
-      letter-spacing: 0.5px;
-    }
-    .prev-social-gym .sg-post2 {
-      width: 72px; height: 72px; border-radius: 8px;
-      background: linear-gradient(135deg, #1a1a1a, #333);
-      border: 2px solid #ff4500;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-    }
-    .prev-social-gym .sg-post3 {
-      width: 72px; height: 72px; border-radius: 8px;
-      background: linear-gradient(135deg, #ff4500, #c0392b);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.55rem; font-weight: 800; color: #fff; text-align: center; padding: 6px;
-    }
-
-    .prev-social-beauty {
-      background: #1a0f14;
-      display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;
-    }
-    .prev-social-beauty .sb-post {
-      width: 72px; height: 72px; border-radius: 8px;
-      background: linear-gradient(135deg, #c9748a, #e8a0b4);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.6rem; font-weight: 700; color: #fff; text-align: center; padding: 6px; line-height: 1.3;
-    }
-    .prev-social-beauty .sb-post2 {
-      width: 72px; height: 72px; border-radius: 8px;
-      background: linear-gradient(135deg, #2a1520, #3d1f2d);
-      border: 1px solid rgba(201,116,138,0.4);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem;
-    }
-    .prev-social-beauty .sb-post3 {
-      width: 72px; height: 72px; border-radius: 8px;
-      background: linear-gradient(135deg, #e8a0b4, #c9748a);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
-    }
-    .prev-social-beauty .sb-post3 span { width: 40px; height: 3px; background: rgba(255,255,255,0.7); border-radius: 2px; }
-
-    /* GRAFIKA */
-    #grafika { background: var(--bg); }
-
-    .grafika-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .grafika-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 2rem;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .grafika-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #ff6b9d, #a78bfa);
-      transform: scaleX(0);
-      transition: transform 0.3s;
-    }
-
-    .grafika-card:hover {
-      border-color: rgba(255,107,157,0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 16px 48px rgba(255,107,157,0.1);
-    }
-
-    .grafika-card:hover::before { transform: scaleX(1); }
-
-    .grafika-icon { font-size: 2.2rem; margin-bottom: 1rem; }
-    .grafika-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .grafika-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; }
-
-    .grafika-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .grafika-features li {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .grafika-features li::before { content: '✦'; color: #ff6b9d; font-size: 0.7rem; }
-
-    .grafika-cta {
-      margin-top: 3rem;
-      text-align: center;
-    }
-
-    .btn-grafika {
-      background: linear-gradient(135deg, #ff6b9d, #a78bfa);
-      color: #fff;
-      border: none;
-    }
-    .btn-grafika:hover { opacity: 0.9; transform: translateY(-1px); }
-
-    /* HOW */
-    #how { background: var(--bg2); }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      counter-reset: steps;
-    }
-
-    .step {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 2rem;
-      position: relative;
-      transition: border-color 0.2s;
-    }
-
-    .step:hover { border-color: rgba(108,99,255,0.4); }
-
-    .step-num {
-      font-size: 3rem;
-      font-weight: 900;
-      color: rgba(108,99,255,0.2);
-      line-height: 1;
-      margin-bottom: 0.8rem;
-    }
-
-    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .step p { font-size: 0.85rem; color: var(--text-muted); }
-
-    /* ABOUT */
-    #about { background: var(--bg2); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .about-visual {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2.5rem;
-      text-align: center;
-    }
-
-    .about-visual .big-icon { font-size: 5rem; margin-bottom: 1rem; }
-    .about-visual h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .about-visual p { color: var(--text-muted); font-size: 0.9rem; }
-
-    .skills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
-
-    .skill-tag {
-      background: rgba(108,99,255,0.12);
-      border: 1px solid rgba(108,99,255,0.3);
-      color: #a89fff;
-      padding: 0.3rem 0.8rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      font-weight: 500;
-    }
-
-    /* CONTACT */
-    #contact { background: var(--bg); }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.2rem;
-      transition: border-color 0.2s;
-    }
-
-    .contact-item:hover { border-color: var(--accent); }
-
-    .contact-item.ig:hover { border-color: #e1306c; }
-    .contact-item.ig:hover .contact-item-icon { filter: none; }
-    .contact-item.ig .ig-icon { width: 28px; height: 28px; flex-shrink: 0; margin-top: 2px; }
-
-    .nav-ig {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      transition: all 0.2s;
-      flex-shrink: 0;
-    }
-    .nav-ig:hover { border-color: #e1306c; color: #e1306c; background: rgba(225,48,108,0.08); }
-
-    .contact-item-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
-
-    .contact-item-text label {
-      display: block;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.2rem;
-    }
-
-    .contact-item-text a,
-    .contact-item-text span {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-      transition: color 0.2s;
-    }
-
-    .contact-item-text a:hover { color: var(--accent); }
-
-    .contact-form {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 2rem;
-    }
-
-    .contact-form h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
-
-    .form-group label { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      color: var(--text);
-      font-size: 0.9rem;
-      font-family: inherit;
-      transition: border-color 0.2s;
-      outline: none;
-      width: 100%;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus { border-color: var(--accent); }
-
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-group select option { background: var(--bg3); }
-
-    .form-submit { width: 100%; padding: 0.9rem; font-size: 1rem; border-radius: 8px; }
-
-    .form-success {
-      display: none;
-      background: rgba(39,174,96,0.1);
-      border: 1px solid rgba(39,174,96,0.3);
-      color: #2ecc71;
-      border-radius: 8px;
-      padding: 1rem;
-      text-align: center;
-      font-weight: 600;
-      margin-top: 1rem;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-logo { font-size: 1.2rem; font-weight: 800; }
-    .footer-logo span { color: var(--accent); }
-    footer p { font-size: 0.82rem; color: var(--text-muted); }
-
-    /* REVEAL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .cennik-panel.active { grid-template-columns: 1fr; max-width: 480px; }
-      .portfolio-panel.active { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 700px) {
-      .nav-links, .nav-cta { display: none; }
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 64px; left: 0; right: 0;
-        background: var(--bg2);
-        border-bottom: 1px solid var(--border);
-        padding: 1.5rem 5%;
-        gap: 1.2rem;
-      }
-      .hamburger { display: flex; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero-stats { gap: 1.5rem; }
-      .cennik-tabs { width: 100%; justify-content: center; }
-      .cennik-tab { flex: 1; text-align: center; }
-      .cennik-card { padding: 1.5rem; }
-      .cennik-price { font-size: 1.5rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AutoElite - Profesjonalne usługi motoryzacyjne najwyższej jakości">
+    <title>AutoElite - Twój Partner w Motoryzacji</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- COOKIE BANNER -->
-<div id="cookie-banner">
-  <span>🍪 Ta strona używa plików cookie do analizy ruchu. <a href="#" style="color:var(--accent)">Dowiedz się więcej</a></span>
-  <button onclick="acceptCookies()" class="btn btn-accent" style="padding:6px 16px;font-size:0.82rem;">Akceptuję</button>
-</div>
-
-<!-- NAV -->
-<nav>
-  <a href="#hero" class="logo" id="logo-secret" onclick="secretAdmin(event)">Site<span>Works</span></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#offer">Oferta</a></li>
-    <li><a href="#grafika">Grafika</a></li>
-    <li><a href="#cennik">Cennik</a></li>
-    <li><a href="#kalkulator">Kalkulator</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#how">Jak działam</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#about">O mnie</a></li>
-    <li><a href="#contact">Kontakt</a></li>
-  </ul>
-  <a href="#contact" class="btn btn-accent nav-cta">Zamów stronę</a>
-  <button id="darkmode-toggle" onclick="toggleDark()" title="Zmień motyw" style="background:none;border:1px solid var(--border);color:var(--text-muted);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all 0.2s;flex-shrink:0;">🌙</button>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- HERO -->
-<section id="hero" aria-label="Strona główna SiteWorks">
-  <div class="hero-content">
-    <div class="hero-badge">💻 Strony internetowe i grafika na zamówienie</div>
-    <h1>Tworzenie stron internetowych<br />na zamówienie – <span>SiteWorks</span></h1>
-    <p>Projektuję i tworzę nowoczesne strony internetowe oraz grafiki na zamówienie – logo, posty social media i więcej. Dla firm, freelancerów i każdego, kto chce zaistnieć w sieci. Szybko, estetycznie i bez zbędnych komplikacji.</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn btn-accent" aria-label="Zamów stronę internetową">Zamów stronę</a>
-      <a href="#offer" class="btn btn-outline" aria-label="Zobacz ofertę tworzenia stron">Zobacz ofertę</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">do 12h</div>
-        <div class="stat-label">Czas odpowiedzi</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Na zamówienie</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">📱</div>
-        <div class="stat-label">Responsywne</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OFFER -->
-<section id="offer" aria-label="Oferta tworzenia stron internetowych">
-  <div class="section-header reveal">
-    <div class="section-label">Oferta</div>
-    <h2 class="section-title">Co mogę dla Ciebie zrobić?</h2>
-    <p class="section-desc">Każda strona jest tworzona od zera, dopasowana do Twoich potrzeb i branży.</p>
-  </div>
-  <div class="offer-grid">
-    <div class="offer-card reveal">
-      <div class="offer-icon">🏢</div>
-      <h3>Strona wizytówkowa</h3>
-      <p>Prosta, elegancka strona dla firmy lub freelancera. Idealna do prezentacji usług i danych kontaktowych.</p>
-      <ul class="offer-features">
-        <li>Projekt graficzny</li>
-        <li>Responsywność (mobile)</li>
-        <li>Formularz kontaktowy</li>
-      </ul>
-    </div>
-    <div class="offer-card featured reveal">
-      <div class="featured-badge">⭐ Najpopularniejsze</div>
-      <div class="offer-icon">🚀</div>
-      <h3>Strona firmowa</h3>
-      <p>Rozbudowana strona z wieloma sekcjami – oferta, o firmie, realizacje, kontakt. Wszystko czego potrzebuje Twój biznes.</p>
-      <ul class="offer-features">
-        <li>Indywidualny projekt</li>
-        <li>Wiele podstron</li>
-        <li>Animacje i efekty</li>
-        <li>Responsywność (mobile)</li>
-        <li>Formularz kontaktowy</li>
-      </ul>
-    </div>
-    <div class="offer-card reveal">
-      <div class="offer-icon">🛒</div>
-      <h3>Landing page</h3>
-      <p>Jednostronicowa strona nastawiona na konwersję – idealna do kampanii reklamowych, promocji produktu lub usługi.</p>
-      <ul class="offer-features">
-        <li>Projekt pod konwersję</li>
-        <li>Szybkie ładowanie</li>
-        <li>Formularz / CTA</li>
-        <li>Responsywność (mobile)</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- GRAFIKA -->
-<section id="grafika">
-  <div class="section-header reveal">
-    <div class="section-label">Grafika</div>
-    <h2 class="section-title">Grafiki na zamówienie</h2>
-    <p class="section-desc">Projektuję grafiki dopasowane do Twojej marki – od logo po materiały reklamowe. Wszystko od zera, bez szablonów.</p>
-  </div>
-  <div class="grafika-grid">
-    <div class="grafika-card reveal">
-      <div class="grafika-icon">🎨</div>
-      <h3>Logo i identyfikacja</h3>
-      <p>Profesjonalne logo dla firmy lub marki osobistej. Dostajesz pliki w formatach gotowych do druku i internetu.</p>
-      <ul class="grafika-features">
-        <li>Projekt od zera</li>
-        <li>Kilka propozycji do wyboru</li>
-        <li>Pliki PNG, SVG, PDF</li>
-        <li>Wersja jasna i ciemna</li>
-      </ul>
-    </div>
-    <div class="grafika-card reveal">
-      <div class="grafika-icon">📱</div>
-      <h3>Grafiki social media</h3>
-      <p>Posty, stories, banery na Facebooka, Instagrama czy LinkedIn. Spójne wizualnie, gotowe do publikacji.</p>
-      <ul class="grafika-features">
-        <li>Posty i stories</li>
-        <li>Banery reklamowe</li>
-        <li>Okładki profili</li>
-        <li>Szablony do edycji</li>
-      </ul>
-    </div>
-    <div class="grafika-card reveal">
-      <div class="grafika-icon">✏️</div>
-      <h3>Inne projekty graficzne</h3>
-      <p>Masz inny pomysł? Chętnie porozmawiam. Tworzę też grafiki na zamówienie – okładki, thumbnails, infografiki i więcej.</p>
-      <ul class="grafika-features">
-        <li>Okładki YouTube / Spotify</li>
-        <li>Infografiki</li>
-        <li>Ilustracje cyfrowe</li>
-        <li>Wycena indywidualna</li>
-      </ul>
-    </div>
-  </div>
-  <div class="grafika-cta reveal">
-    <a href="#cennik" onclick="switchCennik('grafika', event)" class="btn btn-grafika" style="padding: 0.9rem 2.4rem; font-size: 1rem; border-radius: 8px; font-weight: 600;">🎨 Zamów grafikę</a>
-  </div>
-</section>
-
-<!-- CENNIK -->
-<section id="cennik">
-  <div class="section-header reveal">
-    <div class="section-label">Cennik</div>
-    <h2 class="section-title">Ile to kosztuje?</h2>
-    <p class="section-desc">Przejrzyste ceny, bez ukrytych kosztów. Wycena zawsze bezpłatna i bez zobowiązań.</p>
-  </div>
-
-  <div class="cennik-tabs reveal">
-    <button class="cennik-tab active" onclick="switchCennik('strony', event)">🌐 Strony</button>
-    <button class="cennik-tab" onclick="switchCennik('grafika', event)">🎨 Grafika</button>
-  </div>
-
-  <div class="cennik-panel active" id="cpanel-strony">
-    <div class="cennik-card reveal">
-      <div class="cennik-icon">🏢</div>
-      <h3>Strona wizytówkowa</h3>
-      <div class="cennik-price"><span data-price-key="cena_wizytowkowa">250</span></div>
-      <p>Prosta, elegancka strona dla firmy lub freelancera. Idealna do prezentacji usług i danych kontaktowych.</p>
-      <ul class="cennik-features">
-        <li>Projekt graficzny</li>
-        <li>Responsywność (mobile)</li>
-        <li>Formularz kontaktowy</li>
-      </ul>
-      <button class="add-to-cart" data-name="Strona wizytówkowa" data-price="250">🛒 Dodaj do koszyka</button>
-    </div>
-
-    <div class="cennik-card featured reveal">
-      <div class="featured-badge">⭐ Najpopularniejsze</div>
-      <div class="cennik-icon">🚀</div>
-      <h3>Strona firmowa</h3>
-      <div class="cennik-price"><span data-price-key="cena_firmowa">400</span></div>
-      <p>Rozbudowana strona z wieloma sekcjami – oferta, o firmie, realizacje, kontakt. Wszystko czego potrzebuje Twój biznes.</p>
-      <ul class="cennik-features">
-        <li>Indywidualny projekt</li>
-        <li>Wiele podstron</li>
-        <li>Animacje i efekty</li>
-        <li>Responsywność (mobile)</li>
-        <li>Formularz kontaktowy</li>
-      </ul>
-      <button class="add-to-cart" data-name="Strona firmowa" data-price="400">🛒 Dodaj do koszyka</button>
-    </div>
-
-    <div class="cennik-card reveal">
-      <div class="cennik-icon">🛒</div>
-      <h3>Landing page</h3>
-      <div class="cennik-price"><span data-price-key="cena_landing">350</span></div>
-      <p>Jednostronicowa strona nastawiona na konwersję – idealna do kampanii reklamowych, promocji produktu lub usługi.</p>
-      <ul class="cennik-features">
-        <li>Projekt pod konwersję</li>
-        <li>Szybkie ładowanie</li>
-        <li>Formularz / CTA</li>
-        <li>Responsywność (mobile)</li>
-      </ul>
-      <button class="add-to-cart" data-name="Landing page" data-price="350">🛒 Dodaj do koszyka</button>
-    </div>
-  </div>
-
-  <div class="cennik-panel" id="cpanel-grafika">
-    <div class="cennik-card reveal">
-      <div class="cennik-icon">🎨</div>
-      <h3>Logo i identyfikacja</h3>
-      <div class="cennik-price"><span data-price-key="cena_logo">75</span></div>
-      <p>Profesjonalne logo dla firmy lub marki osobistej. Pliki gotowe do druku i internetu.</p>
-      <ul class="cennik-features">
-        <li>Projekt od zera</li>
-        <li>Kilka propozycji do wyboru</li>
-        <li>Pliki PNG, SVG, PDF</li>
-        <li>Wersja jasna i ciemna</li>
-      </ul>
-      <button class="add-to-cart" data-name="Logo i identyfikacja" data-price="75">🛒 Dodaj do koszyka</button>
-    </div>
-
-    <div class="cennik-card featured reveal">
-      <div class="featured-badge">⭐ Najpopularniejsze</div>
-      <div class="cennik-icon">📱</div>
-      <h3>Grafiki social media</h3>
-      <div class="cennik-price"><span data-price-key="cena_social">30</span></div>
-      <p>Posty, stories, banery na Facebooka, Instagrama czy LinkedIn. Spójne wizualnie.</p>
-      <ul class="cennik-features">
-        <li>Posty i stories</li>
-        <li>Banery reklamowe</li>
-        <li>Okładki profili</li>
-        <li>Pakiet 10 szt. od 200 zł</li>
-      </ul>
-      <button class="add-to-cart" data-name="Grafiki social media" data-price="30">🛒 Dodaj do koszyka</button>
-    </div>
-
-    <div class="cennik-card reveal">
-      <div class="cennik-icon">✏️</div>
-      <h3>Inne projekty</h3>
-      <div class="cennik-price" style="font-size:1.2rem; margin-top:1rem;">Wycena indywidualna</div>
-      <p>Okładki YouTube, infografiki, ilustracje cyfrowe i inne. Napisz – wycenię bezpłatnie.</p>
-      <ul class="cennik-features">
-        <li>Okładki YouTube / Spotify</li>
-        <li>Infografiki</li>
-        <li>Ilustracje cyfrowe</li>
-        <li>Bezpłatna wycena</li>
-      </ul>
-      <a href="#contact" class="cennik-btn" style="font-size:0.85rem;">Zapytaj o wycenę →</a>
-    </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="section-header reveal">
-    <div class="section-label">Portfolio</div>
-    <h2 class="section-title">Moje realizacje</h2>
-    <p class="section-desc">Kilka przykładów tego, co tworzę – strony internetowe i grafiki na zamówienie.</p>
-  </div>
-
-  <div class="portfolio-tabs reveal">
-    <button class="portfolio-tab active" onclick="switchTab('strony')">🌐 Strony</button>
-    <button class="portfolio-tab" onclick="switchTab('grafiki')">🎨 Grafiki</button>
-  </div>
-
-  <!-- STRONY -->
-  <div class="portfolio-panel active" id="panel-strony">
-
-    <div class="portfolio-card reveal">
-      <a href="portfolio-restauracja.html" target="_blank" class="portfolio-link">
-        <div class="portfolio-preview">
-          <div class="mock mock-rest">
-            <div class="m-nav"><div class="m-logo"></div><div class="m-links"><span></span><span></span><span></span></div></div>
-            <div class="m-hero">
-              <div class="m-tag"></div>
-              <div class="m-h1"></div><div class="m-h1b"></div>
-              <div class="m-p"></div><div class="m-p2"></div>
-              <div class="m-btns"><div class="m-btn1"></div><div class="m-btn2"></div></div>
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <path d="M20 5L35 12.5V27.5L20 35L5 27.5V12.5L20 5Z" stroke="url(#gradient)" stroke-width="2" fill="none"/>
+                        <circle cx="20" cy="20" r="8" fill="url(#gradient)"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="5" y1="5" x2="35" y2="35">
+                                <stop offset="0%" stop-color="#FF6B35"/>
+                                <stop offset="100%" stop-color="#F7931E"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span>AutoElite</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Start</a></li>
+                    <li><a href="#services">Usługi</a></li>
+                    <li><a href="#about">O nas</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#testimonials">Opinie</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+                <button class="nav-cta">Umów wizytę</button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
-            <div class="m-section"><div class="m-card"></div><div class="m-card"></div><div class="m-card"></div></div>
-          </div>
-          <div class="portfolio-preview-overlay">🔗 Zobacz stronę</div>
         </div>
-        <div class="portfolio-info">
-          <h3>Strona dla restauracji</h3>
-          <p>Elegancka strona z menu online, galerią i formularzem rezerwacji stolika.</p>
-          <span class="portfolio-tag">Strona firmowa</span>
-          <span class="portfolio-tag">Gastronomia</span>
-        </div>
-      </a>
-    </div>
+    </nav>
 
-    <div class="portfolio-card reveal">
-      <a href="portfolio-fitness.html" target="_blank" class="portfolio-link">
-        <div class="portfolio-preview">
-          <div class="mock mock-fit">
-            <div class="m-nav"><div class="m-logo"></div><div class="m-links"><span></span><span></span><span></span></div><div class="m-btn"></div></div>
-            <div class="m-hero">
-              <div class="m-tag"></div>
-              <div class="m-h1"></div><div class="m-h1b"></div><div class="m-h1c"></div>
-              <div class="m-p"></div>
-              <div class="m-btn"></div>
+    <!-- ========== HERO SECTION ========== -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="car-video.mp4" type="video/mp4">
+            </video>
+            <div class="gradient-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">
+                    Twój samochód zasługuje na <span class="gradient-text">perfekcję</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Profesjonalne usługi motoryzacyjne z 15-letnim doświadczeniem. 
+                    Diagnostyka komputerowa, serwis, tuning i detailing na najwyższym poziomie.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary">
+                        <span>Sprawdź ofertę</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 7L13 10L8 13V7Z" fill="currentColor"/>
+                        </svg>
+                        <span>Zobacz realizacje</span>
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-number">2500+</div>
+                        <div class="stat-label">Zadowolonych klientów</div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Lat doświadczenia</div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Pozytywnych opinii</div>
+                    </div>
+                </div>
             </div>
-            <div class="m-stats"><div class="m-stat"><div class="n"></div><div class="l"></div></div><div class="m-stat"><div class="n"></div><div class="l"></div></div><div class="m-stat"><div class="n"></div><div class="l"></div></div></div>
-            <div class="m-cards"><div class="m-card"></div><div class="m-card"></div><div class="m-card"></div><div class="m-card"></div></div>
-          </div>
-          <div class="portfolio-preview-overlay">🔗 Zobacz stronę</div>
         </div>
-        <div class="portfolio-info">
-          <h3>Strona dla klubu fitness</h3>
-          <p>Nowoczesna strona z grafikiem zajęć, cennikiem i zapisami online.</p>
-          <span class="portfolio-tag">Landing page</span>
-          <span class="portfolio-tag">Sport</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="portfolio-card reveal">
-      <a href="portfolio-kancelaria.html" target="_blank" class="portfolio-link">
-        <div class="portfolio-preview">
-          <div class="mock mock-kan">
-            <div class="m-nav"><div class="m-logo"></div><div class="m-links"><span></span><span></span><span></span></div></div>
-            <div class="m-hero">
-              <div class="m-eyebrow"><div class="line"></div><span></span></div>
-              <div class="m-h1"></div><div class="m-h1b"></div>
-              <div class="m-p"></div><div class="m-p2"></div>
-              <div class="m-btns"><div class="m-btn1"></div><div class="m-btn2"></div></div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
             </div>
-            <div class="m-specs">
-              <div class="m-spec"><div class="t"></div><div class="b"></div><div class="b2"></div></div>
-              <div class="m-spec"><div class="t"></div><div class="b"></div><div class="b2"></div></div>
-              <div class="m-spec"><div class="t"></div><div class="b"></div><div class="b2"></div></div>
-              <div class="m-spec"><div class="t"></div><div class="b"></div><div class="b2"></div></div>
+        </div>
+    </section>
+
+    <!-- ========== SERVICES SECTION ========== -->
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Nasze usługi</span>
+                <h2 class="section-title">Kompleksowa obsługa Twojego pojazdu</h2>
+                <p class="section-subtitle">Oferujemy pełen zakres usług motoryzacyjnych z wykorzystaniem najnowszych technologii</p>
             </div>
-          </div>
-          <div class="portfolio-preview-overlay">🔗 Zobacz stronę</div>
-        </div>
-        <div class="portfolio-info">
-          <h3>Strona dla kancelarii prawnej</h3>
-          <p>Stonowana, profesjonalna strona wizytówkowa z opisem specjalizacji i kontaktem.</p>
-          <span class="portfolio-tag">Strona wizytówkowa</span>
-          <span class="portfolio-tag">Prawo</span>
-        </div>
-      </a>
-    </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect x="8" y="20" width="32" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 20V16C16 12 18 10 24 10C30 10 32 12 32 16V20" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="24" cy="28" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Diagnostyka komputerowa</h3>
+                    <p class="service-description">
+                        Precyzyjna diagnostyka wszystkich systemów pojazdu z wykorzystaniem profesjonalnego sprzętu. 
+                        Wykrywamy problemy zanim staną się kosztowne.
+                    </p>
+                    <ul class="service-features">
+                        <li>Odczyt i kasowanie błędów</li>
+                        <li>Analiza parametrów pracy silnika</li>
+                        <li>Diagnostyka układów elektronicznych</li>
+                        <li>Raport z pełną dokumentacją</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        Dowiedz się więcej
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </a>
+                </div>
 
-    <div class="portfolio-card reveal">
-      <a href="portfolio-fotograf.html" target="_blank" class="portfolio-link">
-        <div class="portfolio-preview" style="position:relative;">
-          <div class="mock mock-foto">
-            <div class="m-nav"><div class="m-logo"></div><div class="m-links"><span></span><span></span><span></span></div></div>
-            <div class="m-grid" style="position:relative;">
-              <div class="g1"></div><div class="g2"></div><div class="g3"></div>
-              <div class="g4"></div><div class="g5"></div><div class="g6"></div>
-              <div class="m-overlay">
-                <div class="m-h1"></div>
-                <div class="m-p"></div>
-                <div class="m-btns"><div class="m-btn1"></div><div class="m-btn2"></div></div>
-              </div>
+                <div class="service-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="featured-badge">Najpopularniejsze</div>
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 12V24L32 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Serwis i naprawa</h3>
+                    <p class="service-description">
+                        Kompleksowy serwis mechaniczny i elektryczny. Naprawy bieżące, wymiany oleju, 
+                        przeglądy okresowe i naprawy awaryjne.
+                    </p>
+                    <ul class="service-features">
+                        <li>Przeglądy okresowe i sezonowe</li>
+                        <li>Wymiana płynów eksploatacyjnych</li>
+                        <li>Naprawa układów hamulcowych</li>
+                        <li>Serwis klimatyzacji</li>
+                        <li>Naprawy silnika i skrzyni biegów</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        Dowiedz się więcej
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M12 24L20 16L28 24L36 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 32L20 24L28 32L36 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Chip tuning</h3>
+                    <p class="service-description">
+                        Profesjonalny tuning silnika zwiększający moc i moment obrotowy przy zachowaniu 
+                        pełnej niezawodności i bezpieczeństwa.
+                    </p>
+                    <ul class="service-features">
+                        <li>Zwiększenie mocy do 30%</li>
+                        <li>Poprawa momentu obrotowego</li>
+                        <li>Gwarancja na wykonane usługi</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        Dowiedz się więcej
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="18" cy="32" r="6" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="34" cy="32" r="6" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 32H12M24 32H28M40 32H44" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 32V20C12 16 14 14 18 14H30C34 14 36 16 36 20V32" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Geometria i wyważanie</h3>
+                    <p class="service-description">
+                        Precyzyjna geometria kół na nowoczesnym stanowisku 3D. Zapewniamy równomierne 
+                        zużycie opon i komfort jazdy.
+                    </p>
+                    <ul class="service-features">
+                        <li>Geometria 3D wszystkich osi</li>
+                        <li>Wyważanie kół komputerowe</li>
+                        <li>Regulacja zawieszenia</li>
+                        <li>Diagnostyka układu kierowniczego</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        Dowiedz się więcej
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 10V24L32 32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="24" cy="24" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Detailing i ochrona lakieru</h3>
+                    <p class="service-description">
+                        Profesjonalne czyszczenie, polerowanie i zabezpieczanie lakieru. Przywracamy 
+                        blask i chronimy Twój samochód.
+                    </p>
+                    <ul class="service-features">
+                        <li>Korekta lakieru maszynowa</li>
+                        <li>Powłoki ceramiczne</li>
+                        <li>Czyszczenie wnętrza</li>
+                        <li>Ozonowanie kabiny</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        Dowiedz się więcej
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect x="10" y="16" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 16V12C16 10 17 9 19 9H29C31 9 32 10 32 12V16" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 24V28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="24" cy="30" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Pomoc drogowa 24/7</h3>
+                    <p class="service-description">
+                        Całodobowa pomoc drogowa na terenie całego kraju. Szybka reakcja i profesjonalna 
+                        obsługa w każdej sytuacji.
+                    </p>
+                    <ul class="service-features">
+                        <li>Holowanie pojazdów</li>
+                        <li>Uruchomienie auta</li>
+                        <li>Wymiana koła</li>
+                        <li>Dostawa paliwa</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        Dowiedz się więcej
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
-            <div class="m-bar"><span class="act"></span><span></span><span></span><span></span><span></span></div>
-          </div>
-          <div class="portfolio-preview-overlay">🔗 Zobacz stronę</div>
         </div>
-        <div class="portfolio-info">
-          <h3>Strona dla fotografa</h3>
-          <p>Portfolio fotografa z galerią prac, pakietami cenowymi i formularzem kontaktowym.</p>
-          <span class="portfolio-tag">Portfolio</span>
-          <span class="portfolio-tag">Fotografia</span>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content" data-aos="fade-right">
+                    <span class="section-label">O nas</span>
+                    <h2 class="section-title">15 lat pasji i doświadczenia</h2>
+                    <p class="about-text">
+                        AutoElite to zespół pasjonatów motoryzacji z wieloletnim doświadczeniem. 
+                        Specjalizujemy się w kompleksowej obsłudze pojazdów wszystkich marek, 
+                        łącząc tradycyjne rzemiosło z najnowszymi technologiami diagnostycznymi.
+                    </p>
+                    <p class="about-text">
+                        Nasz warsztat wyposażony jest w profesjonalny sprzęt diagnostyczny, 
+                        stanowiska do geometrii 3D, oraz narzędzia do chip tuningu. Każdy projekt 
+                        traktujemy indywidualnie, dbając o najdrobniejsze szczegóły.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                    <path d="M16 4L20 12L28 13L22 19L24 28L16 23L8 28L10 19L4 13L12 12L16 4Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Certyfikowani specjaliści</h4>
+                                <p>Nasz zespół posiada certyfikaty producentów i regularnie podnosi kwalifikacje</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                    <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 16L15 19L21 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Gwarancja jakości</h4>
+                                <p>Wszystkie usługi objęte są gwarancją, używamy tylko oryginalnych części</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                    <rect x="6" y="10" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 10V8C12 6 13 5 16 5C19 5 20 6 20 8V10" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Nowoczesny sprzęt</h4>
+                                <p>Inwestujemy w najnowsze technologie diagnostyczne i naprawcze</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-cta">
+                        <button class="btn btn-primary">Poznaj nasz zespół</button>
+                        <a href="tel:+48123456789" class="contact-link">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M6 4C6 3 6.5 2 8 2C9 2 10 2.5 10 4C10 5 9.5 6 8.5 6.5L7.5 7C7 7.5 7 8 7.5 8.5L11.5 12.5C12 13 12.5 13 13 12.5L13.5 11.5C14 10.5 15 10 16 10C17.5 10 18 11 18 12C18 13.5 17 14 16 14C13 14 10 13 7 10C4 7 3 4 3 1C3 0 4 -1 5.5 -1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            +48 123 456 789
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="about-image" data-aos="fade-left">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&h=1000&fit=crop" alt="Warsztat samochodowy" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="floating-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="card-icon">⚡</div>
+                        <div class="card-content">
+                            <div class="card-number">2500+</div>
+                            <div class="card-label">Naprawionych aut</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </a>
-    </div>
+    </section>
 
-  </div>
+    <!-- ========== GALLERY SECTION ========== -->
 
-  <!-- GRAFIKI -->
-  <div class="portfolio-panel" id="panel-grafiki">
-
-    <div class="portfolio-card reveal">
-      <div class="portfolio-preview prev-logo-bud">
-        <svg viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="70,10 110,50 110,85 30,85 30,50" fill="none" stroke="#4a9eff" stroke-width="2.5"/>
-          <rect x="55" y="60" width="30" height="25" fill="#4a9eff" opacity="0.3"/>
-          <rect x="55" y="60" width="30" height="25" fill="none" stroke="#4a9eff" stroke-width="1.5"/>
-          <text x="70" y="97" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#4a9eff" letter-spacing="3">BUDMAX</text>
-        </svg>
-      </div>
-      <div class="portfolio-info">
-        <h3>Logo dla firmy budowlanej</h3>
-        <p>Minimalistyczne logo z geometrycznym domem i mocnym, czytelnym krojem pisma.</p>
-        <span class="portfolio-tag">Logo</span>
-        <span class="portfolio-tag">Budownictwo</span>
-      </div>
-    </div>
-
-    <div class="portfolio-card reveal">
-      <div class="portfolio-preview prev-logo-cafe">
-        <svg viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="70" cy="46" r="28" fill="none" stroke="#c9a96e" stroke-width="2"/>
-          <path d="M58,46 Q70,30 82,46 Q70,62 58,46Z" fill="#c9a96e" opacity="0.25"/>
-          <path d="M58,46 Q70,30 82,46 Q70,62 58,46Z" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
-          <text x="70" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#c9a96e" letter-spacing="4">CAFÉ LUNA</text>
-          <line x1="40" y1="82" x2="55" y2="82" stroke="#c9a96e" stroke-width="0.8" opacity="0.6"/>
-          <line x1="85" y1="82" x2="100" y2="82" stroke="#c9a96e" stroke-width="0.8" opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="portfolio-info">
-        <h3>Logo dla kawiarni</h3>
-        <p>Eleganckie logo w stylu vintage. Delikatna złota paleta i klasyczna typografia.</p>
-        <span class="portfolio-tag">Logo</span>
-        <span class="portfolio-tag">Gastronomia</span>
-      </div>
-    </div>
-
-    <div class="portfolio-card reveal">
-      <div class="portfolio-preview prev-social-gym">
-        <div class="sg-post">TRENING<br/>DNIA</div>
-        <div class="sg-post2">🔥</div>
-        <div class="sg-post3">ZAPISZ SIĘ NA PRÓBNY TRENING</div>
-      </div>
-      <div class="portfolio-info">
-        <h3>Grafiki social media dla siłowni</h3>
-        <p>Zestaw postów na Instagram i Facebook. Agresywna, energetyczna stylistyka.</p>
-        <span class="portfolio-tag">Social media</span>
-        <span class="portfolio-tag">Sport</span>
-      </div>
-    </div>
-
-    <div class="portfolio-card reveal">
-      <div class="portfolio-preview prev-social-beauty">
-        <div class="sb-post">NOWA<br/>KOLEKCJA<br/>WIOSNA</div>
-        <div class="sb-post2">🌸</div>
-        <div class="sb-post3"><span></span><span style="width:28px"></span><span style="width:34px"></span></div>
-      </div>
-      <div class="portfolio-info">
-        <h3>Grafiki social media dla studia urody</h3>
-        <p>Pastelowe posty na Instagram. Spójna identyfikacja, miękka kolorystyka.</p>
-        <span class="portfolio-tag">Social media</span>
-        <span class="portfolio-tag">Beauty</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- HOW -->
-<section id="how">
-  <div class="section-header reveal">
-    <div class="section-label">Jak działam</div>
-    <h2 class="section-title">Prosty proces, gotowa strona</h2>
-    <p class="section-desc">Od pierwszego kontaktu do gotowej strony – bez stresu i zbędnych formalności.</p>
-  </div>
-  <div class="steps">
-    <div class="step reveal">
-      <div class="step-num">01</div>
-      <h3>Kontakt i brief</h3>
-      <p>Piszesz lub dzwonisz, opowiadasz czego potrzebujesz. Pytam o branżę, styl i oczekiwania.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">02</div>
-      <h3>Wycena</h3>
-      <p>Na podstawie rozmowy przygotowuję wycenę i termin realizacji. Bez ukrytych kosztów.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">03</div>
-      <h3>Realizacja</h3>
-      <p>Tworzę stronę i na bieżąco pokazuję postępy. Możesz zgłaszać uwagi w każdym momencie.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">04</div>
-      <h3>Oddanie</h3>
-      <p>Gotowa strona trafia do Ciebie. Pomagam z wdrożeniem i odpowiadam na pytania po oddaniu.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" aria-label="O mnie – Kuba Leśkiewicz SiteWorks">
-  <div class="about-grid">
-    <div class="reveal">
-      <div class="section-header">
-        <div class="section-label">O mnie</div>
-        <h2 class="section-title">Cześć, jestem Kuba</h2>
-        <p class="section-desc">Tworzę strony internetowe na zamówienie – dla firm, lokalnych biznesów i osób prywatnych. Zależy mi na tym, żeby każda strona była nie tylko ładna, ale też funkcjonalna i skuteczna.</p>
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Podchodzę do każdego projektu indywidualnie – nie ma tu gotowych szablonów ani kopiuj-wklej. Każda strona jest pisana od zera, dopasowana do Twoich potrzeb.</p>
-      <div class="skills">
-        <span class="skill-tag">HTML / CSS</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">Responsywność</span>
-        <span class="skill-tag">UI / UX</span>
-        <span class="skill-tag">SEO</span>
-        <span class="skill-tag">Animacje</span>
-        <span class="skill-tag">Formularze</span>
-        <span class="skill-tag">Szybkie ładowanie</span>
-      </div>
-    </div>
-    <div class="about-visual reveal">
-      <div class="big-icon">👨‍💻</div>
-      <h3>SiteWorks – Kuba Leśkiewicz</h3>
-      <p>Strony internetowe tworzone z pasją i dbałością o szczegóły. Skontaktuj się – chętnie porozmawiam o Twoim projekcie.</p>
-      <br />
-      <a href="tel:881578996" class="btn btn-accent" style="margin-top: 0.5rem">📞 881 578 996</a>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq" style="background:var(--bg2);">
-  <div class="section-header reveal">
-    <div class="section-label">FAQ</div>
-    <h2 class="section-title">Najczęstsze pytania</h2>
-  </div>
-  <div class="faq-list reveal">
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Ile trwa realizacja strony? <span>+</span></button>
-      <div class="faq-a">Zazwyczaj 2-5 dni roboczych od momentu dostarczenia materiałów. Przy prostych stronach wizytówkowych nawet do 48h.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Co muszę dostarczyć? <span>+</span></button>
-      <div class="faq-a">Wystarczy krótki opis firmy, logo (jeśli masz) i zdjęcia. Jeśli nie masz — pomogę dobrać darmowe grafiki stockowe.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Czy strona będzie działać na telefonie? <span>+</span></button>
-      <div class="faq-a">Tak, każda strona jest w pełni responsywna — działa na telefonie, tablecie i komputerze.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Czy mogę później zmieniać treści? <span>+</span></button>
-      <div class="faq-a">Tak. Po oddaniu strony możesz zgłaszać drobne poprawki bezpłatnie przez 14 dni. Większe zmiany wyceniam indywidualnie. Panel Admina (do samodzielnej edycji wszystkich treści na stronie) dostępny dodatkowo za 50 zł.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Jak wygląda płatność? <span>+</span></button>
-      <div class="faq-a">Na starcie płacisz za hosting, domenę i SSL (100-150 zł/rok). Za samą stronę płacisz później, po wykonaniu i akceptacji projektu. Najpierw robię, pokazuję gotowy efekt, możesz zgłaszać zmiany, a płacisz dopiero jak wszystko Ci pasuje.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Czy robisz hosting i domenę? <span>+</span></button>
-      <div class="faq-a">Domena + hosting + SSL: 100-150 zł/rok. Wszystko skonfiguruję i uruchomię za Ciebie.</div>
-    </div>
-  </div>
-</section>
-
-<!-- KALKULATOR -->
-<section id="kalkulator" style="background:var(--bg);">
-  <div class="section-header reveal">
-    <div class="section-label">Kalkulator</div>
-    <h2 class="section-title">Oblicz cenę swojej strony</h2>
-    <p class="section-desc">Wybierz opcje i sprawdź szacunkową wycenę.</p>
-  </div>
-  <div class="kalk-wrap reveal">
-    <div class="kalk-options">
-      <div class="kalk-group">
-        <div class="kalk-label">Rodzaj strony</div>
-        <div class="kalk-btns">
-          <button class="kalk-btn active" data-group="typ" data-val="250" data-price-ref="cena_wizytowkowa" onclick="kalkSelect(this)">Wizytówkowa<br><small>250 zł</small></button>
-          <button class="kalk-btn" data-group="typ" data-val="350" data-price-ref="cena_landing" onclick="kalkSelect(this)">Landing page<br><small>350 zł</small></button>
-          <button class="kalk-btn" data-group="typ" data-val="400" data-price-ref="cena_firmowa" onclick="kalkSelect(this)">Firmowa<br><small>400 zł</small></button>
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Nasze realizacje</span>
+                <h2 class="section-title">Zobacz efekty naszej pracy</h2>
+                <p class="section-subtitle">Galeria zrealizowanych projektów - od prostych napraw po kompleksowy tuning</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop" alt="Sportowy samochód" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Chip Tuning BMW M3</h3>
+                        <p>+45 KM, +60 Nm</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&h=400&fit=crop" alt="Luksusowy samochód" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Detailing Premium</h3>
+                        <p>Korekta + powłoka ceramiczna</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=600&h=400&fit=crop" alt="Silnik samochodu" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Naprawa silnika</h3>
+                        <p>Kompleksowa regeneracja</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=600&h=400&fit=crop" alt="Wnętrze samochodu" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Czyszczenie wnętrza</h3>
+                        <p>Pranie tapicerki + ozonowanie</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&h=400&fit=crop" alt="Warsztat" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Diagnostyka komputerowa</h3>
+                        <p>Profesjonalny sprzęt</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=400&fit=crop" alt="Sportowe auto" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Modyfikacje zawieszenia</h3>
+                        <p>Obniżenie + geometria</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="kalk-group">
-        <div class="kalk-label">Logo</div>
-        <div class="kalk-btns">
-          <button class="kalk-btn active" data-group="logo" data-val="0" onclick="kalkSelect(this)">Mam własne</button>
-          <button class="kalk-btn" data-group="logo" data-val="75" onclick="kalkSelect(this)">Potrzebuję (+75 zł)</button>
+    </section>
+
+    <!-- ========== VIDEO SECTION ========== -->
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper" data-aos="fade-up">
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/3HFdHv03r-w" 
+                        title="AutoElite - Prezentacja warsztatu" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="video-content">
+                    <h2>Zobacz jak pracujemy</h2>
+                    <p>Zapraszamy do obejrzenia filmu prezentującego nasz warsztat, sprzęt oraz proces realizacji usług</p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="kalk-group">
-        <div class="kalk-label">Grafiki social media</div>
-        <div class="kalk-btns">
-          <button class="kalk-btn active" data-group="social" data-val="0" onclick="kalkSelect(this)">Nie potrzebuję</button>
-          <button class="kalk-btn" data-group="social" data-val="150" onclick="kalkSelect(this)">5 grafik (+150 zł)</button>
-          <button class="kalk-btn" data-group="social" data-val="200" onclick="kalkSelect(this)">10 grafik (+200 zł)</button>
+    </section>
+
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Opinie klientów</span>
+                <h2 class="section-title">Co mówią o nas nasi klienci</h2>
+                <p class="section-subtitle">Zaufało nam już ponad 2500 zadowolonych właścicieli pojazdów</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-rating">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "Profesjonalna obsługa na najwyższym poziomie. Chip tuning w moim Audi A4 przeszedł 
+                        wszystkie oczekiwania - auto jeździ płynniej, ma więcej mocy, a spalanie nawet spadło. 
+                        Polecam każdemu!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="Marcin Kowalski" loading="lazy">
+                        <div>
+                            <div class="author-name">Marcin Kowalski</div>
+                            <div class="author-title">Właściciel Audi A4</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-rating">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "Trafiłem tu po poleceniu znajomego i nie żałuję. Detailing mojego BMW wyglądał jak 
+                        magia - lakier lśni jak nowy, a wnętrze pachnie świeżością. Ceny uczciwe, 
+                        a jakość wykonania rewelacyjna."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=33" alt="Anna Nowak" loading="lazy">
+                        <div>
+                            <div class="author-name">Anna Nowak</div>
+                            <div class="author-title">Właścicielka BMW X5</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-rating">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "Szybka i profesjonalna diagnostyka uratowała mnie przed kosztowną awarią. 
+                        Panowie dokładnie wytłumaczyli problem, pokazali co i jak, a naprawa została 
+                        wykonana tego samego dnia. Serdecznie polecam!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=68" alt="Piotr Wiśniewski" loading="lazy">
+                        <div>
+                            <div class="author-name">Piotr Wiśniewski</div>
+                            <div class="author-title">Właściciel VW Golf</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-rating">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "Kompleksowy serwis mojego Mercedesa - wymiana oleju, filtrów, płynu hamulcowego 
+                        i klimatyzacji. Wszystko zrobione perfekcyjnie, z dbałością o szczegóły. 
+                        Auto działa jak nowe!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=15" alt="Katarzyna Lewandowska" loading="lazy">
+                        <div>
+                            <div class="author-name">Katarzyna Lewandowska</div>
+                            <div class="author-title">Właścicielka Mercedes C-Class</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-rating">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "Geometria 3D i wyważanie kół - różnica jest ogromna! Auto nie ciągnie na bok, 
+                        opony zużywają się równomiernie, a jazda jest o wiele bardziej komfortowa. 
+                        Wreszcie znalazłem warsztat, któremu mogę zaufać."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=52" alt="Tomasz Zieliński" loading="lazy">
+                        <div>
+                            <div class="author-name">Tomasz Zieliński</div>
+                            <div class="author-title">Właściciel Ford Focus</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-rating">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "Pomoc drogowa w środku nocy - przyjechali w 20 minut! Profesjonalizm, 
+                        uprzejmość i szybka pomoc. Dodatkowo doradzili co zrobić, żeby problem się 
+                        nie powtórzył. Mega ekipa!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=8" alt="Michał Dąbrowski" loading="lazy">
+                        <div>
+                            <div class="author-name">Michał Dąbrowski</div>
+                            <div class="author-title">Właściciel Skoda Octavia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="kalk-result">
-      <div class="kalk-total-label">Szacunkowa cena</div>
-      <div class="kalk-total" id="kalk-total">250 zł</div>
-      <div class="kalk-note">Ostateczna wycena po konsultacji</div>
-      <a href="#contact" class="btn btn-accent" style="display:block;text-align:center;margin-top:1.5rem;padding:12px;">Zamów wycenę →</a>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-header reveal">
-    <div class="section-label">Kontakt</div>
-    <h2 class="section-title">Porozmawiajmy o Twojej stronie</h2>
-    <p class="section-desc">Napisz lub zadzwoń – odpiszę w ciągu 12 godzin i przygotujemy razem coś fajnego.</p>
-  </div>
-  <div class="contact-grid">
-    <div class="contact-info reveal">
-      <div class="contact-item">
-        <div class="contact-item-icon">📞</div>
-        <div class="contact-item-text">
-          <label>Telefon</label>
-          <a href="tel:881578996">881 578 996</a>
+    <!-- ========== CTA SECTION ========== -->
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="zoom-in">
+                <h2 class="cta-title">Gotowy na profesjonalną obsługę?</h2>
+                <p class="cta-subtitle">
+                    Umów się na wizytę już dziś i przekonaj się, dlaczego tysiące kierowców 
+                    wybiera AutoElite. Pierwsza diagnostyka gratis!
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large">
+                        <span>Umów wizytę online</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <a href="tel:+48123456789" class="btn btn-outline btn-large">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M6 4C6 3 6.5 2 8 2C9 2 10 2.5 10 4C10 5 9.5 6 8.5 6.5L7.5 7C7 7.5 7 8 7.5 8.5L11.5 12.5C12 13 12.5 13 13 12.5L13.5 11.5C14 10.5 15 10 16 10C17.5 10 18 11 18 12C18 13.5 17 14 16 14C13 14 10 13 7 10C4 7 3 4 3 1C3 0 4 -1 5.5 -1" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span>Zadzwoń: +48 123 456 789</span>
+                    </a>
+                </div>
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>Darmowa diagnostyka</span>
+                    </div>
+                    <div class="cta-feature">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>Gwarancja na usługi</span>
+                    </div>
+                    <div class="cta-feature">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>Auto zastępcze</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">✉️</div>
-        <div class="contact-item-text">
-          <label>E-mail</label>
-          <a href="mailto:leskiewiczjakub22@gmail.com">leskiewiczjakub22@gmail.com</a>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Kontakt</span>
+                <h2 class="section-title">Skontaktuj się z nami</h2>
+                <p class="section-subtitle">Jesteśmy do Twojej dyspozycji - napisz lub zadzwoń</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M10 8C10 6 11 4 14 4C16 4 18 5 18 8C18 10 17 12 15 13L13 14C12 15 12 16 13 17L19 23C20 24 21 24 22 23L23 21C24 19 26 18 28 18C30 18 32 20 32 22C32 25 30 26 28 26C22 26 16 24 10 18C4 12 2 6 2 0C2 -2 4 -4 7 -4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Telefon</h3>
+                            <p>+48 123 456 789</p>
+                            <p>+48 987 654 321</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <rect x="4" y="8" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M4 10L16 18L28 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>kontakt@autoelite.pl</p>
+                            <p>serwis@autoelite.pl</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 10V16L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Godziny otwarcia</h3>
+                            <p>Pn-Pt: 8:00 - 18:00</p>
+                            <p>Sobota: 9:00 - 14:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M16 28C16 28 26 20 26 12C26 6.5 21.5 2 16 2C10.5 2 6 6.5 6 12C6 20 16 28 16 28Z" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="16" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Adres</h3>
+                            <p>ul. Motoryzacyjna 15</p>
+                            <p>00-001 Warszawa</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="18" cy="6" r="1" fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 9.71a8.5 8.5 0 00-.91-4.13 2.92 2.92 0 00-1.72-1A78.36 78.36 0 0012 4.27a78.45 78.45 0 00-8.34.3 2.87 2.87 0 00-1.46.74c-.9.83-1 2.25-1.1 3.45a48.29 48.29 0 000 6.48 9.55 9.55 0 00.3 2.12 3.14 3.14 0 00.71 1.36 3.09 3.09 0 001.46.84 45.18 45.18 0 008.59.26 45.18 45.18 0 008.59-.26 3.09 3.09 0 001.46-.84 3.14 3.14 0 00.71-1.36 9.55 9.55 0 00.3-2.12 48.29 48.29 0 000-6.48zM9.75 14.85V8.66l5.37 3.1z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <form class="contact-form" data-aos="fade-left" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Imię i nazwisko</label>
+                        <input type="text" id="name" name="name" required placeholder="Jan Kowalski">
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Adres email</label>
+                        <input type="email" id="email" name="email" required placeholder="jan@example.com">
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+48 123 456 789">
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Wybierz usługę</label>
+                        <select id="service" name="service">
+                            <option value="">-- Wybierz usługę --</option>
+                            <option value="diagnostyka">Diagnostyka komputerowa</option>
+                            <option value="serwis">Serwis i naprawa</option>
+                            <option value="tuning">Chip tuning</option>
+                            <option value="geometria">Geometria i wyważanie</option>
+                            <option value="detailing">Detailing</option>
+                            <option value="pomoc">Pomoc drogowa</option>
+                            <option value="inne">Inne</option>
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Wiadomość</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Opisz czym możemy Ci pomóc..."></textarea>
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <span>Akceptuję <a href="#">politykę prywatności</a> i wyrażam zgodę na przetwarzanie danych osobowych</span>
+                        </label>
+                        <span class="error-message"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large btn-block">
+                        <span>Wyślij wiadomość</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M18 2L9 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M18 2L12 18L9 11L2 8L18 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="form-success" id="formSuccess">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="22" stroke="#10b981" stroke-width="2"/>
+                            <path d="M14 24L20 30L34 16" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                        <h3>Dziękujemy za wiadomość!</h3>
+                        <p>Skontaktujemy się z Tobą w ciągu 24 godzin.</p>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">⏱️</div>
-        <div class="contact-item-text">
-          <label>Czas odpowiedzi</label>
-          <span>Do 12 godzin</span>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 5L35 12.5V27.5L20 35L5 27.5V12.5L20 5Z" stroke="url(#gradient2)" stroke-width="2" fill="none"/>
+                            <circle cx="20" cy="20" r="8" fill="url(#gradient2)"/>
+                            <defs>
+                                <linearGradient id="gradient2" x1="5" y1="5" x2="35" y2="35">
+                                    <stop offset="0%" stop-color="#FF6B35"/>
+                                    <stop offset="100%" stop-color="#F7931E"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>AutoElite</span>
+                    </div>
+                    <p class="footer-description">
+                        Profesjonalne usługi motoryzacyjne z pasją i doświadczeniem. 
+                        Twój samochód w najlepszych rękach.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M15 2h-2.5a4 4 0 00-4 4v2.5H6v3h2.5V18h3v-6.5H14l.5-3h-3V6a1 1 0 011-1H15z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="2" width="16" height="16" rx="4"/>
+                                <circle cx="10" cy="10" r="3"/>
+                                <circle cx="15" cy="5" r="0.5" fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M19 6.5a2.5 2.5 0 00-2.5-2.5h-13A2.5 2.5 0 001 6.5v7a2.5 2.5 0 002.5 2.5h13a2.5 2.5 0 002.5-2.5v-7zM8 13V7l5 3-5 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M17 2H3a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V3a1 1 0 00-1-1zM7 15H5V8h2v7zM6 7a1 1 0 110-2 1 1 0 010 2zm9 8h-2v-3.5c0-1-.5-1.5-1-1.5s-1 .5-1 1.5V15H9V8h2v1a2.5 2.5 0 012-1c1.5 0 2.5 1 2.5 3v4z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Usługi</h4>
+                    <ul>
+                        <li><a href="#services">Diagnostyka komputerowa</a></li>
+                        <li><a href="#services">Serwis i naprawa</a></li>
+                        <li><a href="#services">Chip tuning</a></li>
+                        <li><a href="#services">Geometria kół</a></li>
+                        <li><a href="#services">Detailing</a></li>
+                        <li><a href="#services">Pomoc drogowa</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Firma</h4>
+                    <ul>
+                        <li><a href="#about">O nas</a></li>
+                        <li><a href="#gallery">Realizacje</a></li>
+                        <li><a href="#testimonials">Opinie</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                        <li><a href="#">Kariera</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Informacje</h4>
+                    <ul>
+                        <li><a href="#">Polityka prywatności</a></li>
+                        <li><a href="#">Regulamin</a></li>
+                        <li><a href="#">Cennik</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Gwarancja</a></li>
+                        <li><a href="#">Płatności</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 AutoElite. Wszystkie prawa zastrzeżone.</p>
+                <p>Zaprojektowane z <span class="heart">❤️</span> dla pasjonatów motoryzacji</p>
+            </div>
         </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">💬</div>
-        <div class="contact-item-text">
-          <label>Wycena</label>
-          <span>Bezpłatna, bez zobowiązań</span>
-        </div>
-      </div>
-    </div>
-    <div class="contact-form reveal">
-      <h3>Napisz do mnie</h3>
-      <form id="contactForm" action="https://formspree.io/f/mpqkalwl" method="POST">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Imię *</label>
-            <input type="text" id="name" name="imie" required placeholder="Jan Kowalski" />
-          </div>
-          <div class="form-group">
-            <label for="phone">Telefon</label>
-            <input type="tel" id="phone" name="telefon" placeholder="600 000 000" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">E-mail *</label>
-          <input type="email" id="email" name="email" required placeholder="jan@firma.pl" />
-        </div>
-        <div class="form-group">
-          <label for="service">Rodzaj strony</label>
-          <select id="service" name="rodzaj_strony">
-            <option value="">– wybierz –</option>
-            <option>Strona wizytówkowa</option>
-            <option>Strona firmowa</option>
-            <option>Landing page</option>
-            <option>Logo / identyfikacja wizualna</option>
-            <option>Grafiki social media</option>
-            <option>Inne / nie wiem jeszcze</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="msg">Opisz projekt</label>
-          <textarea id="msg" name="wiadomosc" placeholder="Czym się zajmujesz, co ma być na stronie, jakiś styl który lubisz..."></textarea>
-        </div>
-        <input type="hidden" name="_language" value="pl" />
-        <input type="hidden" name="_subject" value="Nowe zapytanie z SiteWorks!" />
-        <button type="submit" class="btn btn-accent form-submit">Wyślij wiadomość</button>
-        <div class="form-success" id="formSuccess">✅ Wiadomość wysłana! Odezwę się wkrótce.</div>
-      </form>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- FOOTER -->
-<footer aria-label="Stopka SiteWorks">
-  <div class="footer-logo">Site<span>Works</span></div>
-  <p>© 2025 SiteWorks – Kuba Leśkiewicz | Tworzenie stron internetowych na zamówienie</p>
-  <a href="tel:881578996" class="btn btn-accent" aria-label="Zadzwoń do SiteWorks">📞 881 578 996</a>
-</footer>
-
-<script>
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  reveals.forEach(r => observer.observe(r));
-
-  // ── KOSZYK ──
-  let cart = [];
-
-  function toggleCart() {
-    document.getElementById('cart-drawer').classList.toggle('open');
-    document.getElementById('cart-overlay').classList.toggle('open');
-  }
-
-  function renderCart() {
-    const itemsEl = document.getElementById('cart-items');
-    const emptyEl = document.getElementById('cart-empty');
-    const footerEl = document.getElementById('cart-footer');
-    const countEl = document.getElementById('cart-count');
-    const totalEl = document.getElementById('cart-total-val');
-
-    itemsEl.innerHTML = '';
-    if (cart.length === 0) {
-      emptyEl.style.display = 'block';
-      footerEl.style.display = 'none';
-      countEl.style.display = 'none';
-    } else {
-      emptyEl.style.display = 'none';
-      footerEl.style.display = 'block';
-      countEl.style.display = 'flex';
-      countEl.textContent = cart.length;
-      let total = 0;
-      cart.forEach((item, i) => {
-        total += item.price;
-        const div = document.createElement('div');
-        div.className = 'cart-item';
-        div.innerHTML = `
-          <div style="flex:1">
-            <div class="cart-item-name">${item.name}</div>
-          </div>
-          <div class="cart-item-price">${item.price} zł</div>
-          <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button>
-        `;
-        itemsEl.appendChild(div);
-      });
-      totalEl.textContent = total + ' zł';
-      document.getElementById('cart-hidden-order').value =
-        cart.map(i => i.name + ' – ' + i.price + ' zł').join(', ') + ' | Razem: ' + total + ' zł';
-    }
-  }
-
-  function removeFromCart(i) {
-    const btn = document.querySelector(`.add-to-cart[data-name="${cart[i].name}"]`);
-    if (btn) btn.classList.remove('added');
-    cart.splice(i, 1);
-    renderCart();
-  }
-
-  document.querySelectorAll('.add-to-cart').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const name = btn.dataset.name;
-      const price = parseInt(btn.dataset.price);
-      if (cart.find(i => i.name === name)) return;
-      cart.push({ name, price });
-      btn.classList.add('added');
-      btn.textContent = '✅ Dodano';
-      renderCart();
-      document.getElementById('cart-drawer').classList.add('open');
-      document.getElementById('cart-overlay').classList.add('open');
-    });
-  });
-
-  const cartForm = document.getElementById('cart-form');
-  cartForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = cartForm.querySelector('.cart-submit');
-    btn.textContent = 'Wysyłanie...';
-    btn.disabled = true;
-
-    const zamowienie = cart.map(i => i.name + ' – ' + i.price + ' zł').join(', ');
-    const total = cart.reduce((s, i) => s + i.price, 0);
-
-    const res = await fetch('/php/order.php', {
-      method: 'POST',
-      body: JSON.stringify({
-        imie: cartForm.querySelector('[name="imie"]').value,
-        email: cartForm.querySelector('[name="email"]').value,
-        telefon: cartForm.querySelector('[name="telefon"]').value,
-        zamowienie: zamowienie + ' | Razem: ' + total + ' zł',
-        uwagi: cartForm.querySelector('[name="uwagi"]').value
-      })
-    });
-
-    if (res.ok) {
-      document.getElementById('cart-success').style.display = 'block';
-      cartForm.reset();
-      cart = [];
-      document.querySelectorAll('.add-to-cart').forEach(b => {
-        b.classList.remove('added');
-        b.textContent = '🛒 Dodaj do koszyka';
-      });
-      renderCart();
-    }
-    btn.textContent = '✅ Wyślij zamówienie';
-    btn.disabled = false;
-  });
-
-  function selectService(name) {
-    const select = document.getElementById('service');
-    if (!select) return;
-    for (let i = 0; i < select.options.length; i++) {
-      if (select.options[i].value === name || select.options[i].text === name) {
-        select.selectedIndex = i;
-        break;
-      }
-    }
-  }
-
-  function switchCennik(name, e) {
-    document.querySelectorAll('.cennik-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.cennik-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('cpanel-' + name).classList.add('active');
-    e.target.classList.add('active');
-  }
-
-  function switchTab(name) {
-    document.querySelectorAll('.portfolio-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.portfolio-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('panel-' + name).classList.add('active');
-    event.target.classList.add('active');
-  }
-
-  const contactForm = document.getElementById('contactForm');
-  contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = contactForm.querySelector('button[type="submit"]');
-    btn.textContent = 'Wysyłanie...';
-    btn.disabled = true;
-    const res = await fetch('/php/contact.php', {
-      method: 'POST',
-      body: JSON.stringify({
-        imie: contactForm.querySelector('[name="imie"]').value,
-        email: contactForm.querySelector('[name="email"]').value,
-        telefon: contactForm.querySelector('[name="telefon"]')?.value || '',
-        rodzaj_strony: contactForm.querySelector('[name="rodzaj_strony"]')?.value || '',
-        wiadomosc: contactForm.querySelector('[name="wiadomosc"]').value
-      })
-    });
-    if (res.ok) {
-      document.getElementById('formSuccess').style.display = 'block';
-      btn.style.display = 'none';
-      contactForm.reset();
-    } else {
-      btn.textContent = 'Błąd – spróbuj ponownie';
-      btn.disabled = false;
-    }
-  });
-</script>
-<script>
-  // TOP BAR slots countdown
-  let slots = parseInt(localStorage.getItem('slots') || '1');
-
-  // COOKIE
-  function acceptCookies() {
-    document.getElementById('cookie-banner').classList.add('hidden');
-    localStorage.setItem('cookies', '1');
-  }
-  if (localStorage.getItem('cookies')) document.getElementById('cookie-banner').classList.add('hidden');
-
-  // DARK MODE
-  function toggleDark() {
-    document.body.classList.toggle('light');
-    const btn = document.getElementById('darkmode-toggle');
-    btn.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
-    localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
-  }
-  if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light');
-    document.getElementById('darkmode-toggle').textContent = '☀️';
-  }
-
-  // FAQ
-  function toggleFaq(btn) {
-    btn.classList.toggle('open');
-    const ans = btn.nextElementSibling;
-    ans.classList.toggle('open');
-  }
-
-  // KALKULATOR
-  const kalkVals = { typ: 250, form: 0, logo: 0, social: 0 };
-  function kalkSelect(btn) {
-    const group = btn.dataset.group;
-    document.querySelectorAll(`.kalk-btn[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    kalkVals[group] = parseInt(btn.dataset.val);
-    const total = Object.values(kalkVals).reduce((a, b) => a + b, 0);
-    document.getElementById('kalk-total').textContent = total + ' zł';
-  }
-
-  // POBIERZ CENY Z SUPABASE
-  const SUPA_URL = 'https://cnqhvtluramdhktvkect.supabase.co';
-  const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNucWh2dGx1cmFtZGhrdHZrZWN0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMzY1NzIsImV4cCI6MjA5MTgxMjU3Mn0.RigkQC9omwIzRI3gXa7Uo16RnnS8eg6MEAp7hfI6H_w';
-
-  async function loadPrices() {
-    try {
-      const res = await fetch(`${SUPA_URL}/rest/v1/ceny?select=klucz,wartosc`, {
-        headers: { 'apikey': SUPA_KEY, 'Authorization': `Bearer ${SUPA_KEY}` }
-      });
-      const rows = await res.json();
-      if (!Array.isArray(rows)) return;
-      const data = {};
-      rows.forEach(r => data[r.klucz] = r.wartosc);
-
-      const sets = [
-        { key: 'cena_wizytowkowa', kalkGroup: 'typ' },
-        { key: 'cena_landing',     kalkGroup: 'typ' },
-        { key: 'cena_firmowa',     kalkGroup: 'typ' },
-      ];
-      sets.forEach(s => {
-        if (!data[s.key]) return;
-        document.querySelectorAll(`[data-price-key="${s.key}"]`).forEach(el => el.textContent = data[s.key] + ' zł');
-        document.querySelectorAll(`[data-price-ref="${s.key}"]`).forEach(el => {
-          el.dataset.val = data[s.key];
-          const sm = el.querySelector('small');
-          if (sm) sm.textContent = data[s.key] + ' zł';
-        });
-      });
-      if (data.cena_logo) document.querySelectorAll('[data-price-key="cena_logo"]').forEach(el => el.textContent = data.cena_logo + ' zł');
-      if (data.cena_social) document.querySelectorAll('[data-price-key="cena_social"]').forEach(el => el.textContent = data.cena_social + ' zł / szt.');
-      const activeTyp = document.querySelector('.kalk-btn.active[data-group="typ"]');
-      if (activeTyp) kalkVals.typ = parseInt(activeTyp.dataset.val);
-      document.getElementById('kalk-total').textContent = Object.values(kalkVals).reduce((a,b)=>a+b,0) + ' zł';
-    } catch(e) {}
-  }
-  loadPrices();
-
-  // UKRYTY DOSTĘP DO PANELU - 5x klik na logo
-  let secretClicks = 0, secretTimer;
-  function secretAdmin(e) {
-    secretClicks++;
-    clearTimeout(secretTimer);
-    secretTimer = setTimeout(() => secretClicks = 0, 2000);
-    if (secretClicks >= 5) {
-      secretClicks = 0;
-      window.location.href = '/admin.html';
-    }
-  }
-
-  function closePopup() {
-    document.getElementById('popup').classList.remove('open');
-    document.getElementById('popup-overlay').classList.remove('open');
-    localStorage.setItem('popup_shown', '1');
-  }
-  if (!localStorage.getItem('popup_shown')) {
-    setTimeout(() => {
-      document.getElementById('popup').classList.add('open');
-      document.getElementById('popup-overlay').classList.add('open');
-    }, 8000);
-  }
-
-</script>
-<!-- KOSZYK FLOATING -->
-<div id="cart-bubble" onclick="toggleCart()" title="Koszyk">
-  🛒 <span id="cart-count">0</span>
-</div>
-
-<div id="cart-drawer">
-  <div class="cart-header">
-    <h3>🛒 Koszyk</h3>
-    <button onclick="toggleCart()" class="cart-close">✕</button>
-  </div>
-  <div id="cart-items" class="cart-items"></div>
-  <div class="cart-empty" id="cart-empty">Koszyk jest pusty</div>
-  <div class="cart-footer" id="cart-footer" style="display:none;">
-    <div class="cart-total">Razem: <strong id="cart-total-val">0 zł</strong></div>
-    <form id="cart-form" action="https://formspree.io/f/mpqkalwl" method="POST">
-      <input type="hidden" name="zamowienie" id="cart-hidden-order" />
-      <input type="text" name="imie" placeholder="Imię i nazwisko *" required />
-      <input type="email" name="email" placeholder="E-mail *" required />
-      <input type="tel" name="telefon" placeholder="Telefon" />
-      <textarea name="uwagi" placeholder="Dodatkowe uwagi..." rows="3"></textarea>
-      <button type="submit" class="cart-submit">✅ Wyślij zamówienie</button>
-    </form>
-
-    <div class="cart-bank">
-      <div class="cart-bank-note">💳 Płatność następuje po wykonaniu strony, przed podpięciem domeny. Zero ryzyka z Twojej strony.</div>
-    </div>
-    <div class="cart-success" id="cart-success">✅ Zamówienie wysłane! Odezwę się wkrótce.</div>
-  </div>
-</div>
-<div id="cart-overlay" onclick="toggleCart()"></div>
-
+    <!-- ========== SCRIPTS ========== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
