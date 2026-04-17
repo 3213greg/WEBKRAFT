@@ -2110,9 +2110,9 @@
       rows.forEach(r => data[r.klucz] = r.wartosc);
 
       const sets = [
-        { key: 'cena_wizytowkowa', kalkGroup: 'typ' },
-        { key: 'cena_landing',     kalkGroup: 'typ' },
-        { key: 'cena_firmowa',     kalkGroup: 'typ' },
+        { key: 'cena_wizytowkowa', kalkGroup: 'typ', cartName: 'Strona wizytówkowa' },
+        { key: 'cena_landing',     kalkGroup: 'typ', cartName: 'Landing page' },
+        { key: 'cena_firmowa',     kalkGroup: 'typ', cartName: 'Strona firmowa' },
       ];
       sets.forEach(s => {
         if (!data[s.key]) return;
@@ -2122,9 +2122,27 @@
           const sm = el.querySelector('small');
           if (sm) sm.textContent = data[s.key] + ' zł';
         });
+        // Aktualizuj również ceny w przyciskach koszyka
+        if (s.cartName) {
+          document.querySelectorAll(`[data-name="${s.cartName}"]`).forEach(el => {
+            el.dataset.price = data[s.key];
+          });
+        }
       });
-      if (data.cena_logo) document.querySelectorAll('[data-price-key="cena_logo"]').forEach(el => el.textContent = data.cena_logo + ' zł');
-      if (data.cena_social) document.querySelectorAll('[data-price-key="cena_social"]').forEach(el => el.textContent = data.cena_social + ' zł / szt.');
+      if (data.cena_logo) {
+        document.querySelectorAll('[data-price-key="cena_logo"]').forEach(el => el.textContent = data.cena_logo + ' zł');
+        // Aktualizuj cenę w przycisku koszyka
+        document.querySelectorAll('[data-name="Logo i identyfikacja"]').forEach(el => {
+          el.dataset.price = data.cena_logo;
+        });
+      }
+      if (data.cena_social) {
+        document.querySelectorAll('[data-price-key="cena_social"]').forEach(el => el.textContent = data.cena_social + ' zł / szt.');
+        // Aktualizuj cenę w przycisku koszyka
+        document.querySelectorAll('[data-name="Grafiki social media"]').forEach(el => {
+          el.dataset.price = data.cena_social;
+        });
+      }
       const activeTyp = document.querySelector('.kalk-btn.active[data-group="typ"]');
       if (activeTyp) kalkVals.typ = parseInt(activeTyp.dataset.val);
       document.getElementById('kalk-total').textContent = Object.values(kalkVals).reduce((a,b)=>a+b,0) + ' zł';
